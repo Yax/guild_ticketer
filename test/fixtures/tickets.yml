@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  category_id: 1
+  employee_name: MyString
+  order_number: 1
+  email: MyString
+
+two:
+  category_id: 1
+  employee_name: MyString
+  order_number: 1
+  email: MyString
