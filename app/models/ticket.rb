@@ -5,5 +5,11 @@ class Ticket < ActiveRecord::Base
   # t.string :email
   
   belongs_to :category
-  has_many: :messages
+  has_many :messages
+
+  validates_associated :category
+  validates_presence_of :email, :employee_name
+  validates_format_of :email,
+                      :with     => /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})/
+
 end
