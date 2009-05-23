@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_filter :find_categories, :only => [:edit , :create]
+  before_filter :find_categories, :only => [:edit , :new]
 
   def index
     @tickets = Ticket.find(:all)
@@ -7,6 +7,7 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.find(params[:id])
+    @category = @ticket.category
   end
 
   def new
@@ -19,7 +20,8 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(params[:ticket])
-    if @ticket.save
+    @category = Category.find(@ticket.category_id)
+    if (@category.tickets << @ticket)
       flash[:notice] = "Ticket created."
       redirect_to(@ticket)
     else
@@ -28,8 +30,8 @@ class TicketsController < ApplicationController
   end
 
   def update
-    @ticket = Ticket.find(param[:id])
-    if @ticket.update_attributes(param[:ticket])
+    @ticket = Ticket.find(params[:id])
+    if @ticket.update_attributes(params[:ticket])
       flash[:notice] = "Ticket updated."
       redirect_to(@ticket)
     else
@@ -38,11 +40,17 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    @ticket = Ticket.find(param[:id])
-    if @ticket.destroy
-      flash[:notice] = "Ticket deleted"
+    ticket = Ticket.find(params[:id])
+    category = ticket.category
+    if category.tickets.destroy(ticket)
+      flash[:notice] = "Ticket usunięty"
     end
     redirect_to(tickets_url)
+    #@ticket = Ticket.find(param[:id])
+    #if @ticket.destroy
+    #  flash[:notice] = "Ticket deleted"
+    #end
+    #redirect_to(tickets_url)
   end
 
   private
@@ -51,3 +59,4 @@ class TicketsController < ApplicationController
   end
 
 end
+

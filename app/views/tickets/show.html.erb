@@ -1,0 +1,23 @@
+<p>
+  <b>Kategoria:</b>
+  <%=h @category.name %>
+</p>
+
+<p>
+  <b>Pracownik:</b>
+  <%=h @ticket.employee_name %>
+</p>
+
+<p>
+  <b>Numer zlecenia:</b>
+  <%=h @ticket.order_number %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @ticket.email %>
+</p>
+
+
+<%= link_to 'Edytuj', edit_ticket_path(@ticket) %> |
+<%= link_to 'Wróć', tickets_path %>
