@@ -12,4 +12,7 @@ class Ticket < ActiveRecord::Base
   validates_format_of :email,
                       :with     => /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})/
 
+  def validate
+    errors.add(:category_id, "is not a valid category") if self.category.nil?
+  end
 end

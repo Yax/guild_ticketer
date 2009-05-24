@@ -17,14 +17,11 @@ class TicketsController < ApplicationController
   def edit
     @ticket = Ticket.find(params[:id])
   end
-
+u
   def create
     @ticket = Ticket.new(params[:ticket])
-    @category = Category.find(@ticket.category_id)
-    # @ticket.category = @category
-    if (@category.tickets << @ticket)
-    # if @ticket.save
-      flash[:notice] = "Ticket created."
+    if @ticket.save
+      flash[:notice] = "ticket created."
       redirect_to(@ticket)
     else
       render :action => "new"
@@ -48,11 +45,6 @@ class TicketsController < ApplicationController
       flash[:notice] = "Ticket usunięty"
     end
     redirect_to(tickets_url)
-    #@ticket = Ticket.find(param[:id])
-    #if @ticket.destroy
-    #  flash[:notice] = "Ticket deleted"
-    #end
-    #redirect_to(tickets_url)
   end
 
   private
