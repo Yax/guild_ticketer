@@ -17,7 +17,7 @@ class TicketsController < ApplicationController
   def edit
     @ticket = Ticket.find(params[:id])
   end
-u
+
   def create
     @ticket = Ticket.new(params[:ticket])
     if @ticket.save
