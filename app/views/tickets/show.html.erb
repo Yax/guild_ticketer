@@ -20,22 +20,11 @@
 
 
 <%= link_to 'Edytuj', edit_ticket_path(@ticket) %> |
-<%= link_to 'Wróć', tickets_path %>
+<%= link_to 'Dodaj wiadomosc', new_ticket_message_path(@ticket) %> |
+<%= link_to 'Lista', tickets_path %>
 
+<% unless @ticket.messages.empty? %>
+  <h3>Wiadomości:</h3>
+  <%= render :partial => '/messages/messages/', :object => @ticket.messages %>
+<% end %>
 
-<h3>Wiadomości:</h3>
-<table>
-  <tr>
-    <th>Od:</th>
-    <th>Wiadomosc:</th>
-  </tr>
-  <% for message in @ticket.messages %>
-    <tr>
-      <td><%=h message.from %></td>
-      <td><%=h truncate(message.content,79) %></td>
-      <td><%= link_to 'Pokaz', message %></td>
-      <td><%= link_to 'Edytuj', edit_message_path(message) %></td>
-      <td><%= link_to 'Usun', message, :confirm => "Jestes pewny?", :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>

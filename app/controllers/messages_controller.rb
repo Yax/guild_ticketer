@@ -1,12 +1,15 @@
 class MessagesController < ApplicationController
   before_filter :find_ticket, :only => [:index, :new, :create]
   before_filter :find_message, :except => [:index, :new, :create]
-  
+ 
+  layout 'tickets'
+
   def index
     @messages = @ticket.messages
   end
 
   def show
+    @ticket = @message.ticket
   end
 
   def new
@@ -20,7 +23,7 @@ class MessagesController < ApplicationController
     @message = @ticket.messages.build(params[:message])
     if @message.save
       flash[:notice] = "Wiadomość zapisana"
-      redirect_to(ticket_messages_url(@ticket))
+      redirect_to(@ticket)
     else
       render :action => "new"
     end
@@ -30,7 +33,7 @@ class MessagesController < ApplicationController
   def update
     if @message.update_attributes(params[:message])
       flash[:notice] = "Wiadomość zaktualizowana"
-      redirect_to(@ticket)
+      redirect_to(@message.ticket)
     else
       render :action => "edit"
     end
@@ -39,7 +42,7 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
     flash[:notice] = "Wiadomość usunięta"
-    redirect_to(ticket_messages_url(@ticket))
+    redirect_to(@message.ticket)
   end
 
   private
