@@ -6,7 +6,7 @@
   <% for message in messages %>
     <tr>
       <td><%=h message.from %></td>
-      <td><%=h truncate(message.content,79) %></td>
+      <td><%=h truncate(message.content, :length => 80) %></td>
       <td><%= link_to 'Pokaz', message %></td>
       <td><%= link_to 'Edytuj', edit_message_path(message) %></td>
       <td><%= link_to 'Usun', message, :confirm => "Jestes pewny?", :method => :delete %></td>
