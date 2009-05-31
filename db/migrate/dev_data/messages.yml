@@ -1,0 +1,15 @@
+pierwsza:
+  ticket: zwrot_tomka
+  from: "klient"
+  content: "Witam,\nzwracam sie z uprzejma prosba o anulowanie zamowienia numer taki a taki\nPozdrawiam"
+
+druga:
+  ticket: zwrot_tomka
+  from: "sklep"
+  content: "Alez nie ma problemu, prosze podaa dane numer konta do zwrotu oplaty"
+
+trzecia:
+  ticket: wysylka_adiego
+  from: "sklep"
+  content: "Przesyłka została wysłana wtedy i wtedy, bo costam, serdecznie przepraszamy"
+
