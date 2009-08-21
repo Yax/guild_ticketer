@@ -5,4 +5,7 @@ class CategoryTest < ActiveSupport::TestCase
   test "the truth" do
     assert true
   end
+
+  should_validate_uniqueness_of :name
+
 end
