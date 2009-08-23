@@ -31,7 +31,7 @@ class CategoriesControllerTest < ActionController::TestCase
   end
 
   test "should update category" do
-    put :update, :id => categories(:one).id, :category => { }
+    put :update, :id => categories(:one).id, :category => { :name => "test" }
     assert_redirected_to category_path(assigns(:category))
   end
 
