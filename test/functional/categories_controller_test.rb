@@ -21,23 +21,23 @@ class CategoriesControllerTest < ActionController::TestCase
   end
 
   test "should show category" do
-    get :show, :id => categories(:one).id
+    get :show, :id => categories(:zwrot).id
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => categories(:one).id
+    get :edit, :id => categories(:zwrot).id
     assert_response :success
   end
 
   test "should update category" do
-    put :update, :id => categories(:one).id, :category => { :name => "test" }
+    put :update, :id => categories(:zwrot).id, :category => { }
     assert_redirected_to category_path(assigns(:category))
   end
 
   test "should destroy category" do
     assert_difference('Category.count', -1) do
-      delete :destroy, :id => categories(:one).id
+      delete :destroy, :id => categories(:zwrot).id
     end
 
     assert_redirected_to categories_path

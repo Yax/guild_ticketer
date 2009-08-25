@@ -1,11 +1,15 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+prosba_o_anulowanie:
+  ticket: zwrot_tomka
+  from: "klient"
+  content: "Witam,\nzwracam sie z uprzejma prosba o anulowanie zamowienia numer taki a taki\nPozdrawiam"
 
-one:
-  ticket_id: 1
-  content: MyText
-  from: MyString
+zgoda_anulowania:
+  ticket: zwrot_tomka
+  from: "sklep"
+  content: "Alez nie ma problemu, prosze o podanie danych do zwrotu oplaty"
 
-two:
-  ticket_id: 1
-  content: MyText
-  from: MyString
+wyslano_przesylke:
+  ticket: wysylka_adiego
+  from: "sklep"
+  content: "Przesyłka została wysłana wtedy i wtedy, bo costam, serdecznie przepraszamy"
+

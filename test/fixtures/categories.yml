@@ -1,7 +1,5 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+zwrot:
+  name: Zwrot
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+wysylka:
+  name: Wysyłka
