@@ -21,17 +21,17 @@ class CategoriesControllerTest < ActionController::TestCase
   end
 
   test "should show category" do
-    get :show, :id => categories(:zwrot).id
+    get :show, :id => categories(:zwrot).to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => categories(:zwrot).id
+    get :edit, :id => categories(:zwrot).to_param
     assert_response :success
   end
 
   test "should update category" do
-    put :update, :id => categories(:zwrot).id, :category => { }
+    put :update, :id => categories(:zwrot).to_param, :category => { }
     assert_redirected_to category_path(assigns(:category))
   end
 
