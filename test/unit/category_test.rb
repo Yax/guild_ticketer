@@ -1,11 +1,10 @@
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
 
+  should_have_many :tickets
+  should_validate_presence_of :name
   should_validate_uniqueness_of :name
+  should_ensure_length_at_least :name, 3
 
 end
