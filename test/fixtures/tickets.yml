@@ -9,3 +9,9 @@ wysylka_adiego:
   employee_name: "Adiego"
   order_number: 568332
   email: "czarus15@wp.pl"
+
+bledny_ticket:
+  category: wys
+  employee_name: "Di"
+  order_number: 4134
+  email: "czcz@os.pl"
