@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class MessageTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
+
+  should_belong_to :ticket
+  should_validate_presence_of :from, :content, :ticket
+
 end

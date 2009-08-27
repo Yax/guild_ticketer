@@ -4,8 +4,8 @@ class Message < ActiveRecord::Base
    # t.string :from
 
   belongs_to :ticket
-
-  validates_presence_of :from, :content
+  
   validates_associated :ticket
-
+  validates_presence_of :from, :content, :ticket
+  
 end
