@@ -1,8 +1,14 @@
 require 'test_helper'
 
 class TicketsControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  context "on GET to /tickets/" do
+    setup do
+      get :index
+    end
+    
+    should_respond_with :success
+    should_render_template :index
+    should_not_set_the_flash
   end
+
 end

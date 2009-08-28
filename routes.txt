@@ -1,0 +1,28 @@
+(in D:/Work/guild_ticketer)
+        categories GET    /categories(.:format)                      {:action=>"index", :controller=>"categories"}
+                   POST   /categories(.:format)                      {:action=>"create", :controller=>"categories"}
+      new_category GET    /categories/new(.:format)                  {:action=>"new", :controller=>"categories"}
+     edit_category GET    /categories/:id/edit(.:format)             {:action=>"edit", :controller=>"categories"}
+          category GET    /categories/:id(.:format)                  {:action=>"show", :controller=>"categories"}
+                   PUT    /categories/:id(.:format)                  {:action=>"update", :controller=>"categories"}
+                   DELETE /categories/:id(.:format)                  {:action=>"destroy", :controller=>"categories"}
+           tickets GET    /tickets(.:format)                         {:action=>"index", :controller=>"tickets"}
+                   POST   /tickets(.:format)                         {:action=>"create", :controller=>"tickets"}
+        new_ticket GET    /tickets/new(.:format)                     {:action=>"new", :controller=>"tickets"}
+       edit_ticket GET    /tickets/:id/edit(.:format)                {:action=>"edit", :controller=>"tickets"}
+            ticket GET    /tickets/:id(.:format)                     {:action=>"show", :controller=>"tickets"}
+                   PUT    /tickets/:id(.:format)                     {:action=>"update", :controller=>"tickets"}
+                   DELETE /tickets/:id(.:format)                     {:action=>"destroy", :controller=>"tickets"}
+   ticket_messages GET    /tickets/:ticket_id/messages(.:format)     {:action=>"index", :controller=>"messages"}
+                   POST   /tickets/:ticket_id/messages(.:format)     {:action=>"create", :controller=>"messages"}
+new_ticket_message GET    /tickets/:ticket_id/messages/new(.:format) {:action=>"new", :controller=>"messages"}
+      edit_message GET    /messages/:id/edit(.:format)               {:action=>"edit", :controller=>"messages"}
+           message GET    /messages/:id(.:format)                    {:action=>"show", :controller=>"messages"}
+                   PUT    /messages/:id(.:format)                    {:action=>"update", :controller=>"messages"}
+                   DELETE /messages/:id(.:format)                    {:action=>"destroy", :controller=>"messages"}
+Loaded suite d:/Soft/Ruby/bin/rake
+Started
+
+Finished in 0.0 seconds.
+
+0 tests, 0 assertions, 0 failures, 0 errors

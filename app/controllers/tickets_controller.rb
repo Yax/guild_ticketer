@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class TicketsController < ApplicationController
   before_filter :find_categories, :only => [:edit , :new, :create, :update]
   before_filter :find_ticket, :except => [ :new, :create, :index ]
