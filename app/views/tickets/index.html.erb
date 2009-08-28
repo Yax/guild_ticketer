@@ -10,7 +10,12 @@
 
   <% for ticket in @tickets %>
     <tr>
-      <td><%#=h ticket.category.name %></td>
+      <td><%=unless ticket.category.nil?
+               h ticket.category.name
+             else
+               "Błędna kategoria!"
+             end
+          %></td>
       <td><%=h ticket.employee_name %></td>
       <td><%=h ticket.email %></td>
       <td><%=h ticket.order_number %></td>
