@@ -3,7 +3,7 @@
     <th>Od:</th>
     <th>Wiadomosc:</th>
   </tr>
-  <% for message in messages %>
+  <% for message in @messages %>
     <tr>
       <td><%=h message.from %></td>
       <td><%=h truncate(message.content, :length => 80) %></td>
