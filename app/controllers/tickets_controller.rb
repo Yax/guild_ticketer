@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_filter :find_categories, :only => [:edit , :new, :create, :update]
+  before_filter :find_categories, :only => [:edit , :new]
   before_filter :find_ticket, :except => [ :new, :create, :index ]
 
   def index
@@ -23,6 +23,7 @@ class TicketsController < ApplicationController
       flash[:notice] = "ticket created."
       redirect_to(@ticket)
     else
+      @categories = Category.find(:all)
       render :action => "new"
     end
   end
@@ -32,13 +33,14 @@ class TicketsController < ApplicationController
       flash[:notice] = "Ticket updated."
       redirect_to(@ticket)
     else
+      @categories = Category.find(:all)
       render :action => "edit"
     end
   end
 
   def destroy
     @ticket.destroy
-    flash[:notice] = "Ticket usunięty"
+    flash[:notice] = "Ticket destroyed."
     redirect_to(tickets_url)
   end
 

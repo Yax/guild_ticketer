@@ -5,7 +5,7 @@ class Ticket < ActiveRecord::Base
   # t.string :email
   
   belongs_to :category
-  has_many :messages
+  has_many :messages, :dependent => :destroy
 
   validates_associated :category
   validates_presence_of :email, :employee_name
