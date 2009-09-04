@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class MessagesController < ApplicationController
   before_filter :find_ticket, :only => [:index, :new, :create]
   before_filter :find_message, :except => [:index, :new, :create]
@@ -24,7 +22,7 @@ class MessagesController < ApplicationController
   def create
     @message = @ticket.messages.build(params[:message])
     if @message.save
-      flash[:notice] = "Wiadomość zapisana"
+      flash[:notice] = "Message created."
       redirect_to(@ticket)
     else
       render :action => "new"
@@ -34,7 +32,7 @@ class MessagesController < ApplicationController
   #Not sure if it should be possible
   def update
     if @message.update_attributes(params[:message])
-      flash[:notice] = "Wiadomość zaktualizowana"
+      flash[:notice] = "Message updated"
       redirect_to(@message.ticket)
     else
       render :action => "edit"
@@ -43,7 +41,7 @@ class MessagesController < ApplicationController
 
   def destroy
     @message.destroy
-    flash[:notice] = "Wiadomość usunięta"
+    flash[:notice] = "Message destroyed"
     redirect_to(@message.ticket)
   end
 

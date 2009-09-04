@@ -25,6 +25,6 @@
 
 <% unless @ticket.messages.empty? %>
   <h3>Wiadomości:</h3>
-  <%= render :partial => '/messages/messages/', :object => @ticket.messages %>
+  <%= render :partial => "/messages/messages", :locals => { :messages => @ticket.messages } %>
 <% end %>
 
