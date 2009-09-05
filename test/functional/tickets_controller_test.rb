@@ -22,6 +22,7 @@ class TicketsControllerTest < ActionController::TestCase
       end
       should_create :ticket
       # should_change("the number of tickets", :by => 1) { Ticket.count } #duplicated test form above
+      should_assign_to :ticket
       should_redirect_to("created ticket") { ticket_url(assigns(:ticket)) }
       should_set_the_flash_to /created/ 
     end
@@ -35,6 +36,7 @@ class TicketsControllerTest < ActionController::TestCase
       end
       should_not_change("the number of tickets") { Ticket.count }
       should_render_template :new
+      should_assign_to :ticket
       should_not_set_the_flash
     end
 

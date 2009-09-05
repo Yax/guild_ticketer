@@ -9,12 +9,11 @@ class MessagesControllerTest < ActionController::TestCase
       should_respond_with :success
       should_render_template :index
       should_not_set_the_flash
-      should_assign_to :messages
-      should_assign_to :ticket
+      should_assign_to :messages, :ticket
       should_render_with_layout "tickets"
     end
 
-    context "on correct POST to #create" do
+    context "on POST to #create" do
       setup do
        post :create, :ticket_id => tickets(:zwrot_tomka).to_param, :message => { :content => "Hi bob",
                                                                                  :from => "shop" }
@@ -22,6 +21,56 @@ class MessagesControllerTest < ActionController::TestCase
       should_create :message
       should_redirect_to("created message") { ticket_url(tickets(:zwrot_tomka)) }
       should_set_the_flash_to /created/ 
+    end
+    
+    context "on GET to #new" do
+      setup do
+        get :new, :ticket_id => tickets(:zwrot_tomka).to_param
+      end
+      should_respond_with :success
+      should_render_template :new
+      should_not_set_the_flash
+      should_assign_to :ticket, :message
+    end
+    
+    context "on GET to #edit" do
+      setup do
+        get :edit, :id => messages(:zgoda_anulowania)
+      end
+      should_respond_with :success
+      should_render_template :edit
+      should_not_set_the_flash
+      should_assign_to :message
+    end
+
+    context "on GET to #show" do
+      setup do
+        get :show, :id => messages(:zgoda_anulowania).to_param
+      end
+      should_respond_with :success
+      should_render_template :show
+      should_not_set_the_flash
+      should_assign_to :ticket, :message
+    end
+
+    context "on PUT to #update" do
+      setup do
+        put :update, :id => messages(:zgoda_anulowania), :message => { :content => "asd asd",
+                                                                       :from => "client" }
+      end
+      should_not_change("the number of messages") { Message.count }
+      should_redirect_to("parent ticket") { ticket_url(assigns(:message).ticket) }
+      should_set_the_flash_to /updated/ 
+    end
+
+    context "on DELETE to #destroy" do
+      setup do
+        @ticket = Message.first.ticket
+        delete :destroy, :id => Message.first.to_param
+      end
+      should_change("the number of messages", :by => -1) { Message.count }
+      should_redirect_to("index") { ticket_url(@ticket) }
+      should_set_the_flash_to /destroyed/
     end
 
   end  
