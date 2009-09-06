@@ -3,15 +3,18 @@ zwrot_tomka:
   employee_name: "Tomek"
   order_number: 123415
   email: "klient@costam.pl"
+  basic_state: "opened"
 
 wysylka_adiego:
   category: wysylka
   employee_name: "Adiego"
   order_number: 568332
   email: "czarus15@wp.pl"
+  basic_state: "closed"
 
 bledny_ticket:
   category: wys
   employee_name: "Di"
   order_number: 4134
   email: "czcz@os.pl"
+  basic_state: "pending"
