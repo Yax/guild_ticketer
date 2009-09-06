@@ -9,7 +9,7 @@ class Ticket < ActiveRecord::Base
   has_many :messages, :dependent => :destroy
 
   validates_associated :category
-  validates_presence_of :email, :employee_name
+  validates_presence_of :email, :employee_name, :basic_state
   validates_format_of :email,
                       :with     => /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})/
 

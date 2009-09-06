@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Kategoria</th>
+    <th>Status</th>
     <th>Pracownik</th>
     <th>E-mail klienta</th>
     <th>Numer zamówienia</th>
@@ -10,6 +11,7 @@
 
   <% for ticket in @tickets %>
     <tr>
+      <td><%=h ticket.basic_state %></td>
       <td><%=unless ticket.category.nil?
                h ticket.category.name
              else
