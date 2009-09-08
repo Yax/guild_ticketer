@@ -18,15 +18,12 @@ class Ticket < ActiveRecord::Base
   end
 
   state_machine :basic_state, :initial => :pending do
-
     event :open do
       transition :pending => :opened
     end
-
     event :close do
       transition :opened => :closed
     end
-
   end
 
 end

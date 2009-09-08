@@ -1,5 +1,6 @@
 class Category < ActiveRecord::Base
   # t.string :name
+  # t.string :ticket_type
 
   has_many :tickets
   validates_presence_of :name

@@ -9,12 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090906115422) do
+ActiveRecord::Schema.define(:version => 20090908115514) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ticket_type"
   end
 
   create_table "messages", :force => true do |t|
@@ -33,6 +34,10 @@ ActiveRecord::Schema.define(:version => 20090906115422) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "basic_state"
+    t.string   "type"
+    t.string   "state"
+    t.string   "subject"
+    t.text     "explanation"
   end
 
 end
