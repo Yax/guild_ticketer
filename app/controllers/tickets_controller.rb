@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
   before_filter :find_ticket, :except => [ :new, :create, :index ]
 
   def index
-    @tickets = Ticket.find(:all)
+    @tickets = Ticket.all
   end
 
   def show
@@ -18,7 +18,10 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(params[:ticket])
+    ticket = params[:ticket]
+    ticket_type = Category.find_by_id(ticket[:category_id]).ticket_type
+    eval "@ticket = #{ticket_type.capitalize}.new(params[:ticket])"
+    # @ticket = Ticket.new(params[:ticket])
     if @ticket.save
       flash[:notice] = "ticket created."
       redirect_to(@ticket)
