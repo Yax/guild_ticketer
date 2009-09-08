@@ -8,7 +8,7 @@
   <%= f.collection_select :basic_state_event, @ticket.basic_state_transitions, :event, :to_name, :include_blank => @ticket.basic_state_name.to_s %>
   <p>
   <%= f.label :category_id %><br />
-  <%= f.select(:category_id, @categories.collect { |c| [ c.name, c.id ] }) %>
+  <%= f.collection_select :category_id, @categories, :id, :name %>
   </p>
   <p>
   <%= f.label :employee_name %><br />

@@ -8,6 +8,10 @@
     <%= f.text_field :name %>
   </p>
   <p>
+    <%= f.label :ticket_type %>
+    <%= f.select :ticket_type, TICKET_TYPES.collect { |c| [ c.capitalize, c ] } %>>
+  </p>
+  <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
