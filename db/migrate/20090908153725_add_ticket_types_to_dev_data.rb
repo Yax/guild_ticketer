@@ -2,7 +2,7 @@ class AddTicketTypesToDevData < ActiveRecord::Migration
   def self.up
     Category.reset_column_information
     Ticket.reset_column_information
-    Category.all.each { |cat| cat.update_attribute :ticket_type, "ticket" }
+    Category.all.each { |cat| cat.update_attribute :ticket_type, "Ticket" }
     Ticket.all.each { |t| t.update_attribute :type, "Ticket" }
   end
  
