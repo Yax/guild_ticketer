@@ -14,14 +14,15 @@ class Complaint < Ticket
   #validates_presence_of :subject
 
   state_machine :state, :initial => :pending do
+
+    event :investigate do
+      transition :pending => :in_question
+    end
     event :accept do
       transition :in_question => :accepted
     end
     event :decline do
       transition :in_question => :declined
-    end
-    event :investigate do
-      transition :pending => :in_question
     end
 
     state :declined do

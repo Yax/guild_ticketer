@@ -1,11 +1,13 @@
 class AddStatesToDevData < ActiveRecord::Migration
   def self.up
-    execute "UPDATE `tickets` SET `basic_state` = 'opened' WHERE `id` = #{Ticket.find_by_employee_name("Tomek").id}"
-    execute "UPDATE `tickets` SET `basic_state` = 'closed' WHERE `id` = #{Ticket.find_by_employee_name("Adiego").id}"
+    Ticket.reset_column_information
+    Ticket.update_all("basic_state = 'opened'", "employee_name LIKE 'Tomek'")
+    Ticket.update_all("basic_state = 'closed'", "employee_name LIKE 'Adiego'")
   end
 
   def self.down
-    execute "UPDATE `tickets` SET `basic_state` = NULL WHERE `id` = #{Ticket.find_by_employee_name("Tomek").id}"
-    execute "UPDATE `tickets` SET `basic_state` = NULL WHERE `id` = #{Ticket.find_by_employee_name("Adiego").id}"
+    Ticket.update_all("basic_state = NULL", "employee_name LIKE 'Tomek'")
+    Ticket.update_all("basic_state = NULL", "employee_name LIKE 'Adiego'")
   end
-end
+
+  end

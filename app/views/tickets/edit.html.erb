@@ -4,7 +4,7 @@
   <%= f.error_messages %>
 
   <p>
-  <%= f.label :basic_state_event, "Basic state:" %>
+  <%= f.label :basic_state_event, "Basic state" %>
   <%= f.collection_select :basic_state_event, @ticket.basic_state_transitions, :event, :to_name, :include_blank => @ticket.basic_state_name.to_s %>
   <p>
   <%= f.label :category_id %><br />
@@ -22,6 +22,7 @@
   <%= f.label :email %><br />
   <%= f.text_field :email %>
   </p>
+  <%= render :partial => @ticket[:type].downcase + ".edit", :locals => { :f => f } unless @ticket[:type] == "Ticket" %>
   <p>
   <%= f.submit 'Update' %>
   </p>

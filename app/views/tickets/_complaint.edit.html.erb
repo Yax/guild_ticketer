@@ -1,0 +1,12 @@
+<p>
+<%= f.label :state_event, "State" %>
+<%= f.collection_select :state_event, @ticket.state_transitions, :event, :to_name, :include_blank => @ticket.state_name.to_s %>
+</p>
+<p>
+<%= f.label :subject %><br />
+<%= f.text_field :subject %>
+</p>
+<p>
+<%= f.label :explanation %><br />
+<%= f.text_area :explanation, :size => "40x15" %>
+</p>

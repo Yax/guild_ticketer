@@ -21,7 +21,6 @@ class TicketsController < ApplicationController
     ticket = params[:ticket]
     ticket_type = Category.find_by_id(ticket[:category_id]).ticket_type
     eval "@ticket = #{ticket_type.capitalize}.new(params[:ticket])"
-    # @ticket = Ticket.new(params[:ticket])
     if @ticket.save
       flash[:notice] = "ticket created."
       redirect_to(@ticket)
@@ -32,7 +31,7 @@ class TicketsController < ApplicationController
   end
 
   def update
-    if @ticket.update_attributes(params[:ticket])
+    if @ticket.update_attributes(params[@ticket[:type].downcase.to_sym])
       flash[:notice] = "Ticket updated."
       redirect_to(@ticket)
     else

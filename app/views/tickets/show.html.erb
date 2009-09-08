@@ -1,20 +1,20 @@
 <p>
-  <b>Kategoria:</b>
+  <b>Category:</b>
   <%=h @category.name %>
 </p>
 
 <p>
-  <b>Status:</b>
+  <b>Basic state:</b>
   <%=h @ticket.basic_state %>
 </p>
 
 <p>
-  <b>Pracownik:</b>
+  <b>Employee name:</b>
   <%=h @ticket.employee_name %>
 </p>
 
 <p>
-  <b>Numer zlecenia:</b>
+  <b>Order number:</b>
   <%=h @ticket.order_number %>
 </p>
 
@@ -23,13 +23,14 @@
   <%=h @ticket.email %>
 </p>
 
+<%= render :partial => @ticket[:type].downcase + ".show", :locals => { :ticket => @ticket } unless @ticket[:type] == "Ticket" %>
 
-<%= link_to 'Edytuj', edit_ticket_path(@ticket) %> |
-<%= link_to 'Dodaj wiadomosc', new_ticket_message_path(@ticket) %> |
-<%= link_to 'Lista', tickets_path %>
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Add message', new_ticket_message_path(@ticket) %> |
+<%= link_to 'List', tickets_path %>
 
 <% unless @ticket.messages.empty? %>
-  <h3>Wiadomości:</h3>
+  <h3>Messages:</h3>
   <%= render :partial => "/messages/messages", :locals => { :messages => @ticket.messages } %>
 <% end %>
 
