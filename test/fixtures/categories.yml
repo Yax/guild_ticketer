@@ -1,5 +1,11 @@
 zwrot:
   name: Zwrot
+  ticket_type: "Ticket"
 
 wysylka:
   name: Wysyłka
+  ticket_type: "Ticket"
+
+reklamacja:
+  name: Reklamacja
+  ticket_type: "Complaint"

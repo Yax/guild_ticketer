@@ -18,9 +18,7 @@ class TicketsController < ApplicationController
   end
 
   def create
-    ticket = params[:ticket]
-    ticket_type = Category.find_by_id(ticket[:category_id]).ticket_type
-    eval "@ticket = #{ticket_type.capitalize}.new(params[:ticket])"
+    @ticket = Ticket.new(params[:ticket])
     if @ticket.save
       flash[:notice] = "ticket created."
       redirect_to(@ticket)

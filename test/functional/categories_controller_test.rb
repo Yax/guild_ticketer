@@ -15,7 +15,7 @@ class CategoriesControllerTest < ActionController::TestCase
 
   test "should create category" do
     assert_difference('Category.count') do
-      post :create, :category => { :name => "new name" }
+      post :create, :category => { :name => "new name", :ticket_type => "Ticket" }
     end
 
     assert_redirected_to category_path(assigns(:category))

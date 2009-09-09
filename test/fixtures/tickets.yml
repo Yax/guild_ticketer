@@ -4,6 +4,7 @@ zwrot_tomka:
   order_number: 123415
   email: "klient@costam.pl"
   basic_state: "opened"
+  type: "Ticket"
 
 wysylka_adiego:
   category: wysylka
@@ -11,6 +12,7 @@ wysylka_adiego:
   order_number: 568332
   email: "czarus15@wp.pl"
   basic_state: "closed"
+  type: "Ticket"
 
 bledny_ticket:
   category: wys
@@ -18,3 +20,14 @@ bledny_ticket:
   order_number: 4134
   email: "czcz@os.pl"
   basic_state: "pending"
+  type: "Ticket"
+
+reklamacja_pawla:
+  category: reklamacja
+  employee_name: "Paweł"
+  order_number: 124123
+  email: "pawel@wp.pl"
+  basic_state: "opened"
+  type: "Complaint"
+  state: "in_question"
+  subject: "Zło wielkie"

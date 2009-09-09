@@ -17,4 +17,11 @@ class TicketTest < ActiveSupport::TestCase
     assert wrong_ticket.errors.invalid?(:category_id)
   end
 
+  should "set type to \"Ticket\" if not set" do
+    wrong_ticket = tickets(:zwrot_tomka)
+    wrong_ticket[:type] = nil
+    assert wrong_ticket.save!
+    assert_equal wrong_ticket[:type], "Ticket"
+  end
+
 end

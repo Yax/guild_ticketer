@@ -15,7 +15,7 @@ class TicketsControllerTest < ActionController::TestCase
 
     context "on correct POST to #create" do
       setup do
-       post :create, :ticket => { :category => categories(:wysylka),
+       post :create, :ticket => { :category_id => categories(:wysylka).to_param,
                                   :employee_name => "Jack",
                                   :order_number => "123456a",
                                   :email => "asd@asd.com" }
