@@ -5,16 +5,27 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>Tickets: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
-</head>
-<body>
+    <% #= stylesheet_link_tag 'scaffold' %>
+    <%= stylesheet_link_tag 'stylesheet' %>
+  </head>
+  <body>
+    <div id="header"> <a href="/">Root</a> </div>
+      <div id="left">
+        <ul>
+          <li class="selected">Wszystkie</li>
+          <li >Oczekujące</li>
+          <li >Otwarte</li>
+          <li >Zamknięte</li>
+        </ul>
+        <%= link_to 'Nowy ticket', new_ticket_path %>
+      </div>
+      <div id="main">
 
-<p style="color: green"><%= flash[:notice] %></p>
-
-<%= yield  %>
-
-<br/><br/><br/><br/><br/>
-<a href="/">Root</a>
-</body>
-</html>
+        <p style="color: green"><%= flash[:notice] %></p>
+        <%= yield %>
+      </div>
+      <div id="footer"></div>
+     
+    </body>
+  </html>
 

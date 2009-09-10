@@ -1,5 +1,3 @@
-<h1>Lista ticketów</h1>
-
 <table>
   <tr>
     <th>Status</th>
@@ -21,14 +19,8 @@
       <td><%=h ticket.employee_name %></td>
       <td><%=h ticket.email %></td>
       <td><%=h ticket.order_number %></td>
-      <td><%= link_to 'Pokaż', ticket %></td>
-      <td><%= link_to 'Edytuj', edit_ticket_path(ticket) %></td>
-      <td><%= link_to 'Usuń', ticket, :confirm => 'Jesteś pewny?', :method => :delete %></td>
+      <td><%= link_to 'Pokaż', ticket %> | <%= link_to 'Edytuj', edit_ticket_path(ticket) %> | 
+        <%= link_to 'Usuń', ticket, :confirm => 'Jesteś pewny?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
-
-<br />
-
-<%= link_to 'Nowy ticket', new_ticket_path %>
-
