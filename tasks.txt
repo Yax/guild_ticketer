@@ -1,4 +1,4 @@
-(in D:/Work/guild_ticketer)
+(in c:/Users/Yax/work/guild_ticketer)
 rake db:abort_if_pending_migrations       # Raises an error if there are pending migrations
 rake db:charset                           # Retrieves the charset for the current environment's database
 rake db:collation                         # Retrieves the collation for the current environment's database
@@ -13,12 +13,14 @@ rake db:migrate:down                      # Runs the "down" for a given migratio
 rake db:migrate:redo                      # Rollbacks the database one migration and re migrate up.
 rake db:migrate:reset                     # Resets your database using your migrations for the current environment
 rake db:migrate:up                        # Runs the "up" for a given migration VERSION.
-rake db:reset                             # Drops and recreates the database from db/schema.rb for the current environment.
+rake db:reset                             # Drops and recreates the database from db/schema.rb for the current environment and loads the seeds.
 rake db:rollback                          # Rolls the schema back to the previous version.
 rake db:schema:dump                       # Create a db/schema.rb file that can be portably used against any DB supported by AR
 rake db:schema:load                       # Load a schema.rb file into the database
+rake db:seed                              # Load the seed data from db/seeds.rb
 rake db:sessions:clear                    # Clear the sessions table
 rake db:sessions:create                   # Creates a sessions migration for use with ActiveRecord::SessionStore
+rake db:setup                             # Create the database, load the schema, and initialize with the seed data
 rake db:structure:dump                    # Dump the database structure to a SQL file
 rake db:test:clone                        # Recreate the test database from the current environment's database schema
 rake db:test:clone_structure              # Recreate the test databases from the development structure
@@ -37,6 +39,7 @@ rake doc:reapp                            # Force a rebuild of the RDOC files
 rake doc:rerails                          # Force a rebuild of the RDOC files
 rake gems                                 # List the gems that this rails application depends on
 rake gems:build                           # Build any native extensions for unpacked gems
+rake gems:build:force                     # Force the build of all gems
 rake gems:install                         # Installs all required gems.
 rake gems:refresh_specs                   # Regenerate gem specifications in correct format.
 rake gems:unpack                          # Unpacks all required gems into vendor/gems.

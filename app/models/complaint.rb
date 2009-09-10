@@ -12,6 +12,7 @@ class Complaint < Ticket
   # t.text :explanation
 
   #validates_presence_of :subject
+  validates_presence_of :state
 
   state_machine :state, :initial => :pending do
 

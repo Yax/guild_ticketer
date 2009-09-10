@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_filter :find_categories, :only => [:edit , :new]
+  before_filter :find_categories, :only => [:edit , :new, :index]
   before_filter :find_ticket, :except => [ :new, :create, :index ]
 
   def index
@@ -18,7 +18,12 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(params[:ticket])
+    category = Category.find_by_id(params[:ticket][:category_id])
+    unless category.nil?
+      eval "@ticket = #{ category.ticket_type }.new(params[:ticket])"
+    else
+      @ticket = Ticket.new(params[:ticket])
+    end
     if @ticket.save
       flash[:notice] = "ticket created."
       redirect_to(@ticket)
@@ -46,7 +51,7 @@ class TicketsController < ApplicationController
 
   private
   def find_categories
-    @categories = Category.find(:all)
+    @categories = Category.all
   end
 
   def find_ticket

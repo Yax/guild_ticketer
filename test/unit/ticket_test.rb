@@ -24,4 +24,11 @@ class TicketTest < ActiveSupport::TestCase
     assert_equal wrong_ticket[:type], "Ticket"
   end
 
+  should "set correct type" do
+    ticket = tickets(:reklamacja_pawla)
+    ticket[:type] = nil
+    ticket.save!
+    assert_equal ticket[:type], "Complaint"
+  end
+
 end

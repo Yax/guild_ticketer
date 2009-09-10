@@ -22,8 +22,11 @@ class Ticket < ActiveRecord::Base
   end
 
   def set_type
-    self[:type] = "Ticket" if self[:type].nil?
+    if self[:type].nil? && !self.category.nil?
+      self[:type] = self.category.ticket_type
+    end
   end
+
 
   state_machine :basic_state, :initial => :pending do
     event :open do
