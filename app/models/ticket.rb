@@ -5,6 +5,11 @@ class Ticket < ActiveRecord::Base
   # t.string :email
   # t.string :basic_state
   # t.string :type
+  #
+
+  named_scope :pending, :conditions => { :basic_state => 'pending' }
+  named_scope :opened, :conditions => { :basic_state => 'opened' }
+  named_scope :closed, :conditions => { :basic_state => 'closed' }
   
   before_validation :set_type
 

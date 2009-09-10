@@ -12,10 +12,10 @@
     <div id="header"> <a href="/">Root</a> </div>
       <div id="left">
         <ul>
-          <li class="selected">Wszystkie</li>
-          <li >Oczekujące</li>
-          <li >Otwarte</li>
-          <li >Zamknięte</li>
+          <li class="<%= @filters['pending']  %>" > <%= link_to 'Oczekujące', tickets_path+'?scope=pending' %> </li>
+          <li class="<%= @filters['opened']  %>" > <%= link_to 'Otwarte', tickets_path+'?scope=opened' %> </li>
+          <li class="<%= @filters['closed']  %>" > <%= link_to 'Zamknięte', tickets_path+'?scope=closed' %> </li>
+          <li class="<%= @filters['all']  %>" > <%= link_to 'Wszystkie', tickets_path %> </li>
         </ul>
         <%= link_to 'Nowy ticket', new_ticket_path %>
       </div>

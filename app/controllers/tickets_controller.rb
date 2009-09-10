@@ -1,9 +1,17 @@
 class TicketsController < ApplicationController
   before_filter :find_categories, :only => [:edit , :new, :index]
   before_filter :find_ticket, :except => [ :new, :create, :index ]
+  before_filter :set_filters
 
   def index
-    @tickets = Ticket.all
+    scope = params[:scope]
+    if !scope.nil? && @filters.include?(scope)
+      @filters[scope] = 'active'
+      @tickets = Ticket.method(scope.to_sym).call
+    else
+      @filters['all'] = 'active'
+      @tickets = Ticket.all
+    end
   end
 
   def show
