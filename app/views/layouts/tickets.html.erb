@@ -20,8 +20,10 @@
         <%= link_to 'Nowy ticket', new_ticket_path %>
       </div>
       <div id="main">
-
-        <p style="color: green"><%= flash[:notice] %></p>
+        
+        <% unless flash[:notice] -%>
+          <p id="flash-notice"><%= flash[:notice] %></p>
+        <% end -%>
         <%= yield %>
       </div>
       <div id="footer"></div>

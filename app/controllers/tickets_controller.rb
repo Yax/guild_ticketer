@@ -10,7 +10,7 @@ class TicketsController < ApplicationController
       @tickets = Ticket.method(scope.to_sym).call
     else
       @filters['all'] = 'active'
-      @tickets = Ticket.all
+      @tickets = Ticket.pending + Ticket.opened + Ticket.closed
     end
   end
 

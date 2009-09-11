@@ -1,26 +1,21 @@
 <table>
-  <tr>
-    <th>Status</th>
-    <th>Kategoria</th>
-    <th>Pracownik</th>
-    <th>E-mail klienta</th>
-    <th>Numer zamówienia</th>
-  </tr>
-
-  <% for ticket in @tickets %>
+  <% if @tickets.empty? -%>
+    <p id="info">Brak ticketów w bieżącym widoku.</p>
+  <% end -%>
+  <% for ticket in @tickets -%>
     <tr>
-      <td><%=h ticket.basic_state %></td>
-      <td><%=unless ticket.category.nil?
+      <td class="basic_state"><%=h simplify_basic_state(ticket.basic_state) %></td>
+      <td class="category"><%=unless ticket.category.nil?
                h ticket.category.name
              else
                "Błędna kategoria!"
              end
           %></td>
-      <td><%=h ticket.employee_name %></td>
-      <td><%=h ticket.email %></td>
-      <td><%=h ticket.order_number %></td>
-      <td><%= link_to 'Pokaż', ticket %> | <%= link_to 'Edytuj', edit_ticket_path(ticket) %> | 
+      <td class="email"><%=h ticket.email %></td>
+      <td class="order_number"><%=h ticket.order_number %></td>
+      <td class="last_message"><%=h truncate(ticket.messages.last.content, :length => 70) unless ticket.messages.empty?%></td>
+      <td class="actions"><%= link_to 'Pokaż', ticket %> | <%= link_to 'Edytuj', edit_ticket_path(ticket) %> | 
         <%= link_to 'Usuń', ticket, :confirm => 'Jesteś pewny?', :method => :delete %></td>
     </tr>
-  <% end %>
+  <% end -%>
 </table>
