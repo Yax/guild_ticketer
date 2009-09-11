@@ -36,11 +36,20 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_redirected_to category_path(assigns(:category))
   end
 
-  test "should destroy category" do
+  test "should destroy empty category" do
+    categories(:zwrot).tickets.destroy_all
     assert_difference('Category.count', -1) do
       delete :destroy, :id => categories(:zwrot).to_param
     end
 
+    assert_redirected_to categories_path
+  end
+
+  test "should not destroy category with tickets" do
+    assert_difference('Category.count', 0) do
+      delete :destroy, :id => categories(:zwrot).to_param
+    end
+    assert !flash[:warning].nil?
     assert_redirected_to categories_path
   end
 end

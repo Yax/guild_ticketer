@@ -8,8 +8,12 @@
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body>
-
-<p style="color: green"><%= flash[:notice] %></p>
+        <% unless flash[:notice].nil? -%>
+          <p id="flash-notice"><%= flash[:notice] %></p>
+        <% end -%>
+        <% unless flash[:warning].nil? -%>
+          <p id="flash-warning"><%= flash[:warning] %></p>
+        <% end -%>
 
 <%= yield  %>
 <br/><br/><br/><br/><br/>

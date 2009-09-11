@@ -21,8 +21,11 @@
       </div>
       <div id="main">
         
-        <% unless flash[:notice] -%>
+        <% unless flash[:notice].nil? -%>
           <p id="flash-notice"><%= flash[:notice] %></p>
+        <% end -%>
+        <% unless flash[:warning].nil? -%>
+          <p id="flash-warning"><%= flash[:warning] %></p>
         <% end -%>
         <%= yield %>
       </div>

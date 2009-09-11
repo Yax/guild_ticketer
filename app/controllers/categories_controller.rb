@@ -75,11 +75,15 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1.xml
   def destroy
     @category = Category.find(params[:id])
-    @category.destroy
-
     respond_to do |format|
-      format.html { redirect_to(categories_url) }
-      format.xml  { head :ok }
+      if @category.destroy
+        format.html { redirect_to(categories_url) }
+        format.xml  { head :ok }
+      else
+        flash[:warning] = @category.errors.full_messages
+        format.html { redirect_to(categories_url) }
+        format.xml  { head :xml => @category.errors, :status => :unprocessable_entity }
+      end
     end
   end
 end
