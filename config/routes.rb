@@ -42,7 +42,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :categories
   map.resources :tickets, :has_many => :messages, :shallow => true
-  map.resources :complaints, :as => "tickets"
+  map.resources :complaints, :as => "tickets", :has_many => :messages, :shallow => true
 
   #map.connect ':controller/:action/:id'
   #map.connect ':controller/:action/:id.:format'
