@@ -3,7 +3,7 @@ require 'test_helper'
 class TicketsControllerTest < ActionController::TestCase
   context "TicketsController" do
 
-    context "on GET to #index" do
+    context "on GET to #index without scope" do
       setup do
         get :index
       end
@@ -11,6 +11,17 @@ class TicketsControllerTest < ActionController::TestCase
       should_render_template :index
       should_not_set_the_flash
       should_assign_to :tickets
+      should_not_assign_to :scope
+    end
+    context "on GET to #index with scope" do
+      setup do
+        get :index, :scope => "opened"
+      end
+      should_respond_with :success
+      should_render_template :index
+      should_not_set_the_flash
+      should_assign_to :tickets
+      should_assign_to :scope
     end
 
     context "on correct POST to #create" do

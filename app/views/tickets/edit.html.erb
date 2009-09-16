@@ -1,4 +1,6 @@
-<h1>Edycja ticketu</h1>
+<% content_for :title do %>
+  Edit Ticket
+<% end %>
 
 <% form_for(@ticket) do |f| %>
   <%= f.error_messages %>

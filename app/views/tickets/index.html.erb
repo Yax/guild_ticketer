@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  <%= @scope.capitalize + ' ' unless @scope.nil?  %>Tickets
+<% end %>
+
 <table>
   <% if @tickets.empty? -%>
     <p id="info">Brak ticketów w bieżącym widoku.</p>
@@ -5,17 +9,19 @@
   <% for ticket in @tickets -%>
     <tr>
       <td class="basic_state"><%=h simplify_basic_state(ticket.basic_state) %></td>
-      <td class="category"><%=unless ticket.category.nil?
-               h ticket.category.name
-             else
-               "Błędna kategoria!"
-             end
-          %></td>
-      <td class="email"><%=h ticket.email %></td>
-      <td class="order_number"><%=h ticket.order_number %></td>
-      <td class="last_message"><%=h truncate(ticket.messages.last.content, :length => 70) unless ticket.messages.empty?%></td>
-      <td class="actions"><%= link_to 'Pokaż', ticket %> | <%= link_to 'Edytuj', edit_ticket_path(ticket) %> | 
-        <%= link_to 'Usuń', ticket, :confirm => 'Jesteś pewny?', :method => :delete %></td>
-    </tr>
-  <% end -%>
-</table>
+      <td class="category">
+        <%=unless ticket.category.nil?
+             h truncate(ticket.category.name, :length => 12)
+           else
+             "Błędna kategoria!"
+           end -%>
+         </td>
+         <td class="email"><%=h ticket.email %></td>
+         <td class="order_number"><%=h ticket.order_number %></td>
+         <td class="last_message"><%=h truncate(ticket.messages.last.content, :length => 55) unless ticket.messages.empty?%></td>
+         <td class="timestamp"><%=h time_ago_in_words(ticket.created_at) %></td>
+         <td class="actions"><%= link_to 'P', ticket %> | <%= link_to 'E', edit_ticket_path(ticket) %> | 
+           <%= link_to 'U', ticket, :confirm => 'Jesteś pewny?', :method => :delete %></td>
+       </tr>
+     <% end -%>
+   </table>

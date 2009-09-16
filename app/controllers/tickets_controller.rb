@@ -8,6 +8,7 @@ class TicketsController < ApplicationController
     if !scope.nil? && @filters.include?(scope)
       @filters[scope] = 'active'
       @tickets = Ticket.method(scope.to_sym).call
+      @scope = scope
     else
       @filters['all'] = 'active'
       @tickets = Ticket.pending + Ticket.opened + Ticket.closed

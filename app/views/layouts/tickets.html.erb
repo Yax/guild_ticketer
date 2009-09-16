@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag 'stylesheet' %>
   </head>
   <body>
-    <div id="header"> <a href="/">Root</a> </div>
+    <div id="header"> <a href="/">Root</a><br /> <h1><%= yield :title %> </div>
       <div id="left">
         <ul>
           <li class="<%= @filters['pending']  %>" > <%= link_to 'Oczekujące', tickets_path+'?scope=pending' %> </li>

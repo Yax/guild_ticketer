@@ -7,9 +7,10 @@ class Ticket < ActiveRecord::Base
   # t.string :type
   #
 
-  named_scope :pending, :conditions => { :basic_state => 'pending' }
-  named_scope :opened, :conditions => { :basic_state => 'opened' }
-  named_scope :closed, :conditions => { :basic_state => 'closed' }
+  named_scope :pending, :conditions => { :basic_state => 'pending' }, :order => 'created_at DESC'
+  named_scope :opened, :conditions => { :basic_state => 'opened' }, :order => 'created_at DESC'
+  named_scope :closed, :conditions => { :basic_state => 'closed' }, :order => 'created_at DESC'
+  default_scope :order => 'created_at DESC'
   
   before_validation :set_type
 
