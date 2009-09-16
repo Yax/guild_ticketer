@@ -3,14 +3,24 @@ module TicketsHelper
   def simplify_basic_state(state)
     case state
     when 'pending'
-      'Ocz'
+      'orange'
     when 'opened'
-      'Otw'
+      'green'
     when 'closed'
-      'Zam'
+      'red'
     else
       'WTF?'
     end
   end
+
+  def event_time(time)
+    case time
+    when 24.hours.ago..Time.now
+      time.hour.to_s + ':' + time.min.to_s
+    else
+      time.strftime('%d.%m')
+    end
+  end
+  
 
 end

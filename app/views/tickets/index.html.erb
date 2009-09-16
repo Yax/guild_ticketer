@@ -8,7 +8,8 @@
   <% end -%>
   <% for ticket in @tickets -%>
     <tr>
-      <td class="basic_state"><%=h simplify_basic_state(ticket.basic_state) %></td>
+      <td class="basic_state"><img src="images/<%=h simplify_basic_state(ticket.basic_state) %>.png"
+        alt="<%=h ticket.basic_state%>" title="<%=h ticket.basic_state%>" /></td>
       <td class="category">
         <%=unless ticket.category.nil?
              h truncate(ticket.category.name, :length => 12)
@@ -17,9 +18,9 @@
            end -%>
          </td>
          <td class="email"><%=h ticket.email %></td>
-         <td class="order_number"><%=h ticket.order_number %></td>
+         <!--<td class="order_number"><%=h ticket.order_number %></td>-->
          <td class="last_message"><%=h truncate(ticket.messages.last.content, :length => 55) unless ticket.messages.empty?%></td>
-         <td class="timestamp"><%=h time_ago_in_words(ticket.created_at) %></td>
+         <td class="timestamp"><%=h event_time(ticket.created_at) %></td>
          <td class="actions"><%= link_to 'P', ticket %> | <%= link_to 'E', edit_ticket_path(ticket) %> | 
            <%= link_to 'U', ticket, :confirm => 'Jesteś pewny?', :method => :delete %></td>
        </tr>

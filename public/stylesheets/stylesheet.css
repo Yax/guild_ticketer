@@ -200,7 +200,7 @@ tr, td {
 }
 
 #main table tr td.basic_state {
-  width: 30px;
+  width: 15px;
 }
 #main table tr td.category {
   width: 80px;
@@ -212,15 +212,21 @@ tr, td {
 #main table tr td.email {
   max-width: 80px;
   min-width: 50px;
+  color: #555;
 }
 #main table tr td.order_number {
   width: 20px;
 }
-#main table tr td.actions {
-  width: 30px;
-  padding-right: 10px;
-}
 #main table tr td.last_message {
   min-width: 100px;
   max-width: 150px;
+  color: #888;
+}
+#main table tr td.timestamp {
+  width: 20px;
+  font-style: italic;
+}
+#main table tr td.actions {
+  width: 30px;
+  padding-right: 10px;
 }
