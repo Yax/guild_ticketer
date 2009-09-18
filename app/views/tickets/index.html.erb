@@ -8,7 +8,7 @@
   <% end -%>
   <% for ticket in @tickets -%>
     <tr>
-      <td class="basic_state"><img src="images/<%=h simplify_basic_state(ticket.basic_state) %>.png"
+      <td class="basic_state"><img src="/images/<%=h simplify_basic_state(ticket.basic_state) %>.png"
         alt="<%=h ticket.basic_state%>" title="<%=h ticket.basic_state%>" /></td>
       <td class="category">
         <%=unless ticket.category.nil?

@@ -5,7 +5,7 @@ class TicketsController < ApplicationController
 
   def index
     scope = params[:scope]
-    if !scope.nil? && @filters.include?(scope)
+    if !scope.blank? && @filters.include?(scope)
       @filters[scope] = 'active'
       @tickets = Ticket.method(scope.to_sym).call
       @scope = scope

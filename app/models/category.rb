@@ -11,7 +11,7 @@ class Category < ActiveRecord::Base
   validates_inclusion_of :ticket_type, :in => TICKET_TYPES
 
   def check_tickets
-    unless self.tickets.empty?
+    unless self.tickets.blank?
       errors.add_to_base('Cannot destroy category with associated tickets.')
       false
     end

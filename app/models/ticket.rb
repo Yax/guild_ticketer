@@ -28,7 +28,7 @@ class Ticket < ActiveRecord::Base
   end
 
   def set_type
-    if self[:type].nil? && !self.category.nil?
+    if self[:type].blank? && !self.category.nil?
       self[:type] = self.category.ticket_type
     end
   end
