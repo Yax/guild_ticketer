@@ -22,7 +22,11 @@
           <li><%= link_to 'Nowy ticket', new_ticket_path %></li>
         </ul>
       </div>
-      <%= ticket_info %>
+      <% unless @ticket.nil? -%>
+        <div id="ticket_info">
+          <%= render :partial => 'ticket_info', :locals => { :ticket => @ticket } unless @ticket.nil? %>
+        </div>
+      <% end -%>
     </div>
     <div id="main">
       <% unless flash[:notice].nil? -%>

@@ -16,7 +16,6 @@ class TicketsController < ApplicationController
   end
 
   def show
-    @category = @ticket.category
   end
 
   def new

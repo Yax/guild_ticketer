@@ -26,10 +26,4 @@ module TicketsHelper
     l date, :format => :long
   end
 
-  def ticket_info
-    unless @content_for_ticket_info.blank?
-      content_tag(:div, @content_for_ticket_info, :id => 'ticket_info')
-    end
-  end 
-
 end

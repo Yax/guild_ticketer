@@ -2,42 +2,6 @@
   Ticket
 <% end -%>
 
-<% content_for :ticket_info do -%>
-  <ul>
-    <li><%= link_to 'Nowa wiadomość', new_ticket_message_path(@ticket) %></li>
-    <li><%= link_to 'Edytuj informacje', edit_ticket_path(@ticket) %></li>
-  </ul>
-
-  <p>
-  <em>[<%=h @category.name %>]</em>
-  </p>
-
-  <p>
-  <%= event_date(@ticket.created_at) %>
-  </p>
-
-  <p>
-  <b>Status:</b>
-  <%=h @ticket.basic_state %>
-  </p>
-
-  <p>
-  <b>Pracownik:</b><br/>
-  <%=h @ticket.employee_name %>
-  </p>
-
-  <p>
-  <b>Numer zamówienia:</b><br/>
-  <%=h @ticket.order_number %>
-  </p>
-
-  <p title="<%= @ticket.email %>">
-  <b>E-mail:</b><br/>
-  <%=h @ticket.email %>
-  </p>
-  <%= render :partial => @ticket[:type].downcase + ".show", :locals => { :ticket => @ticket } unless @ticket[:type] == "Ticket" %>
-<% end -%>
-
 <% unless @ticket.messages.empty? %>
   <%= render :partial => "/messages/messages", :locals => { :messages => @ticket.messages } %>
 <% end %>
