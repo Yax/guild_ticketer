@@ -22,9 +22,9 @@
           <li><%= link_to 'Nowy ticket', new_ticket_path %></li>
         </ul>
       </div>
-      <% unless @ticket.nil? -%>
+      <% unless @ticket.nil?  || @ticket.id.nil? -%>
         <div id="ticket_info">
-          <%= render :partial => 'ticket_info', :locals => { :ticket => @ticket } unless @ticket.nil? %>
+          <%= render :partial => 'tickets/ticket_info', :locals => { :ticket => @ticket } %>
         </div>
       <% end -%>
     </div>

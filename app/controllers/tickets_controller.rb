@@ -32,6 +32,7 @@ class TicketsController < ApplicationController
     else
       @ticket = Ticket.new(params[:ticket])
     end
+    @ticket.category_id = params[:ticket][:category_id] #because category_id is protected
     if @ticket.save
       flash[:notice] = "ticket created."
       redirect_to(@ticket)

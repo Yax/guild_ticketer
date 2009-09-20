@@ -30,4 +30,4 @@
 <b>E-mail:</b><br/>
 <%=h ticket.email %>
 </p>
-<%= render :partial => ticket[:type].downcase + ".show", :locals => { :ticket => ticket } unless ticket[:type] == "Ticket" %>
+<%= render :partial => 'tickets/' + ticket[:type].downcase + '.show', :locals => { :ticket => ticket } unless ticket[:type] == 'Ticket' %>

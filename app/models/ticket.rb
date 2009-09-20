@@ -12,10 +12,12 @@ class Ticket < ActiveRecord::Base
   named_scope :closed, :conditions => { :basic_state => 'closed' }, :order => 'created_at DESC'
   default_scope :order => 'created_at DESC'
   
-  before_validation :set_type
+  attr_protected :category_id, :type
 
   belongs_to :category
   has_many :messages, :dependent => :destroy
+
+  before_validation :set_type
 
   validates_associated :category
   validates_presence_of :email, :employee_name, :basic_state
