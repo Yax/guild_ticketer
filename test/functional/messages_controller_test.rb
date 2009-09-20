@@ -2,16 +2,6 @@ require 'test_helper'
 
 class MessagesControllerTest < ActionController::TestCase
   context "MessageController" do
-    context "on GET to #index" do
-      setup do
-        get :index, :ticket_id => Ticket.first.to_param
-      end
-      should_respond_with :success
-      should_render_template :index
-      should_not_set_the_flash
-      should_assign_to :messages, :ticket
-      should_render_with_layout "tickets"
-    end
 
     context "on POST to #create" do
       setup do

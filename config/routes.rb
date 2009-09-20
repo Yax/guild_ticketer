@@ -41,8 +41,13 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing the them or commenting them out if you're using named routes and resources.
   
   map.resources :categories
-  map.resources :tickets, :has_many => :messages, :shallow => true
-  map.resources :complaints, :as => "tickets", :has_many => :messages, :shallow => true
+  map.resources :tickets, :shallow => true do |ticket|
+    ticket.resources :messages, :except => 'index'
+  end
+  map.resources :complaints, :as => 'tickets', :controller => 'tickets', :shallow => true do |complaint|
+    complaint.resources :messages, :except => 'index'
+  end
+
 
   #map.connect ':controller/:action/:id'
   #map.connect ':controller/:action/:id.:format'

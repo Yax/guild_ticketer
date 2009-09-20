@@ -1,13 +1,9 @@
 class MessagesController < ApplicationController
-  before_filter :find_ticket, :only => [:index, :new, :create]
-  before_filter :find_message, :except => [:index, :new, :create]
+  before_filter :find_ticket, :only => [:new, :create]
+  before_filter :find_message, :except => [:new, :create]
   before_filter :set_filters #used in tickets layout
  
   layout 'tickets'
-
-  def index
-    @messages = @ticket.messages
-  end
 
   def show
     @ticket = @message.ticket

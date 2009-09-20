@@ -4,7 +4,7 @@ class Message < ActiveRecord::Base
    # t.string :from
 
   belongs_to :ticket
-  default_scope :order => 'created_at DESC'
+  default_scope :order => 'created_at ASC'
   
   validates_associated :ticket
   validates_presence_of :from, :content, :ticket
