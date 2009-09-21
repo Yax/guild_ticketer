@@ -7,11 +7,11 @@ class TicketsController < ApplicationController
     scope = params[:scope]
     if !scope.blank? && @filters.include?(scope)
       @filters[scope] = 'active'
-      @tickets = Ticket.method(scope.to_sym).call
+      @tickets = Ticket.method(scope.to_sym).call.paginate :page => params[:page]
       @scope = scope
     else
       @filters['all'] = 'active'
-      @tickets = Ticket.pending + Ticket.opened + Ticket.closed
+      @tickets = Ticket.all.paginate :page => params[:page]
     end
   end
 
@@ -37,7 +37,7 @@ class TicketsController < ApplicationController
       flash[:notice] = "ticket created."
       redirect_to(@ticket)
     else
-      @categories = Category.find(:all)
+      find_categories
       render :action => "new"
     end
   end

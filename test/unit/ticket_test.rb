@@ -31,4 +31,11 @@ class TicketTest < ActiveSupport::TestCase
     assert_equal ticket[:type], "Complaint"
   end
 
+  should 'set basic_state_order' do
+    ticket = tickets(:zwrot_tomka)
+    ticket.basic_state_order = nil
+    ticket.save!
+    assert !ticket.basic_state_order.nil?
+  end
+
 end

@@ -17,6 +17,12 @@ namespace :db do
       ticket.order_number = 10000..99999
       ticket.email = Faker::Internet.email
       ticket.basic_state = ["pending", "opened", "closed"]
+      ticket.basic_state_order = case ticket.basic_state
+                             when 'pending' then 1
+                             when 'opened' then 2
+                             when 'closed' then 3
+                             else 0
+                             end
       ticket.type = "Ticket"
       ticket.created_at = 5.months.ago..Time.now
       Message.populate 1..10 do |message|
@@ -33,6 +39,12 @@ namespace :db do
       ticket.order_number = 10000..99999
       ticket.email = Faker::Internet.email
       ticket.basic_state = ["pending", "opened", "closed"]
+      ticket.basic_state_order = case ticket.basic_state
+                             when 'pending' then 1
+                             when 'opened' then 2
+                             when 'closed' then 3
+                             else 0
+                             end
       ticket.type = "Complaint"
       ticket.state = ["pending", "in_question", "accepted", "declined"]
       ticket.subject = Populator.words(4..10).capitalize
@@ -66,6 +78,12 @@ namespace :db do
       ticket.order_number = 10000..99999
       ticket.email = Faker::Internet.email
       ticket.basic_state = ["pending", "opened", "closed"]
+      ticket.basic_state_order = case ticket.basic_state
+                             when 'pending' then 1
+                             when 'opened' then 2
+                             when 'closed' then 3
+                             else 0
+                             end
       ticket.type = "Ticket"
       ticket.created_at = 5.months.ago..Time.now
       Message.populate 1..3 do |message|
@@ -82,6 +100,12 @@ namespace :db do
       ticket.order_number = 10000..99999
       ticket.email = Faker::Internet.email
       ticket.basic_state = ["pending", "opened", "closed"]
+      ticket.basic_state_order = case ticket.basic_state
+                             when 'pending' then 1
+                             when 'opened' then 2
+                             when 'closed' then 3
+                             else 0
+                             end
       ticket.type = "Complaint"
       ticket.state = ["pending", "in_question", "accepted", "declined"]
       ticket.subject = Populator.words(4..10).capitalize

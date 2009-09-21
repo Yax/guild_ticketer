@@ -4,6 +4,7 @@ class Complaint < Ticket
   # t.integer :order_number
   # t.string :email
   # t.string :basic_state
+  # t.string :basic_state_order
   # ---
   # t.string :type
   # ---

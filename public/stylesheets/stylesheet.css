@@ -170,7 +170,7 @@ tr, td {
   padding-left: 4px;
 }
 
-#menu #ticket_info {
+#menu div#ticket_info {
   margin-top: 10px;
   margin-right: 5px;
   text-align: left;
@@ -178,13 +178,18 @@ tr, td {
 }
 
 #main {
-  padding-top: 15px; 
-  padding-bottom: 15px;
+  padding-top: 0px; 
+  padding-bottom: 3px;
   margin-left: 210px;
   margin-right: 15px;
   border: 5px solid #d1c49f;
   background: white;
   min-height: 100px;
+}
+
+#main div#page_entries_info {
+  text-align: right;
+  margin-right: 3px; 
 }
 
 #main table {
@@ -226,7 +231,7 @@ tr, td {
 #main table tr td.email {
   max-width: 80px;
   min-width: 50px;
-  color: #555;
+  color: #444;
 }
 #main table tr td.order_number {
   width: 20px;
@@ -234,7 +239,7 @@ tr, td {
 #main table tr td.last_message {
   min-width: 100px;
   max-width: 150px;
-  color: #888;
+  color: #666;
 }
 #main table tr td.timestamp {
   width: 20px;
@@ -244,3 +249,36 @@ tr, td {
   width: 30px;
   padding-right: 10px;
 }
+#main div.pagination {
+  padding: 3px;
+  margin-top: 4px;
+  text-align: center;
+}
+/* previous: #102871 */
+#main div.pagination a {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #765F36;
+  text-decoration: none; 
+  color: #765F36;
+}
+#main div.pagination a:hover, div.pagination a:active {
+  border: 1px solid #765F36;
+  background-color: #765F36;
+  color: #FFF;
+}
+#main div.pagination span.current {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #765F36;
+  font-weight: bold;
+  background-color: #765F36;
+  color: #FFF;
+}
+#main div.pagination span.disabled {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #AAA;
+  color: #AAA;
+}
+

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090908115514) do
+ActiveRecord::Schema.define(:version => 20090921172703) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20090908115514) do
     t.string   "state"
     t.string   "subject"
     t.text     "explanation"
+    t.integer  "basic_state_order"
   end
 
 end

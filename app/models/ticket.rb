@@ -4,13 +4,14 @@ class Ticket < ActiveRecord::Base
   # t.integer :order_number
   # t.string :email
   # t.string :basic_state
+  # t.string :basic_state_order
+  # ---
   # t.string :type
-  #
 
   named_scope :pending, :conditions => { :basic_state => 'pending' }, :order => 'created_at DESC'
   named_scope :opened, :conditions => { :basic_state => 'opened' }, :order => 'created_at DESC'
   named_scope :closed, :conditions => { :basic_state => 'closed' }, :order => 'created_at DESC'
-  default_scope :order => 'created_at DESC'
+  named_scope :all, :order => 'basic_state_order ASC, created_at DESC'
   
   attr_protected :category_id, :type
 
@@ -18,6 +19,7 @@ class Ticket < ActiveRecord::Base
   has_many :messages, :dependent => :destroy
 
   before_validation :set_type
+  before_save :set_basic_state_order
 
   validates_associated :category
   validates_presence_of :email, :employee_name, :basic_state
@@ -33,6 +35,15 @@ class Ticket < ActiveRecord::Base
     if self[:type].blank? && !self.category.nil?
       self[:type] = self.category.ticket_type
     end
+  end
+
+  def set_basic_state_order
+    self.basic_state_order = case self.basic_state
+                             when 'pending' then 1
+                             when 'opened' then 2
+                             when 'closed' then 3
+                             else 0
+                             end
   end
 
   state_machine :basic_state, :initial => :pending do
