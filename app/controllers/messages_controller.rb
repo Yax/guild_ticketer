@@ -11,9 +11,11 @@ class MessagesController < ApplicationController
 
   def new
     @message = @ticket.messages.build
+    @message.from = @ticket.employee_name
   end
 
   def edit
+    @ticket = @message.ticket
   end
 
   def create

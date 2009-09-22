@@ -1,7 +1,9 @@
-<h1>Edycja wiadomości</h1>
+<% content_for :title do %>
+  Edit Message
+<% end %>
 
-<% form_for [@ticket,@message] do |form| %>
-  <%= render :partial => 'form', :object => form %>
-  <%= form.submit "Zapisz" %>
+<% form_for @message do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= f.submit "Zapisz" %>
 <% end %>
 

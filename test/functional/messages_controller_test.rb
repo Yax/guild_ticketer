@@ -30,7 +30,7 @@ class MessagesControllerTest < ActionController::TestCase
       should_respond_with :success
       should_render_template :edit
       should_not_set_the_flash
-      should_assign_to :message
+      should_assign_to :message, :ticket
     end
 
     context "on GET to #show" do

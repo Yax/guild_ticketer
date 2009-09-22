@@ -94,15 +94,17 @@ a { color: #000; text-decoration: none; border-bottom: 1px dotted; }
 #errorExplanation p {
   color: #333;
   margin-bottom: 0;
+  margin-top: 3px;
   padding: 5px;
 }
 
 #errorExplanation ul li {
   font-size: 12px;
   list-style: square;
+  margin-left: 20px;
 }
 
-/* ------------------------------------------------ */
+/* ----------------------------------------------------------------- */
 
 body {
   background: #765F36;
@@ -139,6 +141,7 @@ tr, td {
   text-align: center;
 }
 
+/* ----------------------------------------------------------------- */
 #menu {
   float: left;
   width: 190px;
@@ -177,9 +180,10 @@ tr, td {
   overflow: hidden;
 }
 
+/* ----------------------------------------------------------------- */
+/* MAIN */
 #main {
-  padding-top: 0px; 
-  padding-bottom: 3px;
+  padding: 3px 10px 5px 10px;
   margin-left: 210px;
   margin-right: 15px;
   border: 5px solid #d1c49f;
@@ -192,8 +196,16 @@ tr, td {
   margin-right: 3px; 
 }
 
+#main form {
+}
+#main form label {
+  display: block;
+  font-weight: bold;
+}
+
 #main table {
   width: 100%;
+  /*margin: 0 -10px 0 -10px;*/
 }
 
 #main table tr {
@@ -214,41 +226,52 @@ tr, td {
 #main table tr td.basic_state {
   width: 15px;
 }
+
 #main table tr td.category {
   width: 80px;
 }
 #main table tr td.message_from {
   width: 40px;
 }
+
 #main table tr td.message_content {
   min-width: 150px;
   max-width: 300px;
   color: #888;
 }
+
 #main table tr td.employee_name {
   width: 60px;
 }
+
 #main table tr td.email {
   max-width: 80px;
   min-width: 50px;
   color: #444;
 }
+
 #main table tr td.order_number {
   width: 20px;
 }
+
 #main table tr td.last_message {
   min-width: 100px;
   max-width: 150px;
   color: #666;
 }
+
 #main table tr td.timestamp {
   width: 20px;
   font-style: italic;
 }
+
 #main table tr td.actions {
   width: 30px;
   padding-right: 10px;
 }
+
+/* ----------------------------------------------------------------- */
+/* PAGINATION */
 #main div.pagination {
   padding: 3px;
   margin-top: 4px;
@@ -262,11 +285,13 @@ tr, td {
   text-decoration: none; 
   color: #765F36;
 }
+
 #main div.pagination a:hover, div.pagination a:active {
   border: 1px solid #765F36;
   background-color: #765F36;
   color: #FFF;
 }
+
 #main div.pagination span.current {
   padding: 2px 5px 2px 5px;
   margin: 2px;
@@ -275,6 +300,7 @@ tr, td {
   background-color: #765F36;
   color: #FFF;
 }
+
 #main div.pagination span.disabled {
   padding: 2px 5px 2px 5px;
   margin: 2px;
