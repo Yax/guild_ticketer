@@ -12,19 +12,19 @@
     <div id="header"> <a href="/">Root</a><br /> <h1><%= yield :title %></h1> </div>
     <div id="menu">
       <ul>
-        <li class="<%= @filters['pending']  %>" > <%= link_to 'Oczekujące', tickets_path+'?scope=pending' %> </li>
-        <li class="<%= @filters['opened']  %>" > <%= link_to 'Otwarte', tickets_path+'?scope=opened' %> </li>
-        <li class="<%= @filters['closed']  %>" > <%= link_to 'Zamknięte', tickets_path+'?scope=closed' %> </li>
-        <li class="<%= @filters['all']  %>" > <%= link_to 'Wszystkie', tickets_path %> </li>
+        <li class="<%= @filters['pending']  %>" > <%= link_to 'Oczekujące', admin_tickets_path+'?scope=pending' %> </li>
+        <li class="<%= @filters['opened']  %>" > <%= link_to 'Otwarte', admin_tickets_path+'?scope=opened' %> </li>
+        <li class="<%= @filters['closed']  %>" > <%= link_to 'Zamknięte', admin_tickets_path+'?scope=closed' %> </li>
+        <li class="<%= @filters['all']  %>" > <%= link_to 'Wszystkie', admin_tickets_path %> </li>
       </ul>
       <div>
         <ul>
-          <li><%= link_to 'Nowy ticket', new_ticket_path %></li>
+          <li><%= link_to 'Nowy ticket', new_admin_ticket_path %></li>
         </ul>
       </div>
       <% unless @ticket.nil?  || @ticket.id.nil? -%>
         <div id="ticket_info">
-          <%= render :partial => 'tickets/ticket_info', :locals => { :ticket => @ticket } %>
+          <%= render :partial => 'admin/tickets/ticket_info', :locals => { :ticket => @ticket } %>
         </div>
       <% end -%>
     </div>

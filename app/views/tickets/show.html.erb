@@ -1,8 +1,0 @@
-<% content_for :title do -%>
-  Ticket
-<% end -%>
-
-<% unless @ticket.messages.empty? %>
-  <%= render :partial => "/messages/messages", :locals => { :messages => @ticket.messages } %>
-<% end %>
-
