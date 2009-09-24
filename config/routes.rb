@@ -44,10 +44,23 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tickets, :shallow => true do |ticket|
     ticket.resources :messages, :except => 'index'
   end
-  map.resources :complaints, :as => 'tickets', :controller => 'tickets', :shallow => true do |complaint|
-    complaint.resources :messages, :except => 'index'
+  map.resources :complaints, :as => 'tickets', :controller => 'tickets',
+                :shallow => true, :except => [ 'create', 'update', 'destroy' ] do |complaint|
+    complaint.resources :messages, :only => [ 'create', 'new' ]
   end
 
+  map.with_options :controller => 'frontend', :name_prefix => 'client_', :path_prefix => 'client', :conditions => { :method => :get } do |front|
+    front.connect '', :action => 'index'
+    front.tickets 'tickets.:format', :action => 'index'
+    front.connect 'tickets.:format', :action => 'create_ticket', :conditions => { :method => :post }
+    front.new_ticket 'tickets/new.:format', :action => 'new_ticket'
+
+    front.ticket 'tickets/:id.:format', :action => 'show_ticket'
+    front.message 'messages/:id.:format', :action => 'show_message'
+
+    front.ticket_messages 'tickets/:id/messages.:format', :action => 'create_message', :conditions => { :method => :post }
+    front.new_message 'ticket/:id/messages/new.:format', :action => 'new_message'
+  end
 
   #map.connect ':controller/:action/:id'
   #map.connect ':controller/:action/:id.:format'

@@ -1,26 +1,39 @@
-(in D:/Work/guild_ticketer)
-        categories GET    /categories(.:format)                      {:action=>"index", :controller=>"categories"}
-                   POST   /categories(.:format)                      {:action=>"create", :controller=>"categories"}
-      new_category GET    /categories/new(.:format)                  {:action=>"new", :controller=>"categories"}
-     edit_category GET    /categories/:id/edit(.:format)             {:action=>"edit", :controller=>"categories"}
-          category GET    /categories/:id(.:format)                  {:action=>"show", :controller=>"categories"}
-                   PUT    /categories/:id(.:format)                  {:action=>"update", :controller=>"categories"}
-                   DELETE /categories/:id(.:format)                  {:action=>"destroy", :controller=>"categories"}
-           tickets GET    /tickets(.:format)                         {:action=>"index", :controller=>"tickets"}
-                   POST   /tickets(.:format)                         {:action=>"create", :controller=>"tickets"}
-        new_ticket GET    /tickets/new(.:format)                     {:action=>"new", :controller=>"tickets"}
-       edit_ticket GET    /tickets/:id/edit(.:format)                {:action=>"edit", :controller=>"tickets"}
-            ticket GET    /tickets/:id(.:format)                     {:action=>"show", :controller=>"tickets"}
-                   PUT    /tickets/:id(.:format)                     {:action=>"update", :controller=>"tickets"}
-                   DELETE /tickets/:id(.:format)                     {:action=>"destroy", :controller=>"tickets"}
-   ticket_messages GET    /tickets/:ticket_id/messages(.:format)     {:action=>"index", :controller=>"messages"}
-                   POST   /tickets/:ticket_id/messages(.:format)     {:action=>"create", :controller=>"messages"}
-new_ticket_message GET    /tickets/:ticket_id/messages/new(.:format) {:action=>"new", :controller=>"messages"}
-      edit_message GET    /messages/:id/edit(.:format)               {:action=>"edit", :controller=>"messages"}
-           message GET    /messages/:id(.:format)                    {:action=>"show", :controller=>"messages"}
-                   PUT    /messages/:id(.:format)                    {:action=>"update", :controller=>"messages"}
-                   DELETE /messages/:id(.:format)                    {:action=>"destroy", :controller=>"messages"}
-Loaded suite d:/Soft/Ruby/bin/rake
+(in c:/Users/Yax/work/guild_ticketer)
+            categories GET    /categories(.:format)                         {:controller=>"categories", :action=>"index"}
+                       POST   /categories(.:format)                         {:controller=>"categories", :action=>"create"}
+          new_category GET    /categories/new(.:format)                     {:controller=>"categories", :action=>"new"}
+         edit_category GET    /categories/:id/edit(.:format)                {:controller=>"categories", :action=>"edit"}
+              category GET    /categories/:id(.:format)                     {:controller=>"categories", :action=>"show"}
+                       PUT    /categories/:id(.:format)                     {:controller=>"categories", :action=>"update"}
+                       DELETE /categories/:id(.:format)                     {:controller=>"categories", :action=>"destroy"}
+       ticket_messages POST   /tickets/:ticket_id/messages(.:format)        {:controller=>"messages", :action=>"create"}
+    new_ticket_message GET    /tickets/:ticket_id/messages/new(.:format)    {:controller=>"messages", :action=>"new"}
+          edit_message GET    /messages/:id/edit(.:format)                  {:controller=>"messages", :action=>"edit"}
+               message GET    /messages/:id(.:format)                       {:controller=>"messages", :action=>"show"}
+                       PUT    /messages/:id(.:format)                       {:controller=>"messages", :action=>"update"}
+                       DELETE /messages/:id(.:format)                       {:controller=>"messages", :action=>"destroy"}
+               tickets GET    /tickets(.:format)                            {:controller=>"tickets", :action=>"index"}
+                       POST   /tickets(.:format)                            {:controller=>"tickets", :action=>"create"}
+            new_ticket GET    /tickets/new(.:format)                        {:controller=>"tickets", :action=>"new"}
+           edit_ticket GET    /tickets/:id/edit(.:format)                   {:controller=>"tickets", :action=>"edit"}
+                ticket GET    /tickets/:id(.:format)                        {:controller=>"tickets", :action=>"show"}
+                       PUT    /tickets/:id(.:format)                        {:controller=>"tickets", :action=>"update"}
+                       DELETE /tickets/:id(.:format)                        {:controller=>"tickets", :action=>"destroy"}
+    complaint_messages POST   /tickets/:complaint_id/messages(.:format)     {:controller=>"messages", :action=>"create"}
+ new_complaint_message GET    /tickets/:complaint_id/messages/new(.:format) {:controller=>"messages", :action=>"new"}
+            complaints GET    /tickets(.:format)                            {:controller=>"tickets", :action=>"index"}
+         new_complaint GET    /tickets/new(.:format)                        {:controller=>"tickets", :action=>"new"}
+        edit_complaint GET    /tickets/:id/edit(.:format)                   {:controller=>"tickets", :action=>"edit"}
+             complaint GET    /tickets/:id(.:format)                        {:controller=>"tickets", :action=>"show"}
+                       GET    /client                                       {:controller=>"frontend", :action=>"index"}
+        client_tickets GET    /client/tickets(.:format)                     {:controller=>"frontend", :action=>"index"}
+                       POST   /client/tickets(.:format)                     {:controller=>"frontend", :action=>"create_ticket"}
+     client_new_ticket GET    /client/tickets/new(.:format)                 {:controller=>"frontend", :action=>"new_ticket"}
+         client_ticket GET    /client/tickets/:id(.:format)                 {:controller=>"frontend", :action=>"show_ticket"}
+        client_message GET    /client/messages/:id(.:format)                {:controller=>"frontend", :action=>"show_message"}
+client_ticket_messages POST   /client/tickets/:id/messages(.:format)        {:controller=>"frontend", :action=>"create_message"}
+    client_new_message GET    /client/ticket/:id/messages/new(.:format)     {:controller=>"frontend", :action=>"new_message"}
+Loaded suite C:/Ruby/bin/rake
 Started
 
 Finished in 0.0 seconds.
