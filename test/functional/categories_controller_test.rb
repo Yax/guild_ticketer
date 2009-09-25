@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Admin::CategoriesControllerTest < ActionController::TestCase
+class CategoriesControllerTest < ActionController::TestCase
 
   test "should get index" do
     get :index
@@ -18,7 +18,7 @@ class Admin::CategoriesControllerTest < ActionController::TestCase
       post :create, :category => { :name => "new name", :ticket_type => "Ticket" }
     end
 
-    assert_redirected_to admin_category_path(assigns(:category))
+    assert_redirected_to category_path(assigns(:category))
   end
 
   test "should show category" do
@@ -33,7 +33,7 @@ class Admin::CategoriesControllerTest < ActionController::TestCase
 
   test "should update category" do
     put :update, :id => categories(:zwrot).to_param, :category => { }
-    assert_redirected_to admin_category_path(assigns(:category))
+    assert_redirected_to category_path(assigns(:category))
   end
 
   test "should destroy empty category" do
@@ -42,7 +42,7 @@ class Admin::CategoriesControllerTest < ActionController::TestCase
       delete :destroy, :id => categories(:zwrot).to_param
     end
 
-    assert_redirected_to admin_categories_path
+    assert_redirected_to categories_path
   end
 
   test "should not destroy category with tickets" do
@@ -50,6 +50,6 @@ class Admin::CategoriesControllerTest < ActionController::TestCase
       delete :destroy, :id => categories(:zwrot).to_param
     end
     assert !flash[:warning].nil?
-    assert_redirected_to admin_categories_path
+    assert_redirected_to categories_path
   end
 end

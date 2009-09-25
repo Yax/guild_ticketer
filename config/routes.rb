@@ -40,16 +40,13 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
   
-  map.namespace :admin do |admin|
-    admin.connect '', :controller => 'tickets', :action => 'index'
-    admin.resources :categories
-    admin.resources :tickets, :shallow => true do |ticket|
-      ticket.resources :messages, :except => 'index'
-    end
-    admin.resources :complaints, :as => 'tickets', :controller => 'tickets',
-      :shallow => true, :except => [ 'create', 'update', 'destroy' ] do |complaint|
-      complaint.resources :messages, :only => [ 'create', 'new' ]
-      end
+  map.resources :categories
+  map.resources :tickets, :shallow => true do |ticket|
+    ticket.resources :messages, :except => 'index'
+  end
+  map.resources :complaints, :as => 'tickets', :controller => 'tickets',
+                :shallow => true, :except => [ 'create', 'update', 'destroy' ] do |complaint|
+    complaint.resources :messages, :only => [ 'create', 'new' ]
   end
 
   map.with_options :controller => 'frontend', :name_prefix => 'client_', :path_prefix => 'client', :conditions => { :method => :get } do |front|

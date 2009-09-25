@@ -1,7 +1,7 @@
 <ul>
-  <li><%= link_to 'Nowa wiadomość', new_admin_ticket_message_path(ticket) %></li>
-  <li><%= link_to 'Edytuj informacje', edit_admin_ticket_path(ticket) %></li>
-  <li><%= link_to 'Lista wiadomości',[:admin,ticket] %></li>
+  <li><%= link_to 'Nowa wiadomość', new_ticket_message_path(ticket) %></li>
+  <li><%= link_to 'Edytuj informacje', edit_ticket_path(ticket) %></li>
+  <li><%= link_to 'Lista wiadomości', ticket_path(ticket) %></li>
 </ul>
 
 <p>
@@ -31,4 +31,4 @@
 <b>E-mail:</b><br/>
 <%=h ticket.email %>
 </p>
-<%= render :partial => 'admin/tickets/' + ticket[:type].downcase + '.show', :locals => { :ticket => ticket } unless ticket[:type] == 'Ticket' %>
+<%= render :partial => 'tickets/' + ticket[:type].downcase + '.show', :locals => { :ticket => ticket } unless ticket[:type] == 'Ticket' %>

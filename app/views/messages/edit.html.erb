@@ -1,8 +1,9 @@
 <% content_for :title do %>
-  New Message
+  Edit Message
 <% end %>
 
-<% form_for [:admin, @ticket,@message] do |f| %>
+<% form_for @message do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
-  <%= f.submit "Wyślij" %>
+  <%= f.submit "Zapisz" %>
 <% end %>
+

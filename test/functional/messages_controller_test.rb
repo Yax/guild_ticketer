@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Admin::MessagesControllerTest < ActionController::TestCase
+class MessagesControllerTest < ActionController::TestCase
   context "MessageController" do
 
     context "on POST to #create" do
@@ -9,7 +9,7 @@ class Admin::MessagesControllerTest < ActionController::TestCase
                                                                                  :from => "shop" }
       end
       should_create :message
-      should_redirect_to("created message") { admin_ticket_url(tickets(:zwrot_tomka)) }
+      should_redirect_to("created message") { ticket_url(tickets(:zwrot_tomka)) }
       should_set_the_flash_to /created/ 
     end
     
@@ -49,7 +49,7 @@ class Admin::MessagesControllerTest < ActionController::TestCase
                                                                        :from => "client" }
       end
       should_not_change("the number of messages") { Message.count }
-      should_redirect_to("parent ticket") { admin_ticket_url(assigns(:message).ticket) }
+      should_redirect_to("parent ticket") { ticket_url(assigns(:message).ticket) }
       should_set_the_flash_to /updated/ 
     end
 
@@ -59,7 +59,7 @@ class Admin::MessagesControllerTest < ActionController::TestCase
         delete :destroy, :id => Message.first.to_param
       end
       should_change("the number of messages", :by => -1) { Message.count }
-      should_redirect_to("index") { admin_ticket_url(@ticket) }
+      should_redirect_to("index") { ticket_url(@ticket) }
       should_set_the_flash_to /destroyed/
     end
 

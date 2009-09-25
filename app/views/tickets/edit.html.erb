@@ -2,7 +2,7 @@
   Edit Ticket
 <% end %>
 
-<% form_for [:admin, @ticket] do |f| %>
+<% form_for(@ticket) do |f| %>
   <%= f.error_messages %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   <p>

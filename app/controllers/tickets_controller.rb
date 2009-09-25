@@ -1,4 +1,4 @@
-class Admin::TicketsController < ApplicationController
+class TicketsController < ApplicationController
   before_filter :find_categories, :only => [:edit , :new, :index]
   before_filter :find_ticket, :except => [ :new, :create, :index ]
   before_filter :set_filters
@@ -35,7 +35,7 @@ class Admin::TicketsController < ApplicationController
     @ticket.category_id = params[:ticket][:category_id] #because category_id is protected
     if @ticket.save
       flash[:notice] = "ticket created."
-      redirect_to([:admin,@ticket])
+      redirect_to(@ticket)
     else
       find_categories
       render :action => "new"
@@ -45,7 +45,7 @@ class Admin::TicketsController < ApplicationController
   def update
     if @ticket.update_attributes(params[@ticket[:type].downcase.to_sym])
       flash[:notice] = "Ticket updated."
-      redirect_to([:admin,@ticket])
+      redirect_to(@ticket)
     else
       @categories = Category.find(:all)
       render :action => "edit"
@@ -55,7 +55,7 @@ class Admin::TicketsController < ApplicationController
   def destroy
     @ticket.destroy
     flash[:notice] = "Ticket destroyed."
-    redirect_to(admin_tickets_url)
+    redirect_to(tickets_url)
   end
 
   private
