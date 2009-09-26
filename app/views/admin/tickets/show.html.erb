@@ -3,6 +3,6 @@
 <% end -%>
 
 <% unless @ticket.messages.empty? %>
-  <%= render :partial => "/messages/messages", :locals => { :messages => @ticket.messages } %>
+  <%= render :partial => "admin/messages/messages", :locals => { :messages => @ticket.messages } %>
 <% end %>
 

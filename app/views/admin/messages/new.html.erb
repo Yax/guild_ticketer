@@ -2,7 +2,7 @@
   New Message
 <% end %>
 
-<% form_for [@ticket,@message] do |f| %>
+<% form_for [:admin, @ticket,@message] do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   <%= f.submit "Wyślij" %>
 <% end %>

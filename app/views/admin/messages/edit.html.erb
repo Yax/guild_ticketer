@@ -2,7 +2,7 @@
   Edit Message
 <% end %>
 
-<% form_for @message do |f| %>
+<% form_for [:admin, @message] do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   <%= f.submit "Zapisz" %>
 <% end %>

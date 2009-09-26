@@ -1,9 +1,9 @@
-class MessagesController < ApplicationController
+class Admin::MessagesController < ApplicationController
   before_filter :find_ticket, :only => [:new, :create]
   before_filter :find_message, :except => [:new, :create]
   before_filter :set_filters #used in tickets layout
  
-  layout 'tickets'
+  layout 'admin/tickets'
 
   def show
     @ticket = @message.ticket
@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
     @message = @ticket.messages.build(params[:message])
     if @message.save
       flash[:notice] = "Message created."
-      redirect_to(@ticket)
+      redirect_to([:admin,@ticket])
     else
       render :action => "new"
     end
@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
   def update
     if @message.update_attributes(params[:message])
       flash[:notice] = "Message updated"
-      redirect_to(@message.ticket)
+      redirect_to([:admin,@message.ticket])
     else
       render :action => "edit"
     end
@@ -41,13 +41,13 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
     flash[:notice] = "Message destroyed"
-    redirect_to(@message.ticket)
+    redirect_to([:admin,@message.ticket])
   end
 
   private
   def find_ticket
     @ticket_id = params[:ticket_id]
-    return(redirect_to(tickets_url)) unless @ticket_id
+    return(redirect_to(admin_tickets_url)) unless @ticket_id
     @ticket = Ticket.find(@ticket_id)
   end
 

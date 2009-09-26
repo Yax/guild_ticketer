@@ -4,7 +4,7 @@
       <td class="message_from"><%=h message.from %></td>
       <td class="message_content"><%=h truncate(message.content, :length => 90) %></td>
       <td class="timestamp"><%=h event_time(message.created_at) %></td>
-      <td class="actions"><%= link_to 'P', message %> | <%= link_to 'E', edit_message_path(message) %> | <%= link_to 'U', message, :confirm => "Jestes pewny?", :method => :delete %></td>
+      <td class="actions"><%= link_to 'P', [:admin,message] %> | <%= link_to 'E', edit_admin_message_path(message) %> | <%= link_to 'U', [:admin,message], :confirm => "Jestes pewny?", :method => :delete %></td>
     </tr>
   <% end %>
 </table>
