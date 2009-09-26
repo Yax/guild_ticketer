@@ -1,2 +1,9 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} });
+
+$(document).ready(function() {
+  $("#main table tr").click(function() {
+    location.href = admin_ticket_path($(this).attr("id"));
+    });
+});
+
+
