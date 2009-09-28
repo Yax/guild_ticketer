@@ -1,6 +1,6 @@
-<table>
+<table id="messages_list">
   <% for message in messages %>
-    <tr>
+    <tr class="highlightable" id="<%= message.id %>">
       <td class="message_from"><%=h message.from %></td>
       <td class="message_content"><%=h truncate(message.content, :length => 90) %></td>
       <td class="timestamp"><%=h event_time(message.created_at) %></td>

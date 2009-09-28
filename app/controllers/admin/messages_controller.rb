@@ -7,6 +7,10 @@ class Admin::MessagesController < ApplicationController
 
   def show
     @ticket = @message.ticket
+    respond_to do |wants|
+      wants.html
+      wants.js { render :action => 'show', :layout => false }
+    end
   end
 
   def new

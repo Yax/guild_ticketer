@@ -4,10 +4,16 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  before_filter :correct_safari_and_ie_accept_headers
 
   def set_filters
     @filters = { 'all' => 'inactive', 'pending' => 'inactive', 'opened' => 'inactive', 'closed' => 'inactive' }
   end
+
+  def correct_safari_and_ie_accept_headers
+    request.accepts.sort!{ |x, y| y.to_s == 'text/javascript' ? 1 : -1 } if request.xhr?
+  end
+  
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 end

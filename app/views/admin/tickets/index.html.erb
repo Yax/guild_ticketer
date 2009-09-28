@@ -2,12 +2,12 @@
   <%= @scope.capitalize + ' ' unless @scope.nil?  %>Tickets
 <% end %>
 <div id="page_entries_info"><%= page_entries_info @tickets %></div>
-<table>
+<table id="tickets_list">
   <% if @tickets.empty? -%>
     <p id="info">Brak ticketów w bieżącym widoku.</p>
   <% end -%>
   <% for ticket in @tickets -%>
-    <tr id="<%= ticket.id %>">
+    <tr class="highlightable" id="<%= ticket.id %>">
       <td class="basic_state"><img src="/images/<%=h simplify_basic_state(ticket.basic_state) %>.png"
         alt="<%=h ticket.basic_state%>" title="<%=h ticket.basic_state%>" /></td>
       <td class="category">

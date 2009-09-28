@@ -213,7 +213,7 @@ tr, td {
   border-bottom: 1px #DDD solid;
 }
 
-#main table tr:hover {
+#main table tr.highlightable:hover {
   background: #d1c49f;
 }
 
@@ -232,6 +232,7 @@ tr, td {
 }
 #main table tr td.message_from {
   width: 40px;
+  max-width: 40px;
 }
 
 #main table tr td.message_content {
@@ -268,6 +269,11 @@ tr, td {
 #main table tr td.actions {
   width: 30px;
   padding-right: 10px;
+}
+
+#main table tr.message td {
+  white-space: normal;
+  padding: 0 30px;
 }
 
 /* ----------------------------------------------------------------- */
