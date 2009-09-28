@@ -7,7 +7,7 @@
     <title>Tickets: <%= controller.action_name %></title>
     <% #= stylesheet_link_tag 'scaffold' %>
     <%= stylesheet_link_tag 'stylesheet' %>
-    <%= javascript_include_tag 'jquery', 'jquery-ui-1.7.2.custom', 'less_routes', 'application' %>
+    <%= javascript_include_tag 'jquery', 'jquery-ui-1.7.2.custom', 'jquery.jeditable', 'less_routes', 'application' %>
   </head>
   <body>
     <div id="header"> <a href="/">Root</a><br /> <h1><%= yield :title %></h1> </div>
@@ -23,10 +23,8 @@
           <li><%= link_to 'Nowy ticket', new_admin_ticket_path %></li>
         </ul>
       </div>
-      <% unless @ticket.nil?  || @ticket.id.nil? -%>
-        <div id="ticket_info">
-          <%= render :partial => 'admin/tickets/ticket_info', :locals => { :ticket => @ticket } %>
-        </div>
+      <% unless @ticket.nil? || @ticket.id.nil? -%>
+        <%= render :partial => 'admin/tickets/ticket_info', :locals => { :ticket => @ticket } %>
       <% end -%>
     </div>
     <div id="main">

@@ -43,12 +43,17 @@ class Admin::TicketsController < ApplicationController
   end
 
   def update
-    if @ticket.update_attributes(params[@ticket[:type].downcase.to_sym])
-      flash[:notice] = "Ticket updated."
-      redirect_to([:admin,@ticket])
-    else
-      @categories = Category.find(:all)
-      render :action => "edit"
+    respond_to do |wants|
+      if @ticket.update_attributes(params[@ticket[:type].downcase.to_sym])
+        flash[:notice] = "Ticket updated."
+        debugger
+        wants.html { redirect_to([:admin,@ticket]) }
+        wants.js { render :text => @ticket.method(params[:modified].match('\[(.*)\]')[1].to_sym).call,  :status => 200 }
+      else
+        @categories = Category.find(:all)
+        wants.html { render :action => "edit" }
+        wants.js {}
+      end
     end
   end
 

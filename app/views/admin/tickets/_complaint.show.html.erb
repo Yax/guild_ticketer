@@ -1,12 +1,8 @@
-<p>
-<b>Stan reklamacji:</b><br/>
-<%=h @ticket.state %>
-</p>
-<p>
-<b>Temat:</b><br/>
-<%=h @ticket.subject %>
-</p>
-<p>
-<b>Wyjaśnienie:</b><br/>
-<%=h @ticket.explanation %>
-</p>
+<p class="label">Stan reklamacji:</p>
+<p class="state_event"><%=h @ticket.state %></p>
+
+<p class="label">Temat:</p>
+<p class="editable" id="<%= ticket[:type].downcase %>[subject]"><%=h @ticket.subject %></p>
+
+<p class="label">Wyjaśnienie:</p>
+<p id="<%= ticket[:type].downcase %>[explanation]"><%=h @ticket.explanation %></p>

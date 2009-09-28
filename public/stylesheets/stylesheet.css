@@ -173,11 +173,15 @@ tr, td {
   padding-left: 4px;
 }
 
-#menu div#ticket_info {
+#menu div.ticket_info {
   margin-top: 10px;
   margin-right: 5px;
   text-align: left;
   overflow: hidden;
+}
+
+#menu div.ticket_info p.label {
+  font-weight: bold;
 }
 
 /* ----------------------------------------------------------------- */
