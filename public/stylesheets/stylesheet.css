@@ -219,6 +219,7 @@ tr, td {
 
 #main table tr.highlightable:hover {
   background: #d1c49f;
+  cursor: pointer;
 }
 
 #main table tr td {
