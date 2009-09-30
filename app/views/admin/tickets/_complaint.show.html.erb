@@ -1,8 +1,8 @@
 <p class="label">Stan reklamacji:</p>
-<p class="state_event"><%=h @ticket.state %></p>
+<p class="editable_transition" id="state_event"><%=h @ticket.state %></p>
 
 <p class="label">Temat:</p>
-<p class="editable" id="<%= ticket[:type].downcase %>[subject]"><%=h @ticket.subject %></p>
+<p class="editable_area" id="subject"><%=h @ticket.subject %></p>
 
 <p class="label">Wyjaśnienie:</p>
-<p id="<%= ticket[:type].downcase %>[explanation]"><%=h @ticket.explanation %></p>
+<p class="editable_area" id="explanation"><%=h @ticket.explanation %></p>

@@ -43,7 +43,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.connect '', :controller => 'tickets', :action => 'index'
     admin.resources :categories
-    admin.resources :tickets, :shallow => true do |ticket|
+    admin.resources :tickets, :shallow => true, :member => { :transitions => :get } do |ticket|
       ticket.resources :messages, :except => 'index'
     end
     admin.resources :complaints, :as => 'tickets', :controller => 'tickets',

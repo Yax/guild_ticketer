@@ -22,19 +22,72 @@ $(document).ready(function() {
   });
 
   // edit in place for ticket_info
+  
+  $.extend($.fn.editable.defaults, { placeholder: 'Kliknij aby ustawić', width: '178px' });
+
+  function editable_set_submitdata(value, settings) {
+    field_name = $(this).parent().children("#type").text() + '[' + this.id + ']';
+    eval("data = {"+
+        "authenticity_token : '" + $("#menu div.ticket_info p#authenticity_token ").text() + "'," +
+        "'"+ field_name +"' : value };");
+    data.value = '';
+    data.id = '';
+    return data;
+  }
+
+  function editable_onerror(settings, original, xhr) {
+    $(original).css('display','none');
+    $(original).text(original.revert);
+    eval('response = '+xhr.responseText);
+    message = '<p class="flash_warning" style="display:none">Pole ';
+    message += response[0][0] + ' ' + response[0][1];
+    message +='</p>';
+    if ( $(original).prev().attr('class') != 'flash_warning' ) {
+      $(original).before(message);
+    }
+    $(original).effect('highlight', {}, 1000);
+    $(original).prev().effect('highlight', {}, 3000);
+    $(original).prev().effect('blind', {}, 1000);
+    original.editing = false;
+  }
+
+  function editable_transition_data(value, settings) {
+    $(this).html(settings.indicator);
+    params = {};
+    var content = { '' : this.revert };
+    url = transitions_admin_ticket_path($("#menu div.ticket_info").attr("id"));
+    params.type = this.id;
+    function set_content(val) { $.extend(content, val); }
+    $.ajax({ url: url, data: params, async: false, dataType: 'json', success: set_content});
+    $(this).html('');
+    return content;
+  }
+
   $("#menu div.ticket_info p.editable").editable(admin_ticket_path($("#menu div.ticket_info").attr("id")), {
     method : 'PUT',
-    indicator: '<img src="/images/searching.gif">',
-    submitdata : function(value, settings) {
-      eval("data = {"+
-        "authenticity_token : '" + $("#menu div.ticket_info p#authenticity_token ").text() + "'," +
-        "'"+ this.id +"' : value };");
-      data.modified = this.id;
-      data.value = '';
-      data.id = '';
-      return data;
-    console.log(value);
-    }
+    indicator: '<img src="/images/orange_indicator.gif">',
+    submitdata : editable_set_submitdata,
+    onerror : editable_onerror
+  });
+
+  $("#menu div.ticket_info p.editable_area").editable(admin_ticket_path($("#menu div.ticket_info").attr("id")), {
+    method : 'PUT',
+    type : 'autogrow',
+    submit : 'Zatwierdź',
+    cancel : 'Anuluj',
+    indicator: '<img src="/images/orange_indicator.gif">',
+    submitdata : editable_set_submitdata,
+    onerror : editable_onerror
+  });
+
+  $("#menu div.ticket_info p.editable_transition").editable(admin_ticket_path($("#menu div.ticket_info").attr("id")), {
+    method : 'PUT',
+    type : 'select',
+    submit : 'OK',
+    indicator: '<img src="/images/orange_indicator.gif">',
+    data : editable_transition_data,
+    submitdata : editable_set_submitdata,
+    onerror : editable_onerror
   });
      
 

@@ -327,6 +327,7 @@
                               /* add extra data to be POST:ed */
                               if ($.isFunction(settings.submitdata)) {
                                   // $.extend(submitdata, settings.submitdata.apply(self, [self.revert, settings]));
+                                  /* Pass current data to create correct submitdata */
                                   $.extend(submitdata, settings.submitdata.apply(self, [input.val(), settings]));
                               } else {
                                   $.extend(submitdata, settings.submitdata);

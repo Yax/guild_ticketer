@@ -15,15 +15,15 @@
   </p>
   
   <p class="label">Status:</p>
-  <p id="basic_state_event"><%=h ticket.basic_state %></p>
+  <p class="editable_transition" id="basic_state_event"><%=h ticket.basic_state %></p>
 
   <p class="label">Pracownik:</p>
-  <p class="editable" id="<%= ticket[:type].downcase %>[employee_name]"><%=h ticket.employee_name %></p>
+  <p class="editable" id="employee_name"><%=h ticket.employee_name %></p>
 
   <p class="label">Numer zamówienia</p>
-  <p class="editable" id="<%= ticket[:type].downcase %>[order_number]"><%=h ticket.order_number %></p>
+  <p class="editable" id="order_number"><%=h ticket.order_number %></p>
 
   <p class="label">E-mail</p>
-  <p class="editable" title="<%= ticket.email %>" id="<%= ticket[:type].downcase %>[email]"><%=h ticket.email %></p>
+  <p class="editable" title="<%= ticket.email %>" id="email"><%=h ticket.email %></p>
   <%= render :partial => 'admin/tickets/' + ticket[:type].downcase + '.show', :locals => { :ticket => ticket } unless ticket[:type] == 'Ticket' %>
 </div>
