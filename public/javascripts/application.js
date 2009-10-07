@@ -106,14 +106,12 @@ $(document).ready(function() {
 
   function check_new_tickets() {
     url = any_new_admin_tickets_path();
-    during_req = true;
     $.get(url, function(res) {
       if (res == 'true') { 
         show_new_ticket_notification();
-        during_req = false;
       }
     });
-    if ((is_notification_shown == false) && ( during_req == false)) {
+    if (is_notification_shown == false) {
       setTimeout(check_new_tickets,tickets_interval*1000);
     };
   }
