@@ -90,5 +90,35 @@ $(document).ready(function() {
   });
   /*********************************/
 
+  /*** New tickets notification ***/
+  var is_notification_shown = false;
+  var tickets_interval = 10; //how often check new tickets, in seconds
+
+  function show_new_ticket_notification() {
+    warning = '<div id="new_ticket_notification" style="display: none"';
+    warning += 'onclick="location.href=\''+admin_tickets_path()+'?scope=pending\'>';
+    warning += 'Nowe<br/>tickety';
+    warning += '</div>';
+    $('#header').append(warning);
+    $('#new_ticket_notification').show('highlight', {color: 'red'}, 3000);
+    is_notification_shown = true;
+  };
+
+  function check_new_tickets() {
+    url = any_new_admin_tickets_path();
+    during_req = true;
+    $.get(url, function(res) {
+      if (res == 'true') { 
+        show_new_ticket_notification();
+        during_req = false;
+      }
+    });
+    if ((is_notification_shown == false) && ( during_req == false)) {
+      setTimeout(check_new_tickets,tickets_interval*1000);
+    };
+  }
+
+  check_new_tickets();
+  /********************************/
 
 });

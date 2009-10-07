@@ -26,7 +26,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
 
     context "on correct POST to #create" do
       setup do
-       post :create, :ticket => { :category_id => categories(:wysylka).to_param,
+        post :create, :ticket => { :category_id => categories(:wysylka).to_param,
                                   :employee_name => "Jack",
                                   :order_number => "123456a",
                                   :email => "asd@asd.com" }
@@ -40,10 +40,10 @@ class Admin::TicketsControllerTest < ActionController::TestCase
 
     context "on wrong POST to #create" do
       setup do
-       post :create, :ticket => { :category_id => "asd",
-                                  :employee_name => "Jack",
-                                  :order_number => "123456a",
-                                  :email => "asd#asd.com" }
+        post :create, :ticket => { :category_id => "asd",
+                                   :employee_name => "Jack",
+                                   :order_number => "123456a",
+                                   :email => "asd#asd.com" }
       end
       should_not_change("the number of tickets") { Ticket.count }
       should_render_template :new
@@ -84,21 +84,21 @@ class Admin::TicketsControllerTest < ActionController::TestCase
     context "on correct PUT to #update" do
       setup do
         put :update, :id => tickets(:zwrot_tomka).to_param, :ticket => { :category => categories(:wysylka),
-                                                                         :employee_name => "Jack",
-                                                                         :order_number => "123456a",
-                                                                         :email => "asd@asd.com" }
+                                                                        :employee_name => "Jack",
+                                                                        :order_number => "123456a",
+                                                                        :email => "asd@asd.com" }
       end
       should_not_change("the number of tickets") { Ticket.count }
       should_redirect_to("updated ticket") { admin_ticket_url(assigns(:ticket)) }
       should_set_the_flash_to(/updated/)
     end
 
-     context "on wrong PUT to #create" do
+    context "on wrong PUT to #create" do
       setup do
-       put :update, :id => tickets(:zwrot_tomka).to_param, :ticket => { :category_id => "asd",
-                                  :employee_name => "Jack",
-                                  :order_number => "123456a",
-                                  :email => "asd#asd.com" }
+        put :update, :id => tickets(:zwrot_tomka).to_param, :ticket => { :category_id => "asd",
+                                                                         :employee_name => "Jack",
+                                                                         :order_number => "123456a",
+                                                                         :email => "asd#asd.com" }
       end
       should_not_change("the number of tickets") { Ticket.count }
       should_render_template :edit
@@ -126,6 +126,35 @@ class Admin::TicketsControllerTest < ActionController::TestCase
       should_respond_with :success
       should_respond_with_content_type :json
       should_render_without_layout
+    end
+
+    context "on GET to #any_new" do
+      context "when nothing new" do
+        setup do
+          get :any_new, nil, { :last_seen => Time.zone.now }
+        end
+        should_respond_with :success
+        should_respond_with_content_type :html
+        should_render_without_layout
+        should "set responde with 'false'" do
+          assert_equal 'false', @response.body
+        end        
+      end
+      context "when new tickets arrived" do
+        setup do
+          new_ticket = Ticket.create(:category_id => categories(:wysylka).to_param,
+                                     :employee_name => "Jack",
+                                     :order_number => "123456a",
+                                     :email => "asd@asd.com")
+          get :any_new, nil, { :last_seen => 10.minutes.ago }
+        end
+        should_respond_with :success
+        should_respond_with_content_type :html
+        should_render_without_layout
+        should "set responde with 'true'" do
+          assert_equal 'true', @response.body
+        end
+      end
     end
 
   end

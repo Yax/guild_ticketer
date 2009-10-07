@@ -1,6 +1,6 @@
 class Admin::TicketsController < ApplicationController
   before_filter :find_categories, :only => [:edit , :new, :index]
-  before_filter :find_ticket, :except => [ :new, :create, :index ]
+  before_filter :find_ticket, :except => [ :new, :create, :index, :any_new ]
   before_filter :set_filters
 
   def index
@@ -13,6 +13,7 @@ class Admin::TicketsController < ApplicationController
       @filters['all'] = 'active'
       @tickets = Ticket.all.paginate :page => params[:page]
     end
+    session[:last_seen] = Time.zone.now
   end
 
   def show
@@ -74,6 +75,7 @@ class Admin::TicketsController < ApplicationController
     # used in in-place-edit
     # params[:type] should have form state_name_event
     # line below extracts state_name form parameter
+    # TODO: catching wrong :type
     state_name = params[:type].match(/(.*)_event/)[1];
     state_name += '_transitions'
     data = Hash.new
@@ -82,6 +84,14 @@ class Admin::TicketsController < ApplicationController
       data[tr.event] = tr.to_name
     end
     render :json => data, :status => :ok    
+  end
+
+  def any_new
+    unless Ticket.find(:all,:conditions => ["created_at > ?", session[:last_seen] ], :limit => 1).empty?
+      render :text => 'true', :status => :ok
+    else
+      render :text => 'false', :status => :ok
+    end
   end
 
   private

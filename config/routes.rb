@@ -43,16 +43,22 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.connect '', :controller => 'tickets', :action => 'index'
     admin.resources :categories
-    admin.resources :tickets, :shallow => true, :member => { :transitions => :get } do |ticket|
+    admin.resources :tickets, :shallow => true,
+                    :member => { :transitions => :get },
+                    :collection => { :any_new => :get } do |ticket|
       ticket.resources :messages, :except => 'index'
     end
+
     admin.resources :complaints, :as => 'tickets', :controller => 'tickets',
       :shallow => true, :except => [ 'create', 'update', 'destroy' ] do |complaint|
       complaint.resources :messages, :only => [ 'create', 'new' ]
       end
   end
 
-  map.with_options :controller => 'frontend', :name_prefix => 'client_', :path_prefix => 'client', :conditions => { :method => :get } do |front|
+  map.with_options :controller => 'frontend', 
+                   :name_prefix => 'client_',
+                   :path_prefix => 'client',
+                   :conditions => { :method => :get } do |front|
     front.connect '', :action => 'index'
     front.tickets 'tickets.:format', :action => 'index'
     front.connect 'tickets.:format', :action => 'create_ticket', :conditions => { :method => :post }
@@ -61,7 +67,9 @@ ActionController::Routing::Routes.draw do |map|
     front.ticket 'tickets/:id.:format', :action => 'show_ticket'
     front.message 'messages/:id.:format', :action => 'show_message'
 
-    front.ticket_messages 'tickets/:id/messages.:format', :action => 'create_message', :conditions => { :method => :post }
+    front.ticket_messages 'tickets/:id/messages.:format',
+                          :action => 'create_message',
+                          :conditions => { :method => :post }
     front.new_message 'ticket/:id/messages/new.:format', :action => 'new_message'
   end
 
