@@ -95,8 +95,8 @@ $(document).ready(function() {
   var tickets_interval = 10; //how often check new tickets, in seconds
 
   function show_new_ticket_notification() {
-    warning = '<div id="new_ticket_notification" style="display: none"';
-    warning += 'onclick="location.href=\''+admin_tickets_path()+'?scope=pending\'>';
+    warning = '<div id="new_ticket_notification" style="display: none" ';
+    warning += 'onclick="location.href=\''+admin_tickets_path()+'?scope=pending\'">';
     warning += 'Nowe<br/>tickety';
     warning += '</div>';
     $('#header').append(warning);
