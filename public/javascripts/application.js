@@ -21,9 +21,14 @@ $(document).ready(function() {
     };
   });
 
-  // edit in place for ticket_info
-  
-  $.extend($.fn.editable.defaults, { placeholder: 'Kliknij aby ustawić', width: '178px' });
+
+  /* edit-in-place for ticket_info */
+  editable_my_defaults = { placeholder: 'Kliknij aby ustawić',
+                           width: '178px',
+                           indicator: '<img src="/images/orange_indicator.gif">',
+                           method : 'PUT'
+                         };
+  $.extend($.fn.editable.defaults, editable_my_defaults);
 
   function editable_set_submitdata(value, settings) {
     field_name = $(this).parent().children("#type").text() + '[' + this.id + ']';
@@ -64,32 +69,54 @@ $(document).ready(function() {
   }
 
   $("#menu div.ticket_info p.editable").editable(admin_ticket_path($("#menu div.ticket_info").attr("id")), {
-    method : 'PUT',
-    indicator: '<img src="/images/orange_indicator.gif">',
     submitdata : editable_set_submitdata,
     onerror : editable_onerror
   });
 
   $("#menu div.ticket_info p.editable_area").editable(admin_ticket_path($("#menu div.ticket_info").attr("id")), {
-    method : 'PUT',
     type : 'autogrow',
     submit : 'Zatwierdź',
     cancel : 'Anuluj',
-    indicator: '<img src="/images/orange_indicator.gif">',
     submitdata : editable_set_submitdata,
     onerror : editable_onerror
   });
 
   $("#menu div.ticket_info p.editable_transition").editable(admin_ticket_path($("#menu div.ticket_info").attr("id")), {
-    method : 'PUT',
     type : 'select',
     submit : 'OK',
-    indicator: '<img src="/images/orange_indicator.gif">',
     data : editable_transition_data,
     submitdata : editable_set_submitdata,
     onerror : editable_onerror
   });
-     
+  /*********************************/
 
+  /*** New tickets notification ***/
+  var is_notification_shown = false;
+  var tickets_interval = 10; //how often check new tickets, in seconds
+
+  function show_new_ticket_notification() {
+    warning = '<div id="new_ticket_notification" style="display: none" ';
+    warning += 'onclick="location.href=\''+admin_tickets_path()+'?scope=pending\'">';
+    warning += 'Nowe<br/>tickety';
+    warning += '</div>';
+    $('#header').append(warning);
+    $('#new_ticket_notification').show('highlight', {color: 'red'}, 3000);
+    is_notification_shown = true;
+  };
+
+  function check_new_tickets() {
+    url = any_new_admin_tickets_path();
+    $.get(url, function(res) {
+      if (res == 'true') { 
+        show_new_ticket_notification();
+      }
+    });
+    if (is_notification_shown == false) {
+      setTimeout(check_new_tickets,tickets_interval*1000);
+    };
+  }
+
+  check_new_tickets();
+  /********************************/
 
 });

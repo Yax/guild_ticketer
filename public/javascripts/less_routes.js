@@ -53,78 +53,95 @@ function less_ajaxx(url, verb, params, options){
     new Ajax.Request(url, less_merge_objects({method: verb, parameters: less_get_params(params), onComplete: function(r){eval(r.responseText);}}, options));
   }
 }
-function admin_categories_path(format, verb){ if ( format === undefined) { format = '' };  return '/admin/categories' + format + '';}
-function admin_categories_ajax(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajax('/admin/categories' + format + '', verb, params, options);}
-function admin_categories_ajaxx(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajaxx('/admin/categories' + format + '', verb, params, options);}
-function new_admin_category_path(format, verb){ if ( format === undefined) { format = '' };  return '/admin/categories/new' + format + '';}
-function new_admin_category_ajax(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajax('/admin/categories/new' + format + '', verb, params, options);}
-function new_admin_category_ajaxx(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajaxx('/admin/categories/new' + format + '', verb, params, options);}
-function edit_admin_category_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/admin/categories/' + id + '/edit' + format + '';}
-function edit_admin_category_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/categories/' + id + '/edit' + format + '', verb, params, options);}
-function edit_admin_category_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/categories/' + id + '/edit' + format + '', verb, params, options);}
-function admin_category_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/admin/categories/' + id + '' + format + '';}
-function admin_category_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/categories/' + id + '' + format + '', verb, params, options);}
-function admin_category_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/categories/' + id + '' + format + '', verb, params, options);}
-function admin_ticket_messages_path(ticket_id, format, verb){ if ( ticket_id === undefined) { ticket_id = '' }; if ( format === undefined) { format = '' };  return '/admin/tickets/' + ticket_id + '/messages' + format + '';}
-function admin_ticket_messages_ajax(ticket_id, format, verb, params, options){ if ( ticket_id === undefined) { ticket_id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets/' + ticket_id + '/messages' + format + '', verb, params, options);}
-function admin_ticket_messages_ajaxx(ticket_id, format, verb, params, options){ if ( ticket_id === undefined) { ticket_id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets/' + ticket_id + '/messages' + format + '', verb, params, options);}
-function new_admin_ticket_message_path(ticket_id, format, verb){ if ( ticket_id === undefined) { ticket_id = '' }; if ( format === undefined) { format = '' };  return '/admin/tickets/' + ticket_id + '/messages/new' + format + '';}
-function new_admin_ticket_message_ajax(ticket_id, format, verb, params, options){ if ( ticket_id === undefined) { ticket_id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets/' + ticket_id + '/messages/new' + format + '', verb, params, options);}
-function new_admin_ticket_message_ajaxx(ticket_id, format, verb, params, options){ if ( ticket_id === undefined) { ticket_id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets/' + ticket_id + '/messages/new' + format + '', verb, params, options);}
-function edit_admin_message_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/admin/messages/' + id + '/edit' + format + '';}
-function edit_admin_message_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/messages/' + id + '/edit' + format + '', verb, params, options);}
-function edit_admin_message_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/messages/' + id + '/edit' + format + '', verb, params, options);}
-function admin_message_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/admin/messages/' + id + '' + format + '';}
-function admin_message_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/messages/' + id + '' + format + '', verb, params, options);}
-function admin_message_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/messages/' + id + '' + format + '', verb, params, options);}
-function admin_tickets_path(format, verb){ if ( format === undefined) { format = '' };  return '/admin/tickets' + format + '';}
-function admin_tickets_ajax(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets' + format + '', verb, params, options);}
-function admin_tickets_ajaxx(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets' + format + '', verb, params, options);}
-function new_admin_ticket_path(format, verb){ if ( format === undefined) { format = '' };  return '/admin/tickets/new' + format + '';}
-function new_admin_ticket_ajax(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets/new' + format + '', verb, params, options);}
-function new_admin_ticket_ajaxx(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets/new' + format + '', verb, params, options);}
-function edit_admin_ticket_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/admin/tickets/' + id + '/edit' + format + '';}
-function edit_admin_ticket_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets/' + id + '/edit' + format + '', verb, params, options);}
-function edit_admin_ticket_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets/' + id + '/edit' + format + '', verb, params, options);}
-function transitions_admin_ticket_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/admin/tickets/' + id + '/transitions' + format + '';}
-function transitions_admin_ticket_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets/' + id + '/transitions' + format + '', verb, params, options);}
-function transitions_admin_ticket_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets/' + id + '/transitions' + format + '', verb, params, options);}
-function admin_ticket_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/admin/tickets/' + id + '' + format + '';}
-function admin_ticket_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets/' + id + '' + format + '', verb, params, options);}
-function admin_ticket_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets/' + id + '' + format + '', verb, params, options);}
-function admin_complaint_messages_path(complaint_id, format, verb){ if ( complaint_id === undefined) { complaint_id = '' }; if ( format === undefined) { format = '' };  return '/admin/tickets/' + complaint_id + '/messages' + format + '';}
-function admin_complaint_messages_ajax(complaint_id, format, verb, params, options){ if ( complaint_id === undefined) { complaint_id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets/' + complaint_id + '/messages' + format + '', verb, params, options);}
-function admin_complaint_messages_ajaxx(complaint_id, format, verb, params, options){ if ( complaint_id === undefined) { complaint_id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets/' + complaint_id + '/messages' + format + '', verb, params, options);}
-function new_admin_complaint_message_path(complaint_id, format, verb){ if ( complaint_id === undefined) { complaint_id = '' }; if ( format === undefined) { format = '' };  return '/admin/tickets/' + complaint_id + '/messages/new' + format + '';}
-function new_admin_complaint_message_ajax(complaint_id, format, verb, params, options){ if ( complaint_id === undefined) { complaint_id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets/' + complaint_id + '/messages/new' + format + '', verb, params, options);}
-function new_admin_complaint_message_ajaxx(complaint_id, format, verb, params, options){ if ( complaint_id === undefined) { complaint_id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets/' + complaint_id + '/messages/new' + format + '', verb, params, options);}
-function admin_complaints_path(format, verb){ if ( format === undefined) { format = '' };  return '/admin/tickets' + format + '';}
-function admin_complaints_ajax(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets' + format + '', verb, params, options);}
-function admin_complaints_ajaxx(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets' + format + '', verb, params, options);}
-function new_admin_complaint_path(format, verb){ if ( format === undefined) { format = '' };  return '/admin/tickets/new' + format + '';}
-function new_admin_complaint_ajax(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets/new' + format + '', verb, params, options);}
-function new_admin_complaint_ajaxx(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets/new' + format + '', verb, params, options);}
-function edit_admin_complaint_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/admin/tickets/' + id + '/edit' + format + '';}
-function edit_admin_complaint_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets/' + id + '/edit' + format + '', verb, params, options);}
-function edit_admin_complaint_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets/' + id + '/edit' + format + '', verb, params, options);}
-function admin_complaint_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/admin/tickets/' + id + '' + format + '';}
-function admin_complaint_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/admin/tickets/' + id + '' + format + '', verb, params, options);}
-function admin_complaint_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/admin/tickets/' + id + '' + format + '', verb, params, options);}
-function client_tickets_path(format, verb){ if ( format === undefined) { format = '' };  return '/client/tickets' + format + '';}
-function client_tickets_ajax(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajax('/client/tickets' + format + '', verb, params, options);}
-function client_tickets_ajaxx(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajaxx('/client/tickets' + format + '', verb, params, options);}
-function client_new_ticket_path(format, verb){ if ( format === undefined) { format = '' };  return '/client/tickets/new' + format + '';}
-function client_new_ticket_ajax(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajax('/client/tickets/new' + format + '', verb, params, options);}
-function client_new_ticket_ajaxx(format, verb, params, options){ if ( format === undefined) { format = '' };  return less_ajaxx('/client/tickets/new' + format + '', verb, params, options);}
-function client_ticket_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/client/tickets/' + id + '' + format + '';}
-function client_ticket_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/client/tickets/' + id + '' + format + '', verb, params, options);}
-function client_ticket_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/client/tickets/' + id + '' + format + '', verb, params, options);}
-function client_message_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/client/messages/' + id + '' + format + '';}
-function client_message_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/client/messages/' + id + '' + format + '', verb, params, options);}
-function client_message_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/client/messages/' + id + '' + format + '', verb, params, options);}
-function client_ticket_messages_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/client/tickets/' + id + '/messages' + format + '';}
-function client_ticket_messages_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/client/tickets/' + id + '/messages' + format + '', verb, params, options);}
-function client_ticket_messages_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/client/tickets/' + id + '/messages' + format + '', verb, params, options);}
-function client_new_message_path(id, format, verb){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return '/client/ticket/' + id + '/messages/new' + format + '';}
-function client_new_message_ajax(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajax('/client/ticket/' + id + '/messages/new' + format + '', verb, params, options);}
-function client_new_message_ajaxx(id, format, verb, params, options){ if ( id === undefined) { id = '' }; if ( format === undefined) { format = '' };  return less_ajaxx('/client/ticket/' + id + '/messages/new' + format + '', verb, params, options);}
+function less_check_parameter(param) {
+  if (param === undefined) {
+    param = '';
+  }
+  return param;
+}
+function less_check_format(param) {
+  if (param === undefined) {
+    param = '';
+  } else {
+    param = '.'+ param;
+  }
+  return param
+}
+function admin_categories_path(format, verb){ format = less_check_format(format); return '/admin/categories' + format + '';}
+function admin_categories_ajax(format, verb, params, options){ format = less_check_format(format); return less_ajax('/admin/categories' + format + '', verb, params, options);}
+function admin_categories_ajaxx(format, verb, params, options){ format = less_check_format(format); return less_ajaxx('/admin/categories' + format + '', verb, params, options);}
+function new_admin_category_path(format, verb){ format = less_check_format(format); return '/admin/categories/new' + format + '';}
+function new_admin_category_ajax(format, verb, params, options){ format = less_check_format(format); return less_ajax('/admin/categories/new' + format + '', verb, params, options);}
+function new_admin_category_ajaxx(format, verb, params, options){ format = less_check_format(format); return less_ajaxx('/admin/categories/new' + format + '', verb, params, options);}
+function edit_admin_category_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/admin/categories/' + id + '/edit' + format + '';}
+function edit_admin_category_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/admin/categories/' + id + '/edit' + format + '', verb, params, options);}
+function edit_admin_category_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/admin/categories/' + id + '/edit' + format + '', verb, params, options);}
+function admin_category_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/admin/categories/' + id + '' + format + '';}
+function admin_category_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/admin/categories/' + id + '' + format + '', verb, params, options);}
+function admin_category_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/admin/categories/' + id + '' + format + '', verb, params, options);}
+function admin_ticket_messages_path(ticket_id, format, verb){ ticket_id = less_check_parameter(ticket_id);format = less_check_format(format); return '/admin/tickets/' + ticket_id + '/messages' + format + '';}
+function admin_ticket_messages_ajax(ticket_id, format, verb, params, options){ ticket_id = less_check_parameter(ticket_id);format = less_check_format(format); return less_ajax('/admin/tickets/' + ticket_id + '/messages' + format + '', verb, params, options);}
+function admin_ticket_messages_ajaxx(ticket_id, format, verb, params, options){ ticket_id = less_check_parameter(ticket_id);format = less_check_format(format); return less_ajaxx('/admin/tickets/' + ticket_id + '/messages' + format + '', verb, params, options);}
+function new_admin_ticket_message_path(ticket_id, format, verb){ ticket_id = less_check_parameter(ticket_id);format = less_check_format(format); return '/admin/tickets/' + ticket_id + '/messages/new' + format + '';}
+function new_admin_ticket_message_ajax(ticket_id, format, verb, params, options){ ticket_id = less_check_parameter(ticket_id);format = less_check_format(format); return less_ajax('/admin/tickets/' + ticket_id + '/messages/new' + format + '', verb, params, options);}
+function new_admin_ticket_message_ajaxx(ticket_id, format, verb, params, options){ ticket_id = less_check_parameter(ticket_id);format = less_check_format(format); return less_ajaxx('/admin/tickets/' + ticket_id + '/messages/new' + format + '', verb, params, options);}
+function edit_admin_message_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/admin/messages/' + id + '/edit' + format + '';}
+function edit_admin_message_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/admin/messages/' + id + '/edit' + format + '', verb, params, options);}
+function edit_admin_message_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/admin/messages/' + id + '/edit' + format + '', verb, params, options);}
+function admin_message_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/admin/messages/' + id + '' + format + '';}
+function admin_message_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/admin/messages/' + id + '' + format + '', verb, params, options);}
+function admin_message_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/admin/messages/' + id + '' + format + '', verb, params, options);}
+function any_new_admin_tickets_path(format, verb){ format = less_check_format(format); return '/admin/tickets/any_new' + format + '';}
+function any_new_admin_tickets_ajax(format, verb, params, options){ format = less_check_format(format); return less_ajax('/admin/tickets/any_new' + format + '', verb, params, options);}
+function any_new_admin_tickets_ajaxx(format, verb, params, options){ format = less_check_format(format); return less_ajaxx('/admin/tickets/any_new' + format + '', verb, params, options);}
+function admin_tickets_path(format, verb){ format = less_check_format(format); return '/admin/tickets' + format + '';}
+function admin_tickets_ajax(format, verb, params, options){ format = less_check_format(format); return less_ajax('/admin/tickets' + format + '', verb, params, options);}
+function admin_tickets_ajaxx(format, verb, params, options){ format = less_check_format(format); return less_ajaxx('/admin/tickets' + format + '', verb, params, options);}
+function new_admin_ticket_path(format, verb){ format = less_check_format(format); return '/admin/tickets/new' + format + '';}
+function new_admin_ticket_ajax(format, verb, params, options){ format = less_check_format(format); return less_ajax('/admin/tickets/new' + format + '', verb, params, options);}
+function new_admin_ticket_ajaxx(format, verb, params, options){ format = less_check_format(format); return less_ajaxx('/admin/tickets/new' + format + '', verb, params, options);}
+function edit_admin_ticket_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/admin/tickets/' + id + '/edit' + format + '';}
+function edit_admin_ticket_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/admin/tickets/' + id + '/edit' + format + '', verb, params, options);}
+function edit_admin_ticket_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/admin/tickets/' + id + '/edit' + format + '', verb, params, options);}
+function transitions_admin_ticket_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/admin/tickets/' + id + '/transitions' + format + '';}
+function transitions_admin_ticket_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/admin/tickets/' + id + '/transitions' + format + '', verb, params, options);}
+function transitions_admin_ticket_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/admin/tickets/' + id + '/transitions' + format + '', verb, params, options);}
+function admin_ticket_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/admin/tickets/' + id + '' + format + '';}
+function admin_ticket_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/admin/tickets/' + id + '' + format + '', verb, params, options);}
+function admin_ticket_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/admin/tickets/' + id + '' + format + '', verb, params, options);}
+function admin_complaint_messages_path(complaint_id, format, verb){ complaint_id = less_check_parameter(complaint_id);format = less_check_format(format); return '/admin/tickets/' + complaint_id + '/messages' + format + '';}
+function admin_complaint_messages_ajax(complaint_id, format, verb, params, options){ complaint_id = less_check_parameter(complaint_id);format = less_check_format(format); return less_ajax('/admin/tickets/' + complaint_id + '/messages' + format + '', verb, params, options);}
+function admin_complaint_messages_ajaxx(complaint_id, format, verb, params, options){ complaint_id = less_check_parameter(complaint_id);format = less_check_format(format); return less_ajaxx('/admin/tickets/' + complaint_id + '/messages' + format + '', verb, params, options);}
+function new_admin_complaint_message_path(complaint_id, format, verb){ complaint_id = less_check_parameter(complaint_id);format = less_check_format(format); return '/admin/tickets/' + complaint_id + '/messages/new' + format + '';}
+function new_admin_complaint_message_ajax(complaint_id, format, verb, params, options){ complaint_id = less_check_parameter(complaint_id);format = less_check_format(format); return less_ajax('/admin/tickets/' + complaint_id + '/messages/new' + format + '', verb, params, options);}
+function new_admin_complaint_message_ajaxx(complaint_id, format, verb, params, options){ complaint_id = less_check_parameter(complaint_id);format = less_check_format(format); return less_ajaxx('/admin/tickets/' + complaint_id + '/messages/new' + format + '', verb, params, options);}
+function admin_complaints_path(format, verb){ format = less_check_format(format); return '/admin/tickets' + format + '';}
+function admin_complaints_ajax(format, verb, params, options){ format = less_check_format(format); return less_ajax('/admin/tickets' + format + '', verb, params, options);}
+function admin_complaints_ajaxx(format, verb, params, options){ format = less_check_format(format); return less_ajaxx('/admin/tickets' + format + '', verb, params, options);}
+function new_admin_complaint_path(format, verb){ format = less_check_format(format); return '/admin/tickets/new' + format + '';}
+function new_admin_complaint_ajax(format, verb, params, options){ format = less_check_format(format); return less_ajax('/admin/tickets/new' + format + '', verb, params, options);}
+function new_admin_complaint_ajaxx(format, verb, params, options){ format = less_check_format(format); return less_ajaxx('/admin/tickets/new' + format + '', verb, params, options);}
+function edit_admin_complaint_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/admin/tickets/' + id + '/edit' + format + '';}
+function edit_admin_complaint_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/admin/tickets/' + id + '/edit' + format + '', verb, params, options);}
+function edit_admin_complaint_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/admin/tickets/' + id + '/edit' + format + '', verb, params, options);}
+function admin_complaint_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/admin/tickets/' + id + '' + format + '';}
+function admin_complaint_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/admin/tickets/' + id + '' + format + '', verb, params, options);}
+function admin_complaint_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/admin/tickets/' + id + '' + format + '', verb, params, options);}
+function client_tickets_path(format, verb){ format = less_check_format(format); return '/client/tickets' + format + '';}
+function client_tickets_ajax(format, verb, params, options){ format = less_check_format(format); return less_ajax('/client/tickets' + format + '', verb, params, options);}
+function client_tickets_ajaxx(format, verb, params, options){ format = less_check_format(format); return less_ajaxx('/client/tickets' + format + '', verb, params, options);}
+function client_new_ticket_path(format, verb){ format = less_check_format(format); return '/client/tickets/new' + format + '';}
+function client_new_ticket_ajax(format, verb, params, options){ format = less_check_format(format); return less_ajax('/client/tickets/new' + format + '', verb, params, options);}
+function client_new_ticket_ajaxx(format, verb, params, options){ format = less_check_format(format); return less_ajaxx('/client/tickets/new' + format + '', verb, params, options);}
+function client_ticket_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/client/tickets/' + id + '' + format + '';}
+function client_ticket_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/client/tickets/' + id + '' + format + '', verb, params, options);}
+function client_ticket_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/client/tickets/' + id + '' + format + '', verb, params, options);}
+function client_message_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/client/messages/' + id + '' + format + '';}
+function client_message_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/client/messages/' + id + '' + format + '', verb, params, options);}
+function client_message_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/client/messages/' + id + '' + format + '', verb, params, options);}
+function client_ticket_messages_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/client/tickets/' + id + '/messages' + format + '';}
+function client_ticket_messages_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/client/tickets/' + id + '/messages' + format + '', verb, params, options);}
+function client_ticket_messages_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/client/tickets/' + id + '/messages' + format + '', verb, params, options);}
+function client_new_message_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/client/ticket/' + id + '/messages/new' + format + '';}
+function client_new_message_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/client/ticket/' + id + '/messages/new' + format + '', verb, params, options);}
+function client_new_message_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/client/ticket/' + id + '/messages/new' + format + '', verb, params, options);}

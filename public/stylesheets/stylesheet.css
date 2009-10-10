@@ -131,6 +131,20 @@ tr, td {
   text-align: center;
 }
 
+#new_ticket_notification {
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  position: fixed;
+  left: 142px;
+  top: 6px;
+  background-color: #d1c49f;
+  color: #333;
+  cursor: pointer;
+  font-weight: bold;
+  border: 3px red solid;
+}
+
 .flash_notice {
   color: green;
   text-align: center;

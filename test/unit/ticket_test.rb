@@ -8,7 +8,7 @@ class TicketTest < ActiveSupport::TestCase
   should_validate_presence_of :email, :employee_name, :basic_state
   should_validate_presence_of :category_id, :message => "is not a valid category"
   
-  should_not_allow_values_for :email, "wrong mail", "wron#g.pl"
+  should_not_allow_values_for :email, "wrong mail", "wron#g.pl", "wrong@mail.pl asd"
   should_allow_values_for :email, "correct@mail.com", "weird-mailo.user@as.tv"
 
   should "have valid category" do
