@@ -8,15 +8,16 @@ class Ticket < ActiveRecord::Base
   # ---
   # t.string :type
 
-  named_scope :pending, :conditions => { :basic_state => 'pending' }, :order => 'created_at DESC'
-  named_scope :opened, :conditions => { :basic_state => 'opened' }, :order => 'created_at DESC'
-  named_scope :closed, :conditions => { :basic_state => 'closed' }, :order => 'created_at DESC'
-  named_scope :all, :order => 'basic_state_order ASC, created_at DESC'
+  named_scope :pending, :conditions => { :basic_state => 'pending' }
+  named_scope :opened, :conditions => { :basic_state => 'opened' }
+  named_scope :closed, :conditions => { :basic_state => 'closed' }
+  #named_scope :all, :order => 'basic_state_order ASC, created_at DESC'
   
   attr_protected :category_id, :type
 
   belongs_to :category
   has_many :messages, :dependent => :destroy
+  has_one :last_message, :class_name => 'Message', :order => 'created_at DESC'
 
   before_validation :set_type
   before_save :set_basic_state_order

@@ -1,18 +1,28 @@
 class Admin::TicketsController < ApplicationController
   before_filter :find_categories, :only => [:edit , :new, :index]
   before_filter :find_ticket, :except => [ :new, :create, :index, :any_new ]
-  before_filter :set_filters
+  before_filter :set_filters, :set_types
 
   def index
     scope = params[:scope]
-    if !scope.blank? && @filters.include?(scope)
+    tickets = Ticket.search()
+    if !scope.blank? && @filters.has_key?(scope)
       @filters[scope] = 'active'
-      @tickets = Ticket.send(scope).paginate :page => params[:page]
+      tickets = tickets.search( scope.to_sym => true )
       @scope = scope
     else
       @filters['all'] = 'active'
-      @tickets = Ticket.all.paginate :page => params[:page]
     end
+    
+    type = params[:type]
+    # TODO: should it raise error if type does not exist?
+    if !type.blank? && @types.has_value?(type)
+      tickets = tickets.category_id_eq(type)
+      @type_selected = type
+    end
+    
+    @tickets = tickets.all(:include => [:category, :last_message],
+                           :order => 'basic_state_order ASC, created_at DESC').paginate :page => params[:page]
     session[:last_seen] = Time.zone.now
   end
 

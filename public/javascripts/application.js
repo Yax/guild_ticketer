@@ -92,7 +92,7 @@ $(document).ready(function() {
 
   /*** New tickets notification ***/
   var is_notification_shown = false;
-  var tickets_interval = 10; //how often check new tickets, in seconds
+  var tickets_interval = 10000; //how often check new tickets, in seconds
 
   function show_new_ticket_notification() {
     warning = '<div id="new_ticket_notification" style="display: none" ';
@@ -115,8 +115,30 @@ $(document).ready(function() {
       setTimeout(check_new_tickets,tickets_interval*1000);
     };
   }
-
+   
   check_new_tickets();
   /********************************/
+
+  /* type filters */
+  function getQueryParams(qs) {
+    qs = qs.split("+").join(" ");
+    var params = {};
+    var tokens;
+
+    while (tokens = /[?&]?([^=]+)=([^&]*)/g.exec(qs)) {
+      params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+  }
+  
+
+  $('#menu #types').change(function() {
+      params = getQueryParams(location.search);
+      params['type'] = this.value;
+      params['page'] = '1';
+      location.search = $.param(params);
+  });
+
 
 });

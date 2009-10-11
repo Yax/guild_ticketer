@@ -9,6 +9,13 @@ class ApplicationController < ActionController::Base
   def set_filters
     @filters = { 'all' => 'inactive', 'pending' => 'inactive', 'opened' => 'inactive', 'closed' => 'inactive' }
   end
+  
+  # TODO: create it using hash created in environments.rb
+  def set_types
+    @types = Hash.new
+    @types[''] = '';
+    Category.all.each { |cat| @types[cat.name] = cat.id.to_s }
+  end
 
   def correct_safari_and_ie_accept_headers
     request.accepts.sort!{ |x, y| y.to_s == 'text/javascript' ? 1 : -1 } if request.xhr?
