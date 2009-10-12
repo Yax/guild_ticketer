@@ -1,7 +1,7 @@
 class Admin::MessagesController < ApplicationController
   before_filter :find_ticket, :only => [:new, :create]
   before_filter :find_message, :except => [:new, :create]
-  before_filter :set_filters #used in tickets layout
+  before_filter :set_filters, :set_types #used in tickets layout
  
   layout 'admin/tickets'
 

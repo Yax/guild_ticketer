@@ -187,6 +187,10 @@ tr, td {
   padding-left: 4px;
 }
 
+#menu #types {
+  font-size: 12px;
+}
+
 #menu div.ticket_info {
   margin-top: 10px;
   margin-right: 5px;

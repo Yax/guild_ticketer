@@ -137,7 +137,7 @@ $(document).ready(function() {
       params = getQueryParams(location.search);
       params['type'] = this.value;
       params['page'] = '1';
-      location.search = $.param(params);
+      location.href = admin_tickets_path() +'?'+ $.param(params);
   });
 
 

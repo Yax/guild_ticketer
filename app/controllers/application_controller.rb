@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   # TODO: create it using hash created in environments.rb
   def set_types
     @types = Hash.new
-    @types[''] = '';
+    @types['Wszystkie'] = '';
     Category.all.each { |cat| @types[cat.name] = cat.id.to_s }
   end
 
