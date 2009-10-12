@@ -8,7 +8,7 @@ $(document).ready(function() {
   });
 
   // load message content
-  $("#main table#messages_list tr").click(function() {
+  $("#main table#messages_list tr.highlightable").click(function() {
     row = $(this);
     if ( !row.next().hasClass("message") ) {
       row.after('<tr class="message" style="display: none;"><td colspan="5"></td></tr>');

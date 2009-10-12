@@ -8,8 +8,8 @@ class Admin::MessagesController < ApplicationController
   def show
     @ticket = @message.ticket
     respond_to do |wants|
-      wants.html
-      wants.js { render :action => 'show', :layout => false }
+      wants.html { render :partial => 'show', :layout => 'admin/tickets', :locals => { :message => @message } }
+      wants.js { render :partial => 'show', :layout => false, :locals => { :message => @message } }
     end
   end
 
