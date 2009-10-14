@@ -253,9 +253,18 @@ tr, td {
 #main table tr td.category {
   width: 80px;
 }
+
 #main table tr td.message_from {
-  width: 90px;
-  max-width: 90px;
+  width: 40px;
+  max-width: 40px;
+}
+
+#main table tr td.message_from.from_client {
+  color: green;
+}
+
+#main table tr td.message_from.from_shop {
+  color: blue;
 }
 
 #main table tr td.message_content {
