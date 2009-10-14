@@ -10,11 +10,11 @@ class ApplicationController < ActionController::Base
     @filters = { 'all' => 'inactive', 'pending' => 'inactive', 'opened' => 'inactive', 'closed' => 'inactive' }
   end
   
-  # TODO: create it using hash created in environments.rb
+  # TODO: create it using hash created in environments.rb to prevent SQL every request
   def set_types
-    @types = Hash.new
+    @types = ActiveSupport::OrderedHash.new
     @types['Wszystkie'] = '';
-    Category.all.each { |cat| @types[cat.name] = cat.id.to_s }
+    Category.all(:order => 'name ASC').each { |cat| @types[cat.name] = cat.id.to_s }
   end
 
   def correct_safari_and_ie_accept_headers

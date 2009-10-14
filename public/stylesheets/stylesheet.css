@@ -189,6 +189,7 @@ tr, td {
 
 #menu #types {
   font-size: 12px;
+  width: 152px;
 }
 
 #menu div.ticket_info {
@@ -241,7 +242,7 @@ tr, td {
 }
 
 #main table tr td {
-  padding-left: 10px;
+  padding-left: 5px;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -254,8 +255,8 @@ tr, td {
   width: 80px;
 }
 #main table tr td.message_from {
-  width: 40px;
-  max-width: 40px;
+  width: 90px;
+  max-width: 90px;
 }
 
 #main table tr td.message_content {
@@ -284,14 +285,19 @@ tr, td {
   color: #666;
 }
 
+#main table tr td.last_message.client {
+  font-weight: bold;
+}
+
 #main table tr td.timestamp {
+  margin-left: 3px;
   width: 20px;
   font-style: italic;
 }
 
 #main table tr td.actions {
-  width: 30px;
-  padding-right: 10px;
+  width: 20px;
+  padding-right: 5px;
 }
 
 #main table tr.message td {

@@ -18,10 +18,13 @@
            end -%>
       </td>
       <td class="email"><%=h ticket.email %></td>
-      <td class="last_message"><%=h truncate(ticket.last_message.content, :length => 55) unless ticket.last_message.nil?%></td>
-      <td class="timestamp"><%=h ticket.last_message.nil? ? event_time(ticket.created_at) : event_time(ticket.last_message.created_at) %></td>
-      <td class="actions"><%= link_to 'P', [:admin,ticket] %> | <%= link_to 'E', edit_admin_ticket_path(ticket) %> |
-         <%= link_to 'U', [:admin,ticket], :confirm => 'Jesteś pewny?', :method => :delete %></td>
+      <td class="last_message <%= 'client' if !ticket.last_message.nil? && ticket.last_message.from_client %>">
+        <%=h truncate(ticket.last_message.content, :length => 55) unless ticket.last_message.nil?%>
+      </td>
+      <td class="timestamp">
+        <%=h ticket.last_message.nil? ? event_time(ticket.created_at) : event_time(ticket.last_message.created_at) %>
+      </td>
+      <td class="actions"><%= link_to '[X]', [:admin,ticket], :confirm => 'Jesteś pewny?', :method => :delete %></td>
     </tr>
   <% end -%>
 </table>
