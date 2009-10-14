@@ -97,7 +97,7 @@ $(document).ready(function() {
   function show_new_ticket_notification() {
     warning = '<div id="new_ticket_notification" style="display: none" ';
     warning += 'onclick="location.href=\''+admin_tickets_path()+'?scope=pending\'">';
-    warning += 'Nowe<br/>tickety';
+    warning += 'Nowe<br/>wiadomości';
     warning += '</div>';
     $('#header').append(warning);
     $('#new_ticket_notification').show('highlight', {color: 'red'}, 3000);
@@ -131,7 +131,6 @@ $(document).ready(function() {
 
     return params;
   }
-  
 
   $('#menu #types').change(function() {
       params = getQueryParams(location.search);
@@ -139,6 +138,5 @@ $(document).ready(function() {
       params['page'] = '1';
       location.href = admin_tickets_path() +'?'+ $.param(params);
   });
-
 
 });

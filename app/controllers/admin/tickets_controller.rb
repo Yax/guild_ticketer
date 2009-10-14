@@ -21,8 +21,8 @@ class Admin::TicketsController < ApplicationController
       @type_selected = type
     end
     
-    @tickets = tickets.all(:include => [:category, :last_message],
-                           :order => 'basic_state_order ASC, `messages`.from_client DESC, `messages`.created_at DESC').paginate :page => params[:page]
+    order = 'basic_state_order ASC, `messages`.from_client DESC, `messages`.created_at DESC'
+    @tickets = tickets.all(:include => [:category, :last_message], :order => order).paginate :page => params[:page]
     session[:last_seen] = Time.zone.now
   end
 
@@ -97,7 +97,7 @@ class Admin::TicketsController < ApplicationController
   end
 
   def any_new
-    unless Ticket.find(:all,:conditions => ["created_at > ?", session[:last_seen] ], :limit => 1).empty?
+    unless Message.find(:all,:conditions => ["created_at > ?", session[:last_seen] ], :limit => 1).empty?
       render :text => 'true', :status => :ok
     else
       render :text => 'false', :status => :ok

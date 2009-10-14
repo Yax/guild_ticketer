@@ -132,7 +132,6 @@ tr, td {
 }
 
 #new_ticket_notification {
-  width: 60px;
   height: 40px;
   text-align: center;
   position: fixed;
