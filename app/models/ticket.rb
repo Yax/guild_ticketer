@@ -28,6 +28,16 @@ class Ticket < ActiveRecord::Base
   validates_format_of :email,
                       :with     => /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/
 
+  state_machine :basic_state, :initial => :pending do
+    event :open do
+      transition :pending => :opened
+    end
+    event :close do
+      transition :opened => :closed
+    end
+  end
+
+  private
   def validate
     errors.add(:category_id, "is not a valid category") if self.category.nil?
   end
@@ -45,15 +55,6 @@ class Ticket < ActiveRecord::Base
                              when 'closed' then 3
                              else 0
                              end
-  end
-
-  state_machine :basic_state, :initial => :pending do
-    event :open do
-      transition :pending => :opened
-    end
-    event :close do
-      transition :opened => :closed
-    end
   end
 
 end

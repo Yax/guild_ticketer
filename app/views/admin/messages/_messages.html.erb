@@ -1,5 +1,4 @@
 <table id="messages_list">
-  <% first = true -%>
   <% for message in messages %>
     <tr class="highlightable" id="<%= message.id %>">
       <td class="message_from"><%=h message.from %></td>
@@ -8,10 +7,8 @@
       <td class="actions"><%= link_to 'E', edit_admin_message_path(message) %> | 
         <%= link_to 'U', [:admin,message], :confirm => "Jestes pewny?", :method => :delete %></td>
     </tr>
-    <% if first == true -%>
-      <tr class="message">
-        <td colspan="5"><%= render :partial => 'admin/messages/show', :locals => { :message => message } %></td>
-      </tr>
-    <% first = false; end -%>
   <% end %>
+  <tr class="message">
+        <td colspan="5"><%= render :partial => 'admin/messages/show', :locals => { :message => message } %></td>
+  </tr>
 </table>

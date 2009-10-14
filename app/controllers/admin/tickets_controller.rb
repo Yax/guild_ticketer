@@ -22,7 +22,7 @@ class Admin::TicketsController < ApplicationController
     end
     
     @tickets = tickets.all(:include => [:category, :last_message],
-                           :order => 'basic_state_order ASC, created_at DESC').paginate :page => params[:page]
+                           :order => 'basic_state_order ASC, `messages`.created_at DESC').paginate :page => params[:page]
     session[:last_seen] = Time.zone.now
   end
 
