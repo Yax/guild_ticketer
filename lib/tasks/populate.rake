@@ -28,7 +28,8 @@ namespace :db do
       Message.populate 1..10 do |message|
         message.ticket_id = ticket.id
         message.created_at = ticket.created_at..Time.now
-        message.from = ["klient", "sklep"]
+        message.from = [ticket.employee_name, ticket.employee_name, ticket.email]
+        message.from_client = message.from == ticket.email ? true : false
         message.content = Populator.sentences(3..7)
       end
     end
@@ -55,7 +56,8 @@ namespace :db do
       Message.populate 1..10 do |message|
         message.ticket_id = ticket.id
         message.created_at = ticket.created_at..Time.now
-        message.from = ["klient", "sklep"]
+        message.from = [ticket.employee_name, ticket.employee_name, ticket.email]
+        message.from_client = message.from == ticket.email ? true : false
         message.content = Populator.sentences(3..7)
       end
     end
@@ -89,7 +91,8 @@ namespace :db do
       Message.populate 1..3 do |message|
         message.ticket_id = ticket.id
         message.created_at = ticket.created_at..Time.now
-        message.from = ["klient", "sklep"]
+        message.from = [ticket.employee_name, ticket.employee_name, ticket.email]
+        message.from_client = message.from == ticket.email ? true : false
         message.content = Populator.sentences(3..7)
       end
     end
@@ -116,7 +119,8 @@ namespace :db do
       Message.populate 1..3 do |message|
         message.ticket_id = ticket.id
         message.created_at = ticket.created_at..Time.now
-        message.from = ["klient", "sklep"]
+        message.from = [ticket.employee_name, ticket.employee_name, ticket.email]
+        message.from_client = message.from == ticket.email ? true : false
         message.content = Populator.sentences(3..7)
       end
     end

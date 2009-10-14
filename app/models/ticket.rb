@@ -11,7 +11,6 @@ class Ticket < ActiveRecord::Base
   named_scope :pending, :conditions => { :basic_state => 'pending' }
   named_scope :opened, :conditions => { :basic_state => 'opened' }
   named_scope :closed, :conditions => { :basic_state => 'closed' }
-  #named_scope :all, :order => 'basic_state_order ASC, created_at DESC'
   
   attr_protected :category_id, :type
 
