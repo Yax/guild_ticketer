@@ -3,8 +3,8 @@ jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "
 $(document).ready(function() {
 
   // load ticket page on tr click
-  $("#main table#tickets_list tr").click(function() {
-    location.href = admin_ticket_path($(this).attr("id"));
+  $("#main table#tickets_list tr :not(.actions)").click(function() {
+    location.href = admin_ticket_path($(this).parent().attr("id"));
   });
 
   // load message content
