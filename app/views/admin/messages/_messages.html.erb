@@ -1,5 +1,6 @@
 <table id="messages_list">
   <% for message in messages %>
+    <% next if message.id.nil? %>
     <tr class="highlightable" id="<%= message.id %>">
       <td class="message_from <%= message.from_client ? 'from_client' : 'from_shop' %>">
         <%= message.from_client ? 'Klient' : 'Sklep' %>
@@ -11,6 +12,6 @@
     </tr>
   <% end %>
   <tr class="message">
-        <td colspan="5"><%= render :partial => 'admin/messages/show', :locals => { :message => message } %></td>
+        <td colspan="5"><%= render :partial => 'admin/messages/show', :locals => { :message => @ticket.last_message } %></td>
   </tr>
 </table>

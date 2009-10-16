@@ -6,3 +6,15 @@
   <%= render :partial => "admin/messages/messages", :locals => { :messages => @ticket.messages } %>
 <% end %>
 
+<% if @ticket.last_message.from_client %>
+  <% form_for [:admin, @ticket,@message] do |f| %>
+    <%= render :partial => 'admin/messages/form', :locals => { :f => f } %>
+    <p>
+    <%= label :ticket, :basic_state_event, "Basic state" %>
+    <%= collection_select :ticket,
+      :basic_state_event, @ticket.basic_state_transitions,
+      :event, :to_name, :include_blank => @ticket.basic_state_name.to_s %>
+      <p>
+      <%= f.submit "Wyślij" %><%= f.submit "Wyślij i zmień stan" %>
+  <% end %>
+<% end %>

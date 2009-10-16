@@ -2,6 +2,7 @@ class Admin::MessagesController < ApplicationController
   before_filter :find_ticket, :only => [:new, :create]
   before_filter :find_message, :except => [:new, :create]
   before_filter :set_filters, :set_types #used in tickets layout
+  before_filter :get_user_name
  
   layout 'admin/tickets'
 
@@ -15,7 +16,7 @@ class Admin::MessagesController < ApplicationController
 
   def new
     @message = @ticket.messages.build
-    @message.from = @ticket.employee_name
+    @message.from = @user_name
   end
 
   def edit
@@ -24,11 +25,24 @@ class Admin::MessagesController < ApplicationController
 
   def create
     @message = @ticket.messages.build(params[:message])
-    if @message.save
+    #create copy in case of transaction error
+    message = @message.dup
+    begin
+      Message.transaction do
+        @message.save!
+        if params[:commit] =~ /stan/
+          @ticket.update_attributes!(params[:ticket])
+        end
+      end
+    rescue
+      something_went_wrong = true
+      flash.now[:warning] = @ticket.errors.full_messages.join(' ')
+      @message = message unless @message.new_record?
+      render :action => 'new'
+    end
+    unless something_went_wrong
       flash[:notice] = "Message created."
       redirect_to([:admin,@ticket])
-    else
-      render :action => "new"
     end
   end
 

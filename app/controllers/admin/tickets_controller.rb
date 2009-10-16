@@ -1,7 +1,7 @@
 class Admin::TicketsController < ApplicationController
   before_filter :find_categories, :only => [:edit , :new, :index]
   before_filter :find_ticket, :except => [ :new, :create, :index, :any_new ]
-  before_filter :set_filters, :set_types
+  before_filter :set_filters, :set_types, :get_user_name
 
   def index
     scope = params[:scope]
@@ -22,11 +22,15 @@ class Admin::TicketsController < ApplicationController
     end
     
     order = 'basic_state_order ASC, `messages`.from_client DESC, `messages`.created_at DESC'
-    @tickets = tickets.all(:include => [:category, :last_message], :order => order).paginate :page => params[:page]
+    @tickets = tickets.all(:include => [:category, :messages], :order => order).paginate :page => params[:page]
     session[:last_seen] = Time.zone.now
   end
 
   def show
+    #@message = @ticket.messages.build
+    @message = Message.new
+    @message.ticket_id = @ticket.id
+    @message.from = @user_name
   end
 
   def new
