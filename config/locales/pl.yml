@@ -116,13 +116,49 @@ pl:
         greater_than: "musi być większe niż {{count}}"
         greater_than_or_equal_to: "musi być większe lub równe {{count}}"
         equal_to: "musi być równe {{count}}"
-        less_than: "musie być mniejsze niż {{count}}"
+        less_than: "musi być mniejsze niż {{count}}"
         less_than_or_equal_to: "musi być mniejsze lub równe {{count}}"
         odd: "musi być nieparzyste"
         even: "musi być parzyste"
         record_invalid: "Walidacja nie powiodła się: {{errors}}"
-      
+    models:
+      ticket: "zgłoszenie"
+      complaint: "reklamacja"
+      message: "wiadomość"
+      ticket_category: "kategoria zgłoszenia"
+    attributes:
+      ticket:
+        employee_name: "pracownik"
+        order_number: "numer zamówienia"
+        email: "e-mail"
+        basic_state: "podstawowy status"
+        basic_state_event: "podstawowy status"
+      complaint:
+        state: "status"
+        state_event: "status"
+        subject: "temat"
+        explanation: "wyjaśnienie"
+      message:
+        from: "od"
+        content: "treść"
+      ticket_category:
+        name: "nazwa"
+        ticket_type: "typ zgłoszenia"
   support:
     array:
       sentence_connector: "i"
       skip_last_comma: true
+  state_machine:
+    pending: "oczekuje"
+    opened: "otwarty"
+    closed: "zamknięty"
+    in_question: "rozpatrywana"
+    accepted: "przyjęta"
+    declined: "odrzucona"
+    plural:
+      pending: "oczekujące"
+      opened: "otwarte"
+      closed: "zamknięte"
+      in_question: "rozpatrywane"
+      accepted: "przyjęte"
+      declined: "odrzucone"

@@ -1,4 +1,4 @@
-<h1>Editing category</h1>
+<h1>Edycja kategorii zgłoszeń</h1>
 
 <% form_for [:admin, @ticket_category] do |f| %>
   <%= f.error_messages %>
@@ -12,9 +12,9 @@
     <%= f.select :ticket_type, TICKET_TYPES.collect { |c| [ c.capitalize, c ] } %>
   </p>
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit "Zapisz" %>
   </p>
 <% end %>
 
-<%= link_to 'Show', [:admin,@ticket_category] %> |
-<%= link_to 'Back', admin_ticket_categories_path %>
+<%= link_to 'Pokaż', [:admin,@ticket_category] %> |
+<%= link_to 'Wstecz', admin_ticket_categories_path %>

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <title>Tickets: <%= controller.action_name %></title>
+    <title>Zgłoszenia: <%= controller.action_name %></title>
     <% #= stylesheet_link_tag 'scaffold' %>
     <%= stylesheet_link_tag 'stylesheet' %>
     <%= javascript_include_tag 'jquery', 'jquery-ui-1.7.2.custom', 'jquery.autogrow', 'jquery.jeditable', 'jquery.jeditable.autogrow' %>
@@ -23,7 +23,7 @@
       
       <div>
         <ul>
-          <li><%= link_to 'Nowy ticket', new_admin_ticket_path %></li>
+          <li><%= link_to 'Nowe zgłoszenie', new_admin_ticket_path %></li>
         </ul>
       </div>
       <% unless @ticket.nil? || @ticket.id.nil? -%>

@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  <%= @scope.capitalize + ' ' unless @scope.nil?  %>Tickets
+  <%= sm_ts(@scope).capitalize + ' ' unless @scope.nil?  %>Zgłoszenia
 <% end %>
 <div id="page_entries_info"><%= page_entries_info @tickets %></div>
 <table id="tickets_list">

@@ -1,6 +1,7 @@
 <p>
-<%= f.label :state_event, "State" %>
-<%= f.collection_select :state_event, @ticket.state_transitions, :event, :to_name, :include_blank => @ticket.state_name.to_s %>
+<%= f.label :state_event %>
+<%= f.select :state_event, sm_select( @ticket.state_transitions ,@ticket.state_name.to_s) %>
+<% logger.info "VIEW: " + @ticket.state_transitions.inspect %>
 </p>
 <p>
 <%= f.label :subject %>

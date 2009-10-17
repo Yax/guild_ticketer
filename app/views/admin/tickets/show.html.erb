@@ -1,5 +1,5 @@
 <% content_for :title do -%>
-  Ticket
+  Zgłoszenie
 <% end -%>
 
 <% unless @ticket.messages.empty? %>
@@ -10,10 +10,8 @@
   <% form_for [:admin, @ticket,@message] do |f| %>
     <%= render :partial => 'admin/messages/form', :locals => { :f => f } %>
     <p>
-    <%= label :ticket, :basic_state_event, "Basic state" %>
-    <%= collection_select :ticket,
-      :basic_state_event, @ticket.basic_state_transitions,
-      :event, :to_name, :include_blank => @ticket.basic_state_name.to_s %>
+    <%= label 'ticket', :basic_state_event %>
+    <%=select :ticket, :basic_state_event, sm_select(@ticket.basic_state_transitions, @ticket.basic_state_name.to_s) %>
       <p>
       <%= f.submit "Wyślij" %><%= f.submit "Wyślij i zmień stan" %>
   <% end %>

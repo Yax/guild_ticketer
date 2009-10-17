@@ -10,7 +10,7 @@ class Admin::MessagesControllerTest < ActionController::TestCase
       end
       should_create :message
       should_redirect_to("created message") { admin_ticket_url(tickets(:zwrot_tomka)) }
-      should_set_the_flash_to /created/ 
+      should_set_the_flash_to /zapisan/ 
     end
     
     context "on GET to #new" do
@@ -50,7 +50,7 @@ class Admin::MessagesControllerTest < ActionController::TestCase
       end
       should_not_change("the number of messages") { Message.count }
       should_redirect_to("parent ticket") { admin_ticket_url(assigns(:message).ticket) }
-      should_set_the_flash_to /updated/ 
+      should_set_the_flash_to /zaktualiz/ 
     end
 
     context "on DELETE to #destroy" do
@@ -60,7 +60,7 @@ class Admin::MessagesControllerTest < ActionController::TestCase
       end
       should_change("the number of messages", :by => -1) { Message.count }
       should_redirect_to("index") { admin_ticket_url(@ticket) }
-      should_set_the_flash_to /destroyed/
+      should_set_the_flash_to /usuni/
     end
 
   end  

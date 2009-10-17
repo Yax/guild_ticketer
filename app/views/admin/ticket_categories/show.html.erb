@@ -1,10 +1,10 @@
 <p>
-  <b>Name:</b>
+  <b>Nazwa:</b>
   <%=h @ticket_category.name %>
-  <b>Type:</b>
+  <b>Typ zgłoszenia:</b>
   <%=h @ticket_category.ticket_type.capitalize %>
 </p>
 
 
-<%= link_to 'Edit', edit_admin_ticket_category_path(@ticket_category) %> |
-<%= link_to 'Back', admin_ticket_categories_path %>
+<%= link_to 'Edytuj', edit_admin_ticket_category_path(@ticket_category) %> |
+<%= link_to 'Wstecz', admin_ticket_categories_path %>

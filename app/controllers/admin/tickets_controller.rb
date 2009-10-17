@@ -49,7 +49,7 @@ class Admin::TicketsController < ApplicationController
     end
     @ticket.ticket_category_id = params[:ticket][:ticket_category_id] #because ticket_category_id is protected
     if @ticket.save
-      flash[:notice] = "ticket created."
+      flash[:notice] = "Zgłoszenie zapisane"
       redirect_to([:admin,@ticket])
     else
       find_ticket_categories
@@ -61,15 +61,18 @@ class Admin::TicketsController < ApplicationController
     respond_to do |wants|
       ticket_type = @ticket[:type].downcase
       if @ticket.update_attributes(params[ticket_type])
-        flash[:notice] = "Ticket updated." unless request.xhr?
+        flash[:notice] = "Zgłoszenie zaktualizowane" unless request.xhr?
         wants.html { redirect_to([:admin,@ticket]) }
         if request.xhr?
           modified_parameter = params[ticket_type].keys[0]
           if modified_parameter =~ /(.*)_event/
             modified_parameter = $+
+            parameter = sm_t(@ticket[modified_parameter])
+          else
+            parameter = @ticket[modified_parameter]
           end
         end
-        wants.js { render :text => @ticket[modified_parameter],  :status => :ok }
+        wants.js { render :text => parameter,  :status => :ok }
       else
         @ticket_categories = TicketCategory.find(:all)
         wants.html { render :action => "edit" }
@@ -80,7 +83,7 @@ class Admin::TicketsController < ApplicationController
 
   def destroy
     @ticket.destroy
-    flash[:notice] = "Ticket destroyed."
+    flash[:notice] = "Zgłoszenie usunięte"
     redirect_to(admin_tickets_url)
   end
 
@@ -95,7 +98,8 @@ class Admin::TicketsController < ApplicationController
     data = Hash.new
     transitions = @ticket.send(state_name)
     transitions.each do |tr|
-      data[tr.event] = tr.to_name
+      logger.info transitions.inspect
+      data[tr.event] = sm_t(tr.to)
     end
     render :json => data, :status => :ok    
   end
@@ -115,6 +119,10 @@ class Admin::TicketsController < ApplicationController
 
   def find_ticket
     @ticket = Ticket.find(params[:id])
+  end
+
+  def sm_t(state)
+    I18n.t('state_machine.'+state)
   end
 
 end

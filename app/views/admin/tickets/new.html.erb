@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  New ticket
+  Nowe zgłoszenie
 <% end %>
 
 <% form_for [:admin, @ticket] do |f| %>
@@ -22,6 +22,6 @@
   <%= f.text_field :email %>
   </p>
   <p>
-  <%= f.submit 'Create' %>
+  <%= f.submit 'Zapisz' %>
   </p>
 <% end %>

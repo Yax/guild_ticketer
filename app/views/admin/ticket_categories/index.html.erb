@@ -1,22 +1,22 @@
-<h1>Listing categories</h1>
+<h1>Lista kategorii zgłoszeń</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Ticket type</th>
+    <th>Nazwa</th>
+    <th>Rodzaj zgłoszenia</th>
   </tr>
 
 <% for category in @ticket_categories %>
   <tr>
     <td><%=h category.name %></td>
     <td><%=h category.ticket_type.capitalize %></td>
-    <td><%= link_to 'Show', [:admin,category] %></td>
-    <td><%= link_to 'Edit', edit_admin_ticket_category_path(category) %></td>
-    <td><%= link_to 'Destroy', [:admin,category], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Pokaż', [:admin,category] %></td>
+    <td><%= link_to 'Edytuj', edit_admin_ticket_category_path(category) %></td>
+    <td><%= link_to 'Usuń', [:admin,category], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New ticket_category', new_admin_ticket_category_path %>
+<%= link_to 'Nowa kategoria zgłoszeń', new_admin_ticket_category_path %>

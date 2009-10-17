@@ -41,7 +41,7 @@ class Admin::MessagesController < ApplicationController
       render :action => 'new'
     end
     unless something_went_wrong
-      flash[:notice] = "Message created."
+      flash[:notice] = "Wiadomość zapisana"
       redirect_to([:admin,@ticket])
     end
   end
@@ -49,7 +49,7 @@ class Admin::MessagesController < ApplicationController
   #Not sure if it should be possible
   def update
     if @message.update_attributes(params[:message])
-      flash[:notice] = "Message updated"
+      flash[:notice] = "Wiadomość zaktualizowana"
       redirect_to([:admin,@message.ticket])
     else
       render :action => "edit"
@@ -58,7 +58,7 @@ class Admin::MessagesController < ApplicationController
 
   def destroy
     @message.destroy
-    flash[:notice] = "Message destroyed"
+    flash[:notice] = "Wiadomość usunięta"
     redirect_to([:admin,@message.ticket])
   end
 

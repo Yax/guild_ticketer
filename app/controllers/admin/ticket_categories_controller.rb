@@ -44,7 +44,7 @@ class Admin::TicketCategoriesController < ApplicationController
 
     respond_to do |format|
       if @ticket_category.save
-        flash[:notice] = 'TicketCategory was successfully created.'
+        flash[:notice] = 'Kategoria zgłoszeń zapisana.'
         format.html { redirect_to([:admin,@ticket_category]) }
         format.xml  { render :xml => @ticket_category, :status => :created, :location => @ticket_category }
       else
@@ -61,7 +61,7 @@ class Admin::TicketCategoriesController < ApplicationController
 
     respond_to do |format|
       if @ticket_category.update_attributes(params[:ticket_category])
-        flash[:notice] = 'TicketCategory was successfully updated.'
+        flash[:notice] = 'Kategoria zgłoszeń zaktualizowana.'
         format.html { redirect_to([:admin,@ticket_category]) }
         format.xml  { head :ok }
       else

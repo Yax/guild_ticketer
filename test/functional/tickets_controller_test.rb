@@ -35,7 +35,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
       # should_change("the number of tickets", :by => 1) { Ticket.count } #duplicated test form above
       should_assign_to :ticket
       should_redirect_to("created ticket") { admin_ticket_url(assigns(:ticket)) }
-      should_set_the_flash_to(/created/)
+      should_set_the_flash_to /zapisa/
     end
 
     context "on wrong POST to #create" do
@@ -90,7 +90,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
       end
       should_not_change("the number of tickets") { Ticket.count }
       should_redirect_to("updated ticket") { admin_ticket_url(assigns(:ticket)) }
-      should_set_the_flash_to(/updated/)
+      should_set_the_flash_to /zaktualiz/
     end
 
     context "on wrong PUT to #create" do
@@ -113,7 +113,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
       end
       should_change("the number of tickets", :by => -1) { Ticket.count }
       should_redirect_to("index") { admin_tickets_url }
-      should_set_the_flash_to(/destroyed/)
+      should_set_the_flash_to /usuni/
       should "destroy its messages" do
         assert_equal @all_messages_qty-@ticket_messages_qty, Message.count
       end
