@@ -17,7 +17,7 @@ class Admin::TicketsController < ApplicationController
     type = params[:type]
     # TODO: should it raise error if type does not exist?
     if !type.blank? && @types.has_value?(type)
-      tickets = tickets.category_id_eq(type)
+      tickets = tickets.ticket_category_id_eq(type)
       @type_selected = type
     end
     

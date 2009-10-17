@@ -96,7 +96,7 @@ $(document).ready(function() {
 
   function show_new_ticket_notification() {
     warning = '<div id="new_ticket_notification" style="display: none" ';
-    warning += 'onclick="location.href=\''+admin_tickets_path()+"\'">';
+    warning += 'onclick="location.href=\''+admin_tickets_path()+'\'\">';
     warning += 'Nowe<br/>wiadomości';
     warning += '</div>';
     $('#header').append(warning);
