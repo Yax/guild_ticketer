@@ -4,12 +4,12 @@ namespace :db do
     require 'populator'
     require 'faker'
 
-    [Category, Ticket, Complaint, Message].each(&:delete_all)
+    [TicketCategory, Ticket, Complaint, Message].each(&:delete_all)
 
-    availability = Category.create(:name => "Pytanie o dostępność", :ticket_type => "Ticket")
-    book_return = Category.create(:name => "Zwrot książki", :ticket_type => "Ticket")
-    shipment = Category.create(:name => "Wysyłka", :ticket_type => "Ticket")
-    complaint = Category.create(:name => "Reklamacja", :ticket_type => "Complaint")
+    availability = TicketCategory.create(:name => "Pytanie o dostępność", :ticket_type => "Ticket")
+    book_return = TicketCategory.create(:name => "Zwrot książki", :ticket_type => "Ticket")
+    shipment = TicketCategory.create(:name => "Wysyłka", :ticket_type => "Ticket")
+    complaint = TicketCategory.create(:name => "Reklamacja", :ticket_type => "Complaint")
 
     Ticket.populate 100 do |ticket|
       ticket.category_id = [availability.id, book_return.id, shipment.id]
@@ -67,12 +67,12 @@ namespace :db do
     require 'populator'
     require 'faker'
 
-    [Category, Ticket, Complaint, Message].each(&:delete_all)
+    [TicketCategory, Ticket, Complaint, Message].each(&:delete_all)
 
-    availability = Category.create(:name => "Pytanie o dostępność", :ticket_type => "Ticket")
-    book_return = Category.create(:name => "Zwrot książki", :ticket_type => "Ticket")
-    shipment = Category.create(:name => "Wysyłka", :ticket_type => "Ticket")
-    complaint = Category.create(:name => "Reklamacja", :ticket_type => "Complaint")
+    availability = TicketCategory.create(:name => "Pytanie o dostępność", :ticket_type => "Ticket")
+    book_return = TicketCategory.create(:name => "Zwrot książki", :ticket_type => "Ticket")
+    shipment = TicketCategory.create(:name => "Wysyłka", :ticket_type => "Ticket")
+    complaint = TicketCategory.create(:name => "Reklamacja", :ticket_type => "Complaint")
 
     Ticket.populate 30 do |ticket|
       ticket.category_id = [availability.id, book_return.id, shipment.id]

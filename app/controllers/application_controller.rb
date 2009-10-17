@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def set_types
     @types = ActiveSupport::OrderedHash.new
     @types['Wszystkie'] = '';
-    Category.all(:order => 'name ASC').each { |cat| @types[cat.name] = cat.id.to_s }
+    TicketCategory.all(:order => 'name ASC').each { |cat| @types[cat.name] = cat.id.to_s }
   end
 
   # TODO: will be set from session after merging with shop

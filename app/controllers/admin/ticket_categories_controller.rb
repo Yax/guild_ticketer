@@ -1,8 +1,8 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::TicketCategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   def index
-    @categories = Category.find(:all)
+    @categories = TicketCategory.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class Admin::CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.xml
   def show
-    @category = Category.find(params[:id])
+    @category = TicketCategory.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class Admin::CategoriesController < ApplicationController
   # GET /categories/new
   # GET /categories/new.xml
   def new
-    @category = Category.new
+    @category = TicketCategory.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +34,17 @@ class Admin::CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
-    @category = Category.find(params[:id])
+    @category = TicketCategory.find(params[:id])
   end
 
   # POST /categories
   # POST /categories.xml
   def create
-    @category = Category.new(params[:category])
+    @category = TicketCategory.new(params[:category])
 
     respond_to do |format|
       if @category.save
-        flash[:notice] = 'Category was successfully created.'
+        flash[:notice] = 'TicketCategory was successfully created.'
         format.html { redirect_to([:admin,@category]) }
         format.xml  { render :xml => @category, :status => :created, :location => @category }
       else
@@ -57,11 +57,11 @@ class Admin::CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.xml
   def update
-    @category = Category.find(params[:id])
+    @category = TicketCategory.find(params[:id])
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
-        flash[:notice] = 'Category was successfully updated.'
+        flash[:notice] = 'TicketCategory was successfully updated.'
         format.html { redirect_to([:admin,@category]) }
         format.xml  { head :ok }
       else
@@ -74,7 +74,7 @@ class Admin::CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.xml
   def destroy
-    @category = Category.find(params[:id])
+    @category = TicketCategory.find(params[:id])
     respond_to do |format|
       if @category.destroy
         format.html { redirect_to(admin_categories_url) }

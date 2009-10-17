@@ -1,5 +1,5 @@
 zwrot_tomka:
-  category: zwrot
+  ticket_category: zwrot
   employee_name: "Tomek"
   order_number: 123415
   email: "klient@costam.pl"
@@ -7,7 +7,7 @@ zwrot_tomka:
   type: "Ticket"
 
 wysylka_adiego:
-  category: wysylka
+  ticket_category: wysylka
   employee_name: "Adiego"
   order_number: 568332
   email: "czarus15@wp.pl"
@@ -15,7 +15,7 @@ wysylka_adiego:
   type: "Ticket"
 
 bledny_ticket:
-  category: wys
+  ticket_category: wys
   employee_name: "Di"
   order_number: 4134
   email: "czcz@os.pl"
@@ -23,7 +23,7 @@ bledny_ticket:
   type: "Ticket"
 
 reklamacja_pawla:
-  category: reklamacja
+  ticket_category: reklamacja
   employee_name: "Paweł"
   order_number: 124123
   email: "pawel@wp.pl"

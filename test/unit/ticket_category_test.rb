@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CategoryTest < ActiveSupport::TestCase
+class TicketCategoryTest < ActiveSupport::TestCase
 
   should_have_many :tickets
   should_validate_presence_of :name
@@ -12,7 +12,7 @@ class CategoryTest < ActiveSupport::TestCase
   end
   
   should 'not allow destroying not empty categories' do
-    category = categories(:zwrot)
+    category = ticket_categories(:zwrot)
     ticket = tickets(:zwrot_tomka)
     ticket.category_id = nil
     category.tickets << ticket
@@ -20,7 +20,7 @@ class CategoryTest < ActiveSupport::TestCase
   end
 
   should 'allow destroying empty categories' do
-    category = categories(:zwrot)
+    category = ticket_categories(:zwrot)
     category.tickets.destroy_all
     assert category.destroy
   end

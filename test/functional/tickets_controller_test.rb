@@ -26,7 +26,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
 
     context "on correct POST to #create" do
       setup do
-        post :create, :ticket => { :category_id => categories(:wysylka).to_param,
+        post :create, :ticket => { :category_id => ticket_categories(:wysylka).to_param,
                                   :employee_name => "Jack",
                                   :order_number => "123456a",
                                   :email => "asd@asd.com" }
@@ -83,7 +83,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
 
     context "on correct PUT to #update" do
       setup do
-        put :update, :id => tickets(:zwrot_tomka).to_param, :ticket => { :category => categories(:wysylka),
+        put :update, :id => tickets(:zwrot_tomka).to_param, :ticket => { :category => ticket_categories(:wysylka),
                                                                         :employee_name => "Jack",
                                                                         :order_number => "123456a",
                                                                         :email => "asd@asd.com" }
@@ -142,7 +142,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
       end
       context "when new tickets arrived" do
         setup do
-          new_ticket = Ticket.create(:category_id => categories(:wysylka).to_param,
+          new_ticket = Ticket.create(:category_id => ticket_categories(:wysylka).to_param,
                                      :employee_name => "Jack",
                                      :order_number => "123456a",
                                      :email => "asd@asd.com")

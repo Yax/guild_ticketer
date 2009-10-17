@@ -11,13 +11,6 @@
 
 ActiveRecord::Schema.define(:version => 20091014201149) do
 
-  create_table "categories", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "ticket_type"
-  end
-
   create_table "messages", :force => true do |t|
     t.integer  "ticket_id"
     t.text     "content"
@@ -25,6 +18,13 @@ ActiveRecord::Schema.define(:version => 20091014201149) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "from_client"
+  end
+
+  create_table "ticket_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "ticket_type"
   end
 
   create_table "tickets", :force => true do |t|

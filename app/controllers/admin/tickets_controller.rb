@@ -41,7 +41,7 @@ class Admin::TicketsController < ApplicationController
   end
 
   def create
-    category = Category.find_by_id(params[:ticket][:category_id])
+    category = TicketCategory.find_by_id(params[:ticket][:category_id])
     unless category.nil?
       eval "@ticket = #{ category.ticket_type }.new(params[:ticket])"
     else
@@ -71,7 +71,7 @@ class Admin::TicketsController < ApplicationController
         end
         wants.js { render :text => @ticket[modified_parameter],  :status => :ok }
       else
-        @categories = Category.find(:all)
+        @categories = TicketCategory.find(:all)
         wants.html { render :action => "edit" }
         wants.js { render :json => @ticket.errors, :status => :unprocessable_entity }
       end
@@ -110,7 +110,7 @@ class Admin::TicketsController < ApplicationController
 
   private
   def find_categories
-    @categories = Category.all
+    @categories = TicketCategory.all
   end
 
   def find_ticket

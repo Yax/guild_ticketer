@@ -14,7 +14,7 @@ class Ticket < ActiveRecord::Base
   
   attr_protected :category_id, :type
 
-  belongs_to :category
+  belongs_to :ticket_category
   has_many :messages, :dependent => :destroy
   has_one :last_message, :class_name => 'Message', :order => 'created_at DESC'
 

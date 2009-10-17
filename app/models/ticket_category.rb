@@ -1,4 +1,4 @@
-class Category < ActiveRecord::Base
+class TicketCategory < ActiveRecord::Base
   # t.string :name
   # t.string :ticket_type
 
