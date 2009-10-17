@@ -11,15 +11,15 @@ class TicketCategoryTest < ActiveSupport::TestCase
     should_allow_values_for :ticket_type, type
   end
   
-  should 'not allow destroying not empty categories' do
+  should 'not allow destroying not empty ticket_categories' do
     category = ticket_categories(:zwrot)
     ticket = tickets(:zwrot_tomka)
-    ticket.category_id = nil
+    ticket.ticket_category_id = nil
     category.tickets << ticket
     assert !category.destroy
   end
 
-  should 'allow destroying empty categories' do
+  should 'allow destroying empty ticket_categories' do
     category = ticket_categories(:zwrot)
     category.tickets.destroy_all
     assert category.destroy

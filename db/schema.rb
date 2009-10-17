@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20091014201149) do
   end
 
   create_table "tickets", :force => true do |t|
-    t.integer  "category_id"
+    t.integer  "ticket_category_id"
     t.string   "employee_name"
     t.integer  "order_number"
     t.string   "email"

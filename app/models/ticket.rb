@@ -1,5 +1,5 @@
 class Ticket < ActiveRecord::Base
-  # t.integer :category_id
+  # t.integer :ticket_category_id
   # t.string :employee_name
   # t.integer :order_number
   # t.string :email
@@ -12,7 +12,7 @@ class Ticket < ActiveRecord::Base
   named_scope :opened, :conditions => { :basic_state => 'opened' }
   named_scope :closed, :conditions => { :basic_state => 'closed' }
   
-  attr_protected :category_id, :type
+  attr_protected :ticket_category_id, :type
 
   belongs_to :ticket_category
   has_many :messages, :dependent => :destroy
@@ -21,7 +21,7 @@ class Ticket < ActiveRecord::Base
   before_validation :set_type
   before_save :set_basic_state_order
 
-  validates_associated :category
+  validates_associated :ticket_category
   validates_presence_of :email, :employee_name, :basic_state
   validates_inclusion_of :type, :in => TICKET_TYPES
   validates_format_of :email,
@@ -38,12 +38,12 @@ class Ticket < ActiveRecord::Base
 
   private
   def validate
-    errors.add(:category_id, "is not a valid category") if self.category.nil?
+    errors.add(:ticket_category_id, "is not a valid ticket_category") if self.ticket_category.nil?
   end
 
   def set_type
-    if self[:type].blank? && !self.category.nil?
-      self[:type] = self.category.ticket_type
+    if self[:type].blank? && !self.ticket_category.nil?
+      self[:type] = self.ticket_category.ticket_type
     end
   end
 

@@ -1,88 +1,88 @@
 class Admin::TicketCategoriesController < ApplicationController
-  # GET /categories
-  # GET /categories.xml
+  # GET /ticket_categories
+  # GET /ticket_categories.xml
   def index
-    @categories = TicketCategory.find(:all)
+    @ticket_categories = TicketCategory.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @categories }
+      format.xml  { render :xml => @ticket_categories }
     end
   end
 
-  # GET /categories/1
-  # GET /categories/1.xml
+  # GET /ticket_categories/1
+  # GET /ticket_categories/1.xml
   def show
-    @category = TicketCategory.find(params[:id])
+    @ticket_category = TicketCategory.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @category }
+      format.xml  { render :xml => @ticket_category }
     end
   end
 
-  # GET /categories/new
-  # GET /categories/new.xml
+  # GET /ticket_categories/new
+  # GET /ticket_categories/new.xml
   def new
-    @category = TicketCategory.new
+    @ticket_category = TicketCategory.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @category }
+      format.xml  { render :xml => @ticket_category }
     end
   end
 
-  # GET /categories/1/edit
+  # GET /ticket_categories/1/edit
   def edit
-    @category = TicketCategory.find(params[:id])
+    @ticket_category = TicketCategory.find(params[:id])
   end
 
-  # POST /categories
-  # POST /categories.xml
+  # POST /ticket_categories
+  # POST /ticket_categories.xml
   def create
-    @category = TicketCategory.new(params[:category])
+    @ticket_category = TicketCategory.new(params[:ticket_category])
 
     respond_to do |format|
-      if @category.save
+      if @ticket_category.save
         flash[:notice] = 'TicketCategory was successfully created.'
-        format.html { redirect_to([:admin,@category]) }
-        format.xml  { render :xml => @category, :status => :created, :location => @category }
+        format.html { redirect_to([:admin,@ticket_category]) }
+        format.xml  { render :xml => @ticket_category, :status => :created, :location => @ticket_category }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @ticket_category.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /categories/1
-  # PUT /categories/1.xml
+  # PUT /ticket_categories/1
+  # PUT /ticket_categories/1.xml
   def update
-    @category = TicketCategory.find(params[:id])
+    @ticket_category = TicketCategory.find(params[:id])
 
     respond_to do |format|
-      if @category.update_attributes(params[:category])
+      if @ticket_category.update_attributes(params[:ticket_category])
         flash[:notice] = 'TicketCategory was successfully updated.'
-        format.html { redirect_to([:admin,@category]) }
+        format.html { redirect_to([:admin,@ticket_category]) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @ticket_category.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /categories/1
-  # DELETE /categories/1.xml
+  # DELETE /ticket_categories/1
+  # DELETE /ticket_categories/1.xml
   def destroy
-    @category = TicketCategory.find(params[:id])
+    @ticket_category = TicketCategory.find(params[:id])
     respond_to do |format|
-      if @category.destroy
-        format.html { redirect_to(admin_categories_url) }
+      if @ticket_category.destroy
+        format.html { redirect_to(admin_ticket_categories_url) }
         format.xml  { head :ok }
       else
-        flash[:warning] = @category.errors.full_messages
-        format.html { redirect_to(admin_categories_url) }
-        format.xml  { head :xml => @category.errors, :status => :unprocessable_entity }
+        flash[:warning] = @ticket_category.errors.full_messages
+        format.html { redirect_to(admin_ticket_categories_url) }
+        format.xml  { head :xml => @ticket_category.errors, :status => :unprocessable_entity }
       end
     end
   end

@@ -26,7 +26,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
 
     context "on correct POST to #create" do
       setup do
-        post :create, :ticket => { :category_id => ticket_categories(:wysylka).to_param,
+        post :create, :ticket => { :ticket_category_id => ticket_categories(:wysylka).to_param,
                                   :employee_name => "Jack",
                                   :order_number => "123456a",
                                   :email => "asd@asd.com" }
@@ -40,7 +40,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
 
     context "on wrong POST to #create" do
       setup do
-        post :create, :ticket => { :category_id => "asd",
+        post :create, :ticket => { :ticket_category_id => "asd",
                                    :employee_name => "Jack",
                                    :order_number => "123456a",
                                    :email => "asd#asd.com" }
@@ -58,7 +58,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
       should_respond_with :success
       should_render_template :new
       should_not_set_the_flash
-      should_assign_to :ticket, :categories
+      should_assign_to :ticket, :ticket_categories
     end
 
     context "on GET to #edit" do
@@ -68,7 +68,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
       should_respond_with :success
       should_render_template :edit
       should_not_set_the_flash
-      should_assign_to :ticket, :categories
+      should_assign_to :ticket, :ticket_categories
     end
 
     context "on GET to #show" do
@@ -83,7 +83,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
 
     context "on correct PUT to #update" do
       setup do
-        put :update, :id => tickets(:zwrot_tomka).to_param, :ticket => { :category => ticket_categories(:wysylka),
+        put :update, :id => tickets(:zwrot_tomka).to_param, :ticket => { :ticket_category => ticket_categories(:wysylka),
                                                                         :employee_name => "Jack",
                                                                         :order_number => "123456a",
                                                                         :email => "asd@asd.com" }
@@ -95,7 +95,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
 
     context "on wrong PUT to #create" do
       setup do
-        put :update, :id => tickets(:zwrot_tomka).to_param, :ticket => { :category_id => "asd",
+        put :update, :id => tickets(:zwrot_tomka).to_param, :ticket => { :ticket_category_id => "asd",
                                                                          :employee_name => "Jack",
                                                                          :order_number => "123456a",
                                                                          :email => "asd#asd.com" }
@@ -142,7 +142,7 @@ class Admin::TicketsControllerTest < ActionController::TestCase
       end
       context "when new tickets arrived" do
         setup do
-          new_ticket = Ticket.create(:category_id => ticket_categories(:wysylka).to_param,
+          new_ticket = Ticket.create(:ticket_category_id => ticket_categories(:wysylka).to_param,
                                      :employee_name => "Jack",
                                      :order_number => "123456a",
                                      :email => "asd@asd.com")

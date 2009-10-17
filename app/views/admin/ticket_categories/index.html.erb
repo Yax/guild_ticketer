@@ -6,12 +6,12 @@
     <th>Ticket type</th>
   </tr>
 
-<% for category in @categories %>
+<% for category in @ticket_categories %>
   <tr>
     <td><%=h category.name %></td>
     <td><%=h category.ticket_type.capitalize %></td>
     <td><%= link_to 'Show', [:admin,category] %></td>
-    <td><%= link_to 'Edit', edit_admin_category_path(category) %></td>
+    <td><%= link_to 'Edit', edit_admin_ticket_category_path(category) %></td>
     <td><%= link_to 'Destroy', [:admin,category], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -19,4 +19,4 @@
 
 <br />
 
-<%= link_to 'New category', new_admin_category_path %>
+<%= link_to 'New ticket_category', new_admin_ticket_category_path %>

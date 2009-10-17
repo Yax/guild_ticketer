@@ -1,5 +1,5 @@
 class Complaint < Ticket
-  # t.integer :category_id
+  # t.integer :ticket_category_id
   # t.string :employee_name
   # t.integer :order_number
   # t.string :email

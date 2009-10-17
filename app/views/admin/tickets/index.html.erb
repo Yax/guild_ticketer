@@ -10,9 +10,9 @@
     <tr class="highlightable" id="<%= ticket.id %>">
       <td class="basic_state"><img src="/images/<%=h simplify_basic_state(ticket.basic_state) %>.png"
         alt="<%=h ticket.basic_state%>" title="<%=h ticket.basic_state%>" /></td>
-      <td class="category">
-        <%= unless ticket.category.nil?
-             h truncate(ticket.category.name, :length => 12)
+      <td class="ticket_category">
+        <%= unless ticket.ticket_category.nil?
+             h truncate(ticket.ticket_category.name, :length => 12)
            else
              "Błędna kategoria!"
            end -%>

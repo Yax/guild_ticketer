@@ -1,5 +1,5 @@
 class Admin::TicketsController < ApplicationController
-  before_filter :find_categories, :only => [:edit , :new, :index]
+  before_filter :find_ticket_categories, :only => [:edit , :new, :index]
   before_filter :find_ticket, :except => [ :new, :create, :index, :any_new ]
   before_filter :set_filters, :set_types, :get_user_name
 
@@ -22,7 +22,7 @@ class Admin::TicketsController < ApplicationController
     end
     
     order = 'basic_state_order ASC, `messages`.from_client DESC, `messages`.created_at DESC'
-    @tickets = tickets.all(:include => [:category, :messages], :order => order).paginate :page => params[:page]
+    @tickets = tickets.all(:include => [:ticket_category, :messages], :order => order).paginate :page => params[:page]
     session[:last_seen] = Time.zone.now
   end
 
@@ -41,18 +41,18 @@ class Admin::TicketsController < ApplicationController
   end
 
   def create
-    category = TicketCategory.find_by_id(params[:ticket][:category_id])
-    unless category.nil?
-      eval "@ticket = #{ category.ticket_type }.new(params[:ticket])"
+    ticket_category = TicketCategory.find_by_id(params[:ticket][:ticket_category_id])
+    unless ticket_category.nil?
+      eval "@ticket = #{ ticket_category.ticket_type }.new(params[:ticket])"
     else
       @ticket = Ticket.new(params[:ticket])
     end
-    @ticket.category_id = params[:ticket][:category_id] #because category_id is protected
+    @ticket.ticket_category_id = params[:ticket][:ticket_category_id] #because ticket_category_id is protected
     if @ticket.save
       flash[:notice] = "ticket created."
       redirect_to([:admin,@ticket])
     else
-      find_categories
+      find_ticket_categories
       render :action => "new"
     end
   end
@@ -71,7 +71,7 @@ class Admin::TicketsController < ApplicationController
         end
         wants.js { render :text => @ticket[modified_parameter],  :status => :ok }
       else
-        @categories = TicketCategory.find(:all)
+        @ticket_categories = TicketCategory.find(:all)
         wants.html { render :action => "edit" }
         wants.js { render :json => @ticket.errors, :status => :unprocessable_entity }
       end
@@ -109,8 +109,8 @@ class Admin::TicketsController < ApplicationController
   end
 
   private
-  def find_categories
-    @categories = TicketCategory.all
+  def find_ticket_categories
+    @ticket_categories = TicketCategory.all
   end
 
   def find_ticket

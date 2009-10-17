@@ -1,6 +1,6 @@
-class CreateCategories < ActiveRecord::Migration
+class CreateTicketCategories < ActiveRecord::Migration
   def self.up
-    create_table :categories do |t|
+    create_table :ticket_categories do |t|
       t.string :name
 
       t.timestamps
@@ -8,6 +8,6 @@ class CreateCategories < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :categories
+    drop_table :ticket_categories
   end
 end

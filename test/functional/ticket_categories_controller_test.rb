@@ -5,7 +5,7 @@ class Admin::TicketCategoriesControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:categories)
+    assert_not_nil assigns(:ticket_categories)
   end
 
   test "should get new" do
@@ -13,15 +13,15 @@ class Admin::TicketCategoriesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create category" do
+  test "should create ticket_category" do
     assert_difference('TicketCategory.count') do
-      post :create, :category => { :name => "new name", :ticket_type => "Ticket" }
+      post :create, :ticket_category => { :name => "new name", :ticket_type => "Ticket" }
     end
 
-    assert_redirected_to admin_category_path(assigns(:category))
+    assert_redirected_to admin_ticket_category_path(assigns(:ticket_category))
   end
 
-  test "should show category" do
+  test "should show ticket_category" do
     get :show, :id => ticket_categories(:zwrot).to_param
     assert_response :success
   end
@@ -31,25 +31,25 @@ class Admin::TicketCategoriesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update category" do
-    put :update, :id => ticket_categories(:zwrot).to_param, :category => { }
-    assert_redirected_to admin_category_path(assigns(:category))
+  test "should update ticket_category" do
+    put :update, :id => ticket_categories(:zwrot).to_param, :ticket_category => { }
+    assert_redirected_to admin_ticket_category_path(assigns(:ticket_category))
   end
 
-  test "should destroy empty category" do
+  test "should destroy empty ticket_category" do
     ticket_categories(:zwrot).tickets.destroy_all
     assert_difference('TicketCategory.count', -1) do
       delete :destroy, :id => ticket_categories(:zwrot).to_param
     end
 
-    assert_redirected_to admin_categories_path
+    assert_redirected_to admin_ticket_categories_path
   end
 
-  test "should not destroy category with tickets" do
+  test "should not destroy ticket_category with tickets" do
     assert_difference('TicketCategory.count', 0) do
       delete :destroy, :id => ticket_categories(:zwrot).to_param
     end
     assert !flash[:warning].nil?
-    assert_redirected_to admin_categories_path
+    assert_redirected_to admin_ticket_categories_path
   end
 end

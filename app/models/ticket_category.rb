@@ -12,7 +12,7 @@ class TicketCategory < ActiveRecord::Base
 
   def check_tickets
     unless self.tickets.blank?
-      errors.add_to_base('Cannot destroy category with associated tickets.')
+      errors.add_to_base('Cannot destroy ticket_category with associated tickets.')
       false
     end
   end

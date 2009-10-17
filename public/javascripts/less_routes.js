@@ -67,13 +67,13 @@ function less_check_format(param) {
   }
   return param
 }
-function admin_categories_path(format, verb){ format = less_check_format(format); return '/admin/categories' + format + '';}
+function admin_ticket_categories_path(format, verb){ format = less_check_format(format); return '/admin/categories' + format + '';}
 function admin_categories_ajax(format, verb, params, options){ format = less_check_format(format); return less_ajax('/admin/categories' + format + '', verb, params, options);}
 function admin_categories_ajaxx(format, verb, params, options){ format = less_check_format(format); return less_ajaxx('/admin/categories' + format + '', verb, params, options);}
-function new_admin_category_path(format, verb){ format = less_check_format(format); return '/admin/categories/new' + format + '';}
+function new_admin_ticket_category_path(format, verb){ format = less_check_format(format); return '/admin/categories/new' + format + '';}
 function new_admin_category_ajax(format, verb, params, options){ format = less_check_format(format); return less_ajax('/admin/categories/new' + format + '', verb, params, options);}
 function new_admin_category_ajaxx(format, verb, params, options){ format = less_check_format(format); return less_ajaxx('/admin/categories/new' + format + '', verb, params, options);}
-function edit_admin_category_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/admin/categories/' + id + '/edit' + format + '';}
+function edit_admin_ticket_category_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/admin/categories/' + id + '/edit' + format + '';}
 function edit_admin_category_ajax(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajax('/admin/categories/' + id + '/edit' + format + '', verb, params, options);}
 function edit_admin_category_ajaxx(id, format, verb, params, options){ id = less_check_parameter(id);format = less_check_format(format); return less_ajaxx('/admin/categories/' + id + '/edit' + format + '', verb, params, options);}
 function admin_category_path(id, format, verb){ id = less_check_parameter(id);format = less_check_format(format); return '/admin/categories/' + id + '' + format + '';}

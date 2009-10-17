@@ -6,7 +6,7 @@
   </ul>
 
   <p>
-  <em>[<%=h ticket.category.name %>]</em>
+  <em>[<%=h ticket.ticket_category.name %>]</em>
   </p>
   <p style="margin:0;padding:0;display:inline;display:none;" id="authenticity_token"><%= form_authenticity_token.to_json %></p>
   <p style="margin:0;padding:0;display:inline;display:none;" id="type"><%= ticket[:type].downcase %></p>
