@@ -24,10 +24,12 @@ namespace :db do
                              else 0
                              end
       ticket.type = "Ticket"
-      ticket.created_at = 5.months.ago..Time.zone.now.utc
+      ticket.created_at = 5.months.ago..Time.now
+      ticket.created_at -= Time.now.utc_offset
       Message.populate 1..10 do |message|
         message.ticket_id = ticket.id
-        message.created_at = ticket.created_at..Time.zone.now.utc
+        message.created_at = ticket.created_at..Time.now
+        message.created_at -= Time.now.utc_offset
         message.from = [ticket.employee_name, ticket.employee_name, ticket.email]
         message.from_client = message.from == ticket.email ? true : false
         message.content = Populator.sentences(3..7)
@@ -49,13 +51,15 @@ namespace :db do
       ticket.type = "Complaint"
       ticket.state = ["pending", "in_question", "accepted", "declined"]
       ticket.subject = Populator.words(4..10).capitalize
-      ticket.created_at = 5.months.ago..Time.zone.now.utc
+      ticket.created_at = 5.months.ago..Time.now
+      ticket.created_at -= Time.now.utc_offset
       if (ticket.state == "declined") || (ticket.state == "accepted")
         ticket.explanation = Populator.sentences(1..4)
       end
       Message.populate 1..10 do |message|
         message.ticket_id = ticket.id
-        message.created_at = ticket.created_at..Time.zone.now.utc
+        message.created_at = ticket.created_at..Time.now
+        message.created_at -= Time.now.utc_offset
         message.from = [ticket.employee_name, ticket.employee_name, ticket.email]
         message.from_client = message.from == ticket.email ? true : false
         message.content = Populator.sentences(3..7)
@@ -91,10 +95,12 @@ namespace :db do
                              else 0
                              end
       ticket.type = "Ticket"
-      ticket.created_at = 5.months.ago..Time.zone.now.utc
+      ticket.created_at = 5.months.ago..Time.zone.now
+      ticket.created_at -= Time.now.utc_offset
       Message.populate 1..3 do |message|
         message.ticket_id = ticket.id
-        message.created_at = ticket.created_at..Time.zone.now.utc
+        message.created_at = ticket.created_at..Time.zone.now
+        message.created_at -= Time.now.utc_offset
         message.from = [ticket.employee_name, ticket.employee_name, ticket.email]
         message.from_client = message.from == ticket.email ? true : false
         message.content = Populator.sentences(3..7)
@@ -116,13 +122,15 @@ namespace :db do
       ticket.type = "Complaint"
       ticket.state = ["pending", "in_question", "accepted", "declined"]
       ticket.subject = Populator.words(4..10).capitalize
-      ticket.created_at = 5.months.ago..Time.zone.now.utc
+      ticket.created_at = 5.months.ago..Time.zone.now
+      ticket.created_at -= Time.now.utc_offset
       if (ticket.state == "declined") || (ticket.state == "accepted")
         ticket.explanation = Populator.sentences(1..4)
       end
       Message.populate 1..3 do |message|
         message.ticket_id = ticket.id
-        message.created_at = ticket.created_at..Time.zone.now.utc
+        message.created_at = ticket.created_at..Time.zone.now
+        message.created_at -= Time.now.utc_offset
         message.from = [ticket.employee_name, ticket.employee_name, ticket.email]
         message.from_client = message.from == ticket.email ? true : false
         message.content = Populator.sentences(3..7)
