@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091014201149) do
+ActiveRecord::Schema.define(:version => 20091017211051) do
 
   create_table "messages", :force => true do |t|
     t.integer  "ticket_id"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20091014201149) do
     t.string   "subject"
     t.text     "explanation"
     t.integer  "basic_state_order"
+    t.integer  "last_message_id"
   end
 
 end

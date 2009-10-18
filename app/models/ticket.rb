@@ -16,7 +16,7 @@ class Ticket < ActiveRecord::Base
 
   belongs_to :ticket_category
   has_many :messages, :dependent => :destroy
-  has_one :last_message, :class_name => 'Message', :order => 'created_at DESC'
+  belongs_to :last_message, :class_name => 'Message', :foreign_key => "last_message_id"
 
   before_validation :set_type
   before_save :set_basic_state_order

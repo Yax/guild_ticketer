@@ -5,6 +5,7 @@ zwrot_tomka:
   email: "klient@costam.pl"
   basic_state: "opened"
   type: "Ticket"
+  last_message: zgoda_anulowania
 
 wysylka_adiego:
   ticket_category: wysylka
@@ -13,6 +14,7 @@ wysylka_adiego:
   email: "czarus15@wp.pl"
   basic_state: "closed"
   type: "Ticket"
+  last_message: wyslano_przesylke
 
 bledny_ticket:
   ticket_category: wys

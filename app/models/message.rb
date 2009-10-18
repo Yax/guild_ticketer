@@ -12,6 +12,7 @@ class Message < ActiveRecord::Base
   validates_presence_of :from, :content, :ticket
   
   before_save :set_from_client
+  after_save :set_last_message
 
   def set_from_client
     if self.from =~ /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/
@@ -20,6 +21,12 @@ class Message < ActiveRecord::Base
       self.from_client = false
     end
     true
+  end
+
+  def set_last_message
+    ticket = self.ticket
+    ticket.last_message_id = self.id
+    ticket.save
   end
 
 end
