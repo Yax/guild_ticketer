@@ -18,6 +18,8 @@ class Ticket < ActiveRecord::Base
   has_many :messages, :dependent => :destroy
   belongs_to :last_message, :class_name => 'Message', :foreign_key => "last_message_id"
 
+  accepts_nested_attributes_for :messages
+
   before_validation :set_type
   before_save :set_basic_state_order
 

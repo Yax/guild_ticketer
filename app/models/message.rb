@@ -9,7 +9,7 @@ class Message < ActiveRecord::Base
   attr_protected :ticket_id
   
   validates_associated :ticket
-  validates_presence_of :from, :content, :ticket
+  validates_presence_of :from, :content#, :ticket
   
   before_save :set_from_client
   after_save :set_last_message

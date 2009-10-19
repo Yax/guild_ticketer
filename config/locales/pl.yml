@@ -97,8 +97,8 @@ pl:
     errors:
       template:
         header:
-          one:    "{{model}} nie został zachowany z powodu jednego błędu"
-          other:  "{{model}} nie został zachowany z powodu {{count}} błędów"
+          one:    "Rekord: \"{{model}}\" nie został zachowany z powodu jednego błędu"
+          other:  "Rekord: \"{{model}}\" nie został zachowany z powodu {{count}} błędów"
         body: "Błędy dotyczą następujących pól:"
       messages:
         inclusion: "nie znajduje się na liście dopuszczalnych wartości"
@@ -133,12 +133,18 @@ pl:
         email: "e-mail"
         basic_state: "podstawowy status"
         basic_state_event: "podstawowy status"
+        ticket_category_id: "kategoria zgłoszenia"
+        #nested ticket model:
+        message_from: "wiadomość od"
+        message_content: "treść wiadomości"
+        message_ticket_id: "zgłoszenie wiadomości"
       complaint:
         state: "status"
         state_event: "status"
         subject: "temat"
         explanation: "wyjaśnienie"
       message:
+        ticket_id: "zgłoszenie"
         from: "od"
         content: "treść"
       ticket_category:

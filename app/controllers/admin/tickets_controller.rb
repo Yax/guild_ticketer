@@ -36,19 +36,24 @@ class Admin::TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
+    @ticket.employee_name = @user_name
+    @ticket.messages.build('from'=>@user_name)
   end
 
   def edit
   end
 
   def create
-    ticket_category = TicketCategory.find_by_id(params[:ticket][:ticket_category_id])
+    ticket_category_id = nil #without it in line below ticket_category_id doesn't get out of the block
+    params.each { |k,v| ticket_category_id ||= v['ticket_category_id'] }
+    ticket_category = TicketCategory.find_by_id(ticket_category_id) 
     unless ticket_category.nil?
       eval "@ticket = #{ ticket_category.ticket_type }.new(params[:ticket])"
+      @ticket.ticket_category_id = ticket_category_id #because ticket_category_id is protected
     else
       @ticket = Ticket.new(params[:ticket])
+      @ticket.ticket_category_id = TicketCategory.first.to_param #because ticket_category_id is protected
     end
-    @ticket.ticket_category_id = params[:ticket][:ticket_category_id] #because ticket_category_id is protected
     if @ticket.save
       flash[:notice] = "Zgłoszenie zapisane"
       redirect_to([:admin,@ticket])

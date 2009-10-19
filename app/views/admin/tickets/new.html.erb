@@ -6,22 +6,30 @@
   <%= f.error_messages %>
 
   <p>
-  <%= f.label :ticket_category_id %>
-  <%= f.collection_select :ticket_category_id, @ticket_categories, :id, :name %>
+    <%= f.label :ticket_category_id %>
+    <%= f.collection_select :ticket_category_id, @ticket_categories, :id, :name %>
   </p>
   <p>
-  <%= f.label :employee_name %>
-  <%= f.text_field :employee_name %>
+    <%= f.label :employee_name %>
+    <%= f.text_field :employee_name %>
   </p>
   <p>
-  <%= f.label :order_number %>
-  <%= f.text_field :order_number %>
+    <%= f.label :order_number %>
+    <%= f.text_field :order_number %>
   </p>
   <p>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
   </p>
+  <% f.fields_for :messages do |mf| -%>
+    <p>
+      <%= mf.label :from %>
+      <%= mf.text_field :from %>
+      <%= mf.label :content %>
+      <%= mf.text_area :content, :rows => 20, :cols => 50 %>
+    </p>
+  <% end -%>
   <p>
-  <%= f.submit 'Zapisz' %>
+    <%= f.submit 'Zapisz' %>
   </p>
 <% end %>

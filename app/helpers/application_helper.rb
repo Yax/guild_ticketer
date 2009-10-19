@@ -14,6 +14,9 @@ module ApplicationHelper
   end
 
   def label(object_name, method, text = nil, options = {})
+    if object_name =~ /.*\[(.*)_attributes\].*/
+      object_name = $+
+    end
     text ||= object_name.classify.constantize.human_attribute_name(method.to_s).capitalize
     ActionView::Helpers::InstanceTag.new(object_name, method, self,
       options.delete(:object)).to_label_tag(text, options)
