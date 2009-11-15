@@ -135,9 +135,9 @@ pl:
         basic_state_event: "podstawowy status"
         ticket_category_id: "kategoria zgłoszenia"
         #nested ticket model:
-        message_from: "wiadomość od"
-        message_content: "treść wiadomości"
-        message_ticket_id: "zgłoszenie wiadomości"
+        messages_from: "wiadomość od"
+        messages_content: "treść wiadomości"
+        messages_ticket_id: "zgłoszenie wiadomości"
       complaint:
         state: "status"
         state_event: "status"

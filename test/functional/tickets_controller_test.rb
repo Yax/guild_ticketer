@@ -140,12 +140,13 @@ class Admin::TicketsControllerTest < ActionController::TestCase
           assert_equal 'false', @response.body
         end        
       end
-      context "when new tickets arrived" do
+      context "when new messages arrived" do
         setup do
-          new_ticket = Ticket.create(:ticket_category_id => ticket_categories(:wysylka).to_param,
-                                     :employee_name => "Jack",
-                                     :order_number => "123456a",
-                                     :email => "asd@asd.com")
+          message = Message.new(:content => "asd",
+                         :from => "client@client.com",
+                         :from_client => '1')
+          message.ticket_id = Ticket.first.id
+          message.save
           get :any_new, nil, { :last_seen => 10.minutes.ago }
         end
         should_respond_with :success

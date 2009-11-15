@@ -111,7 +111,7 @@ class Admin::TicketsController < ApplicationController
   end
 
   def any_new
-    unless Message.find(:all,:conditions => ["created_at > ?", session[:last_seen] ], :limit => 1).empty?
+    unless Message.find(:all,:conditions => ["created_at > ? and from_client = ?", session[:last_seen], true ], :limit => 1).empty?
       render :text => 'true', :status => :ok
     else
       render :text => 'false', :status => :ok

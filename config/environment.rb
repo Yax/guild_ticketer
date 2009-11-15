@@ -5,6 +5,37 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 
 TICKET_TYPES = %w{ Ticket Complaint }
 
+FOOTER = <<FOOT
+DZIAŁ OBSLUGI KLIENTA
+www.sklep.gildia.pl
+ZAKUPY W INNYM WYMIARZE
+
+Dane telekontaktowe:
+
+Sklep.gildia.pl
+Kolejowa 15/17
+01-217 Warszawa
+pokój 109, I piętro
+
+tel. stacjonarny: 022 632 01 99
+komorka: 609 313 500
+e-mail: sklep@gildia.pl
+
+Pracujemy codziennie w godz. 10-16
+W tych godzinach również odpowiadamy na Państwa pytania.
+
+-----------------------------------
+
+Gildia Internet Services Sp. z o.o.
+Grottgera 9A/7 | 00-785 Warszawa
+NIP: 521-335-94-08 | REGON: 140228281
+Kapitał zakładowy: 50.000 PLN
+
+Spółka zarejestrowana w Sądzie Rejonowym m.st. Warszawy
+XIII Wydział Gospodarczy Krajowego Rejestru Sądowego
+pod numerem KRS: 0000239271
+FOOT
+
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 

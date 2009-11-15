@@ -57,8 +57,11 @@ class Admin::MessagesController < ApplicationController
   end
 
   def destroy
-    @message.destroy
-    flash[:notice] = "Wiadomość usunięta"
+    if @message.destroy
+      flash[:notice] = "Wiadomość usunięta"
+    else
+      flash[:warning] = "Nie można usunąć wiadomości"
+    end
     redirect_to([:admin,@message.ticket])
   end
 

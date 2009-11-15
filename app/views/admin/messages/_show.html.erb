@@ -1,3 +1,3 @@
 <div>W dniu <em><%= event_date(message.created_at) %></em> <strong><%=h message.from %></strong> napisał:</div>
-<div><%=h message.content %></div>
+<div><%= h(message.content).gsub("\n",'<br/>') %></div>
 

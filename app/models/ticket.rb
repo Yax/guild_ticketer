@@ -36,6 +36,14 @@ class Ticket < ActiveRecord::Base
     event :close do
       transition :opened => :closed
     end
+    event :reopen do
+      transition :closed => :opened
+    end
+  end
+
+  def update_last_message
+    self.last_message_id = self.messages.last.id
+    self.save
   end
 
   private

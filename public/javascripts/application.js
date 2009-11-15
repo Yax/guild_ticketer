@@ -8,9 +8,9 @@ $(document).ready(function() {
   });
 
   // load message content
-  $("#main table#messages_list tr.highlightable").click(function() {
-    row = $(this);
-    if ( !row.next().hasClass("message") ) {
+  $("#main table#messages_list tr.highlightable :not(.actions)").click(function() {
+    row = $(this).parent();
+    if ( !row.next().hasClass("message") && row.attr("id") ) {
       row.after('<tr class="message" style="display: none;"><td colspan="5"></td></tr>');
       $.get(admin_message_path(row.attr("id")), function(message) {
         row.next().children().append(message);

@@ -56,9 +56,10 @@ class Admin::MessagesControllerTest < ActionController::TestCase
     context "on DELETE to #destroy" do
       setup do
         @ticket = Message.first.ticket
-        delete :destroy, :id => Message.first.to_param
+        @ticket.messages.create( { :content => "asdasd", :from => "client@client.com" } )
+        delete :destroy, :id => @ticket.messages.last.to_param
       end
-      should_change("the number of messages", :by => -1) { Message.count }
+      should_change("the number of messages", :by => 0) { Message.count } #1 created message, 1 removed in setup
       should_redirect_to("index") { admin_ticket_url(@ticket) }
       should_set_the_flash_to /usuni/
     end
