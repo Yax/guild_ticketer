@@ -123,7 +123,12 @@ pl:
         record_invalid: "Walidacja nie powiodła się: {{errors}}"
     models:
       ticket: "zgłoszenie"
+      question: "pytanie"
+      problem: "problem"
       complaint: "reklamacja"
+      refund: "zwrot"
+      cancellation: "anulowanie"
+      technical: "techniczny"
       message: "wiadomość"
       ticket_category: "kategoria zgłoszenia"
     attributes:

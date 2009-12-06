@@ -1,1 +1,15 @@
 Tickets management system for internet shops.
+
+
+Adding types and states.
+
+PL:
+- 'config/environment.rb' stała TICKET_TYPES zawiera listę typów ticketów (dużą literą początek)
+- 'app/models'
+-- nowy model musi dziedziczyć po Tickets, np.: 'class Complaint < Ticket'
+-- state_machine powinno znaleźć się w modelu oraz walidacje
+- 'views/admin/tickets'
+-- _nazwaticketu.edit.html.erb wyświetlany w edycji ticketu
+-- _nazwaticketu.show.html.erb wyświetlany w kolumnie ticket_info
+- 'config/locales/pl.yml' - przetłumaczone nazwy stanów i modeli
+

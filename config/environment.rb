@@ -3,7 +3,7 @@
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 
-TICKET_TYPES = %w{ Ticket Complaint }
+TICKET_TYPES = %w{ Ticket Question Problem Complaint Refund Cancellation Technical }
 
 FOOTER = <<FOOT
 DZIAŁ OBSLUGI KLIENTA
@@ -18,7 +18,7 @@ Kolejowa 15/17
 pokój 109, I piętro
 
 tel. stacjonarny: 022 632 01 99
-komorka: 609 313 500
+komórka: 609 313 500
 e-mail: sklep@gildia.pl
 
 Pracujemy codziennie w godz. 10-16

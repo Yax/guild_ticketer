@@ -8,11 +8,8 @@ class Complaint < Ticket
   # ---
   # t.string :type
   # ---
-  # t.string :state
-  # t.string :subject
-  # t.text :explanation
+  # t.text :reason
 
-  #validates_presence_of :subject
   validates_presence_of :state
 
   state_machine :state, :initial => :pending do
