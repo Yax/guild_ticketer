@@ -1,4 +1,4 @@
-class Complaint < Ticket
+class Question < Ticket
   # t.integer :ticket_category_id
   # t.string :employee_name
   # t.integer :order_number
@@ -9,24 +9,16 @@ class Complaint < Ticket
   # t.string :type
   # ---
   # t.string :state
-  # t.text :reason
 
   validates_presence_of :state
 
   state_machine :state, :initial => :pending do
-
-    event :investigate do
-      transition :pending => :in_question
+    event :open do
+      transition :pending => :being_answered
     end
-    event :accept do
-      transition :in_question => :accepted
-    end
-    event :decline do
-      transition :in_question => :declined
-    end
-
-    state :declined do
-      validates_presence_of :reason
+    event :answer do
+      transition :being_answered => :answered
     end
   end
+
 end

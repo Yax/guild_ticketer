@@ -39,6 +39,7 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
+  ttypes = %w{ questions problems complaints refunds cancellations technicals }
   
   map.namespace :admin do |admin|
     admin.connect '', :controller => 'tickets', :action => 'index'
@@ -48,11 +49,13 @@ ActionController::Routing::Routes.draw do |map|
                     :collection => { :any_new => :get } do |ticket|
       ticket.resources :messages, :except => 'index'
     end
-
-    admin.resources :complaints, :as => 'tickets', :controller => 'tickets',
-      :shallow => true, :except => [ 'create', 'update', 'destroy' ] do |complaint|
-      complaint.resources :messages, :only => [ 'create', 'new' ]
+    
+    ttypes.each do |type|
+      admin.resources type.to_sym, :as => 'tickets', :controller => 'tickets',
+        :shallow => true, :except => [ 'create', 'update', 'destroy' ] do |ttype|
+        ttype.resources :messages, :only => [ 'create', 'new' ]
       end
+    end
   end
 
   map.with_options :controller => 'frontend', 

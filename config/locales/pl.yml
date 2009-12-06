@@ -143,11 +143,29 @@ pl:
         messages_from: "wiadomość od"
         messages_content: "treść wiadomości"
         messages_ticket_id: "zgłoszenie wiadomości"
+      question:
+        state: "status"
+        state_event: "status"
+      problem:
+        state: "status"
+        state_event: "status"
+        reason: "przyczyna"
       complaint:
         state: "status"
         state_event: "status"
-        subject: "temat"
-        explanation: "wyjaśnienie"
+        reason: "przyczyna"
+      refund:
+        state: "status"
+        state_event: "status"
+        reason: "przyczyna"
+      cancellation:
+        state: "status"
+        state_event: "status"
+        reason: "przyczyna"
+      technical:
+        state: "status"
+        state_event: "status"
+        reason: "przyczyna"
       message:
         ticket_id: "zgłoszenie"
         from: "od"
@@ -163,9 +181,32 @@ pl:
     pending: "oczekuje"
     opened: "otwarty"
     closed: "zamknięty"
+    # question
+    being_answered: "w trakcie odpowiadania"
+    answered: "udzielono odpowiedzi"
+    # problem
+    # during_solving: "w trakcie wyjaśniania"
+    solved: "wyjaśniono"
+    not_solved: "nie wyjaśniono"
+    # complaint
     in_question: "rozpatrywana"
     accepted: "przyjęta"
     declined: "odrzucona"
+    # refund
+    # being_answered: "w trakcie wyjaśniania"
+    # answered: "udzielono odpowiedzi"
+    product_sent_back: "klient odesłał produkt"
+    product_received: "produkt został odebrany"
+    product_not_received: "produkt nie został odebrany"
+    # cancellation
+    during_cancellation: "w trakcie anulowania"
+    canceled: "anulowano"
+    not_canceled: "odmówiono anuowania"
+    # technical
+    forwarded: "przekazano do administratora"
+    solved: "wyjaśniono"
+    not_solved: "nie wyjaśniono"
+    #same as above
     plural:
       pending: "oczekujące"
       opened: "otwarte"

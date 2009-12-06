@@ -32,4 +32,3 @@ reklamacja_pawla:
   basic_state: "opened"
   type: "Complaint"
   state: "in_question"
-  subject: "Zło wielkie"
