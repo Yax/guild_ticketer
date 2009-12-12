@@ -13,6 +13,14 @@ module TicketsHelper
     end
   end
 
+  def category_name(category, len)
+    unless category.nil?
+      truncate(category.name, :length => len)
+    else
+      "Błędna kategoria!"
+    end 
+  end
+
   def page_entries_info(collection, options = {})
     entry_name = options[:entry_name] ||
       (collection.empty?? 'entry' : collection.first.class.name.underscore.sub('_', ' '))

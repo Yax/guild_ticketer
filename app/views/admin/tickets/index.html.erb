@@ -7,15 +7,11 @@
     <p id="info">Brak ticketów w bieżącym widoku.</p>
   <% end -%>
   <% for ticket in @tickets -%>
-    <tr class="highlightable" id="<%= ticket.id %>">
-      <td class="basic_state"><img src="/images/<%=h simplify_basic_state(ticket.basic_state) %>.png"
+    <tr class="highlightable" id="<%= ticket.id %>" title="<%= h category_name(ticket.ticket_category, 100) %>">
+      <td class="basic_state"><img src="/images/<%= simplify_basic_state(ticket.basic_state) %>.png"
         alt="<%=h ticket.basic_state%>" title="<%=h ticket.basic_state%>" /></td>
       <td class="ticket_category">
-        <%= unless ticket.ticket_category.nil?
-             h truncate(ticket.ticket_category.name, :length => 12)
-           else
-             "Błędna kategoria!"
-           end -%>
+        <%= h category_name(ticket.ticket_category, 20) %>
       </td>
       <td class="email"><%=h ticket.email %></td>
       <td class="last_message <%= 'client' if !ticket.last_message.nil? && ticket.last_message.from_client %>">
