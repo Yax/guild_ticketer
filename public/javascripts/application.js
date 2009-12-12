@@ -93,7 +93,7 @@ $(document).ready(function() {
   /*** New tickets notification ***/
   var is_notification_shown = false;
   // TODO: change it before deploying!
-  var tickets_interval = 10000; //how often check new tickets, in seconds
+  var tickets_interval = 30; //how often check new tickets, in seconds
 
   function show_new_ticket_notification() {
     warning = '<div id="new_ticket_notification" style="display: none" ';

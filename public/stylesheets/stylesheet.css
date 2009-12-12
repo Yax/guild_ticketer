@@ -136,13 +136,13 @@ tr, td {
   height: 40px;
   text-align: center;
   position: fixed;
-  left: 142px;
-  top: 6px;
-  background-color: #d1c49f;
+  left: 300px;
+  top: 23px;
+  background-color: #FF2;
   color: #333;
   cursor: pointer;
   font-weight: bold;
-  border: 3px red solid;
+  border: 4px red solid;
 }
 
 .flash_notice {
