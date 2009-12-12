@@ -5,6 +5,7 @@ Adding types and states.
 
 PL:
 - 'config/environment.rb' stała TICKET_TYPES zawiera listę typów ticketów (dużą literą początek)
+- 'config/routes.rb' ttypes zawiera listę typów do tworzenia routes - liczba mnoga, małą literą
 - 'app/models'
 -- nowy model musi dziedziczyć po Tickets, np.: 'class Complaint < Ticket'
 -- state_machine powinno znaleźć się w modelu oraz walidacje
